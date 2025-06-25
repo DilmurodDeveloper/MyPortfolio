@@ -1,0 +1,113 @@
+﻿@inject IJSRuntime JS
+
+<div class="top-row ps-3 navbar d-flex align-items-center" style="background-color: var(--navbar-bg); color: var(--navbar-text);">
+    <div class="container-fluid d-flex justify-content-between align-items-center">
+        <a class="navbar-brand brand-logo" href="/">
+            <div class="brand-icon">
+                <i class="fa-brands fa-dochub"></i>
+            </div>
+            <div class="brand-text">
+                <div><span class="visually-hidden">D</span>ilmurod</div>
+                <div><span class="visually-hidden">D</span>eveloper</div>
+            </div>
+        </a>
+
+        <div class="d-none d-md-flex gap-3 mx-auto social-icons">
+            @foreach (var social in SocialLinks)
+            {
+                <a href="@social.Url" target="_blank" title="@social.Title" class="fs-5" style="color: var(--social-icon);">
+                    <i class="@social.Icon"></i>
+                </a>
+            }
+        </div>
+
+        <div class="d-flex align-items-center gap-2">
+            <button class="btn" @onclick="ToggleDarkMode" style="color: var(--icon-color);" aria-label="Toggle dark mode">
+                @if (IsDarkMode)
+                {
+                    <i class="bi bi-sun"></i>
+                }
+                else
+                {
+                    <i class="bi bi-moon"></i>
+                }
+            </button>
+
+            <button title="Navigation menu" class="navbar-toggler position-relative" @onclick="ToggleNavMenu" aria-expanded="@(!collapseNavMenu)" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+    </div>
+</div>
+
+<div class="nav-overlay @(collapseNavMenu ? "" : "show")" @onclick="ToggleNavMenu"></div>
+
+<div class="nav-sidebar @(collapseNavMenu ? "" : "show")">
+    <button class="close-btn" @onclick="ToggleNavMenu" aria-label="Close menu">&times;</button>
+
+    <div class="nav-scroll-wrapper">
+        <nav class="nav-center">
+            @foreach (var item in Pages)
+            {
+                <NavLink class="nav-link mb-2" href="@item.Url" Match="NavLinkMatch.Prefix" @onclick:stopPropagation="true">
+                    <span aria-hidden="true"></span> @item.Name
+                </NavLink>
+            }
+        </nav>
+    </div>
+
+    <div class="nav-social-icons d-flex justify-content-center gap-3 py-3">
+        @foreach (var social in SocialLinks)
+        {
+            <a href="@social.Url" target="_blank" title="@social.Title" class="fs-5" style="color: var(--social-icon);">
+                <i class="@social.Icon"></i>
+            </a>
+        }
+    </div>
+
+    <hr class="nav-footer-divider" />
+
+    <footer class="nav-footer text-center py-3" style="color: var(--navbar-text); font-size: 0.9rem;">
+        © DILMUROD MADIRIMOV 2025
+    </footer>
+</div>
+
+@code {
+    private bool collapseNavMenu = true;
+    private bool IsDarkMode = false;
+
+    private void ToggleNavMenu()
+    {
+        collapseNavMenu = !collapseNavMenu;
+    }
+
+    private async Task ToggleDarkMode()
+    {
+        IsDarkMode = !IsDarkMode;
+        var mode = IsDarkMode ? "dark" : "light";
+        await JS.InvokeVoidAsync("toggleDarkMode", mode);
+    }
+
+    private List<(string Title, string Url, string Icon)> SocialLinks = new()
+    {
+        ("GitHub", "https://github.com/DilmurodDeveloper", "bi bi-github"),
+        ("LinkedIn", "https://linkedin.com/in/dilmurodmadirimov", "bi bi-linkedin"),
+        ("Facebook", "https://facebook.com/dilmurod.dev", "bi bi-facebook"),
+        ("Instagram", "https://instagram.com/dilmurod_developer", "bi bi-instagram"),
+        ("Telegram", "https://t.me/DilmurodDeveloper", "bi bi-telegram"),
+        ("WhatsApp", "https://wa.me/+998991437101", "bi bi-whatsapp"),
+        ("Download CV", "/files/your_cv.pdf", "bi bi-file-earmark-person-fill")
+    };
+
+    private List<(string Name, string Url)> Pages = new()
+    {
+        ("Home", "/"),
+        ("About", "/about"),
+        ("Skills", "/skills"),
+        ("Education", "/education"),
+        ("Experience", "/experience"),
+        ("Projects", "/projects"),
+        ("Blog", "/blog"),
+        ("Contact", "/contact")
+    };
+}

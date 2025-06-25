@@ -4,29 +4,33 @@ namespace MyPortfolio.API.Services
 {
     public class BlogService : IBlogService
     {
-        private readonly List<BlogPost> posts = new()
-    {
-        new BlogPost
-        {
-            Id = 1,
-            Title = "Welcome to My Blog",
-            Content = "This is the first blog post.",
-            PublishedAt = DateTime.UtcNow.AddDays(-10),
-            ImageUrl = "/images/blog1.png"
-        },
-        new BlogPost
-        {
-            Id = 2,
-            Title = "Blazor Tips and Tricks",
-            Content = "Some useful tips for Blazor developers.",
-            PublishedAt = DateTime.UtcNow.AddDays(-5),
-            ImageUrl = "/images/blog2.png"
-        }
-    };
+        private readonly List<BlogPost> posts = new();
 
         public IEnumerable<BlogPost> GetAll() => posts;
 
-        public BlogPost? GetById(int id) =>
-            posts.FirstOrDefault(p => p.Id == id);
+        public BlogPost? GetById(int id) => posts.FirstOrDefault(p => p.Id == id);
+
+        public void Add(BlogPost post)
+        {
+            post.Id = posts.Count + 1;
+            post.PublishedAt = DateTime.UtcNow;
+            posts.Add(post);
+        }
+
+        public void Update(BlogPost post)
+        {
+            var existing = GetById(post.Id);
+            if (existing == null) return;
+
+            existing.Title = post.Title;
+            existing.Content = post.Content;
+            existing.ImageUrl = post.ImageUrl;
+        }
+
+        public void Delete(int id)
+        {
+            var post = GetById(id);
+            if (post != null) posts.Remove(post);
+        }
     }
 }

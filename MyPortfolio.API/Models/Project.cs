@@ -7,5 +7,5 @@ public class Project
     public string Description { get; set; } = default!;
     public string? ImageUrl { get; set; }
     public string? ProjectUrl { get; set; }
-    public DateTimeOffset CreatedAt { get; set; }
+    public DateTimeOffset CreatedAt { get; set; } = DateTimeOffset.UtcNow;
 }

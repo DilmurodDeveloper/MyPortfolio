@@ -7,5 +7,4 @@ public class BlogPostDto
     public string Content { get; set; } = default!;
     public string? ImageUrl { get; set; }
     public DateTimeOffset PublishedAt { get; set; }
-    public List<string> Tags { get; set; } = new();
 }

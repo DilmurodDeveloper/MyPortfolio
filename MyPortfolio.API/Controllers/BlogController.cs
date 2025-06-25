@@ -1,13 +1,13 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using MyPortfolio.API.Models;
 using MyPortfolio.API.Services;
 using MyPortfolio.Shared.DTOs;
-using RESTFulSense.Controllers;
 
 namespace MyPortfolio.API.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class BlogController : RESTFulController
+    public class BlogController : ControllerBase
     {
         private readonly IBlogService blogService;
 
@@ -16,39 +16,53 @@ namespace MyPortfolio.API.Controllers
             this.blogService = blogService;
         }
 
-        [HttpGet]
-        public ActionResult<IEnumerable<BlogPostDto>> GetAll()
+        [HttpGet("all")]
+        public IActionResult GetAll()
         {
             var posts = blogService.GetAll();
-
-            var result = posts.Select(p => new BlogPostDto
-            {
-                Id = p.Id,
-                Title = p.Title,
-                Content = p.Content,
-                PublishedAt = p.PublishedAt,
-                ImageUrl = p.ImageUrl
-            });
-
-            return Ok(result);
+            return Ok(posts);
         }
 
         [HttpGet("{id}")]
-        public ActionResult<BlogPostDto> GetById(int id)
+        public IActionResult GetById(int id)
+        {
+            var post = blogService.GetById(id);
+            return post is null ? NotFound() : Ok(post);
+        }
+
+        [HttpPost]
+        public IActionResult Create(BlogPostRequestDto dto)
+        {
+            var post = new BlogPost
+            {
+                Title = dto.Title,
+                Content = dto.Content,
+                ImageUrl = dto.ImageUrl
+            };
+
+            blogService.Add(post);
+            return CreatedAtAction(nameof(GetById), new { id = post.Id }, post);
+        }
+
+        [HttpPut("{id}")]
+        public IActionResult Update(int id, BlogPostRequestDto dto)
         {
             var post = blogService.GetById(id);
             if (post == null) return NotFound();
 
-            var result = new BlogPostDto
-            {
-                Id = post.Id,
-                Title = post.Title,
-                Content = post.Content,
-                PublishedAt = post.PublishedAt,
-                ImageUrl = post.ImageUrl
-            };
+            post.Title = dto.Title;
+            post.Content = dto.Content;
+            post.ImageUrl = dto.ImageUrl;
 
-            return Ok(result);
+            blogService.Update(post);
+            return NoContent();
+        }
+
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id)
+        {
+            blogService.Delete(id);
+            return NoContent();
         }
     }
 }

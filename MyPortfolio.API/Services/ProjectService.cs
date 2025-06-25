@@ -4,30 +4,35 @@ namespace MyPortfolio.API.Services
 {
     public class ProjectService : IProjectService
     {
-        private readonly List<Project> projects = new()
-    {
-        new Project
-        {
-            Id = 1,
-            Title = "My Portfolio Website",
-            Description = "A personal portfolio built with Blazor WebAssembly.",
-            ImageUrl = "/images/portfolio.png",
-            ProjectUrl = "https://myportfolio.com",
-            CreatedAt = DateTimeOffset.UtcNow.AddMonths(-1)
-        },
-        new Project
-        {
-            Id = 2,
-            Title = "Todo App",
-            Description = "A simple task management app.",
-            ImageUrl = "/images/todo.png",
-            ProjectUrl = "https://github.com/me/todoapp",
-            CreatedAt = DateTimeOffset.UtcNow.AddMonths(-2)
-        }
-    };
+        private readonly List<Project> projects = new();
 
         public IEnumerable<Project> GetAll() => projects;
 
-        public Project? GetById(int id) => projects.FirstOrDefault(p => p.Id == id);
+        public Project? GetById(int id) =>
+            projects.FirstOrDefault(p => p.Id == id);
+
+        public void Add(Project project)
+        {
+            project.Id = projects.Count + 1;
+            project.CreatedAt = DateTime.UtcNow;
+            projects.Add(project);
+        }
+
+        public void Update(Project project)
+        {
+            var existing = GetById(project.Id);
+            if (existing == null) return;
+
+            existing.Title = project.Title;
+            existing.Description = project.Description;
+            existing.ImageUrl = project.ImageUrl;
+            existing.ProjectUrl = project.ProjectUrl;
+        }
+
+        public void Delete(int id)
+        {
+            var project = GetById(id);
+            if (project != null) projects.Remove(project);
+        }
     }
 }

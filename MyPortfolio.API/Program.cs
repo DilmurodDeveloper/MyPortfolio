@@ -7,6 +7,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped<IProjectService, ProjectService>();
+builder.Services.AddScoped<IBlogService, BlogService>();
 
 var app = builder.Build();
 

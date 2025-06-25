@@ -5,13 +5,15 @@ using RESTFulSense.Controllers;
 
 namespace MyPortfolio.API.Controllers
 {
+    [ApiController]
+    [Route("api/[controller]")]
     public class BlogController : RESTFulController
     {
         private readonly IBlogService blogService;
 
         public BlogController(IBlogService blogService)
         {
-            blogService = blogService;
+            this.blogService = blogService;
         }
 
         [HttpGet]

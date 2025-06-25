@@ -9,17 +9,17 @@ namespace MyPortfolio.API.Controllers
     [Route("api/[controller]")]
     public class ProjectsController : RESTFulController
     {
-        private readonly IProjectService _projectService;
+        private readonly IProjectService projectService;
 
         public ProjectsController(IProjectService projectService)
         {
-            _projectService = projectService;
+            this.projectService = projectService;
         }
 
         [HttpGet("all")]
         public ActionResult<IEnumerable<ProjectDto>> GetAll()
         {
-            var projects = _projectService.GetAll();
+            var projects = projectService.GetAll();
 
             var result = projects.Select(p => new ProjectDto
             {
@@ -37,7 +37,7 @@ namespace MyPortfolio.API.Controllers
         [HttpGet("{id}")]
         public ActionResult<ProjectDto> GetById(int id)
         {
-            var project = _projectService.GetById(id);
+            var project = projectService.GetById(id);
 
             if (project == null)
                 return NotFound();

@@ -8,6 +8,7 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped<IProjectService, ProjectService>();
 builder.Services.AddScoped<IBlogService, BlogService>();
+builder.Services.AddScoped<IContactService, ContactService>();
 
 var app = builder.Build();
 

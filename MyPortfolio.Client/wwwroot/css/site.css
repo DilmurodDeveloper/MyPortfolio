@@ -1,41 +1,42 @@
 ﻿:root {
-    --navbar-bg: #f8f9fa;
-    --navbar-text: #000;
-    --nav-menu-bg: #ffffff;
-    --nav-link-color: #000;
-    --nav-link-hover-bg: #0d6efd;
-    --nav-link-hover-text: #fff;
-    --social-icon: #000;
-    --social-icon-hover: #0d6efd;
-    --toggler-filter: invert(0);
-    --icon-color: #000;
-}
-
-body.dark-mode {
-    --navbar-bg: #222;
-    --navbar-text: #fff;
-    --nav-menu-bg: #121212;
-    --nav-link-color: #ccc;
-    --nav-link-hover-bg: #0d6efd;
-    --nav-link-hover-text: #fff;
-    --social-icon: #ccc;
-    --social-icon-hover: #0d6efd;
+    --navbar-bg: transparent;
+    --navbar-text: #e4e4e7;
+    --nav-menu-bg: #1f1f1f;
+    --nav-link-color: #b5b5b5;
+    --nav-link-hover-bg: #334155;
+    --nav-link-hover-text: #93c5fd;
+    --social-icon: #e5e7eb;
+    --social-icon-hover: #60a5fa;
     --toggler-filter: invert(1);
-    --icon-color: #fff;
+    --icon-color: #f5f5f5;
+    --home-bg: #111827;
+    --btn-primary-bg: #3b82f6;
+    --btn-primary-text: #fff;
 }
 
 .navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 1000;
     background-color: var(--navbar-bg);
     color: var(--navbar-text);
+    backdrop-filter: blur(10px); 
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1); 
+    box-shadow: none;
 }
 
 .navbar-brand {
     color: var(--navbar-text);
+    text-decoration: none;
 }
-
-.social-icons a:hover {
-    color: var(--social-icon-hover) !important;
-}
+    .navbar-brand:hover {
+        color: inherit;
+        text-decoration: none;
+    }
 
 .navbar-toggler-icon {
     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(0,0,0,1)' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
@@ -61,13 +62,10 @@ body.dark-mode {
 }
 
 .close-btn {
-    position: absolute;
-    top: 0.5rem;
-    right: 0.5rem;
     font-size: 3rem;
     background: transparent;
     border: none;
-    color: var(--icon-color);
+    color: var(--navbar-text);
     cursor: pointer;
 }
 
@@ -144,7 +142,7 @@ body.dark-mode {
     }
 
 .nav-link {
-    font-size: 1.1rem;
+    font-size: 1.5rem;
     padding: 0.75rem 1rem;
     color: var(--nav-link-color);
     white-space: nowrap;
@@ -152,6 +150,7 @@ body.dark-mode {
 }
 
     .nav-link:hover {
+        text-decoration: none;
         background-color: var(--nav-link-hover-bg);
         color: var(--nav-link-hover-text) !important;
     }
@@ -209,4 +208,34 @@ button:focus-visible,
 .navbar-toggler:focus-visible {
     outline: none !important;
     box-shadow: none !important;
+}
+
+.social-icons a {
+    color: var(--social-icon);
+    font-size: 1.5rem;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+    .social-icons a:hover {
+        color: orange !important;
+        transform: scale(1.15); 
+    }
+
+.lang-flag {
+    width: 30px;
+    height: 20px;
+    cursor: pointer;
+    border-radius: 3px;
+    transition: transform 0.2s ease;
+}
+
+    .lang-flag:hover {
+        transform: scale(1.1);
+        box-shadow: 0 0 4px rgba(255, 255, 255, 0.5);
+    }
+
+.lang-label {
+    font-size: 0.85rem;
+    color: var(--navbar-text);
+    margin-top: 0.25rem;
 }

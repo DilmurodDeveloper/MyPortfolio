@@ -3,7 +3,7 @@ using MyPortfolio.API.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
-var frontendUrl = "https://localhost:7109"; 
+var frontendUrl = "https://localhost:7109";
 
 builder.Services.AddCors(options =>
 {

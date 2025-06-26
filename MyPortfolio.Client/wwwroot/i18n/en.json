@@ -1,0 +1,22 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "skills": "Skills",
+    "education": "Education",
+    "experience": "Experience",
+    "projects": "Projects",
+    "blog": "Blog",
+    "contact": "Contact"
+  },
+
+  "hero": {
+    "welcome": "Welcome to my personal page!",
+    "hello": "HELLO",
+    "greeting": "MY NAME",
+    "iam": "IS DILMUROD",
+    "role": "Software Engineer | .NET Developer",
+    "aboutBtn": "About Me",
+    "cvBtn": "Download CV"
+  }
+}

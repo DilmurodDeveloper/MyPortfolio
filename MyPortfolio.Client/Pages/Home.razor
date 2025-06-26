@@ -2,35 +2,54 @@
 @using MyPortfolio.Client.Services
 @inject IJSRuntime JS
 @inject LanguageService Lang
+
 <link href="css/home.css" rel="stylesheet" />
 
-<div class="container-fluid d-flex flex-column flex-md-row align-items-center justify-content-between py-5 home-hero" style="position: relative; overflow: hidden;">
-    <canvas id="starCanvas" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: 0; pointer-events: none;"></canvas>
-    <canvas id="particleCanvas" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: 1; pointer-events: none;"></canvas>
+@if (_langReady)
+{
+    <div class="container-fluid d-flex flex-column flex-md-row align-items-center justify-content-between py-5 home-hero" style="position: relative; overflow: hidden;">
+        <canvas id="starCanvas" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: 0; pointer-events: none;"></canvas>
+        <canvas id="particleCanvas" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: 1; pointer-events: none;"></canvas>
 
-    <div class="text-section text-center text-md-start mb-4 mb-md-0" style="position: relative; z-index: 1;">
-        <p class="welcome-text">@Lang.T("hero", "welcome")</p>
-        <h1><span class="hello-text">@Lang.T("hero", "hello")</span> @Lang.T("hero", "greeting")</h1>
-        <h1>@Lang.T("hero", "iam").</h1>
-        <p class="subtitle">@Lang.T("hero", "role")</p>
+        <div class="text-section text-center text-md-start mb-4 mb-md-0" style="position: relative; z-index: 2;">
+            <p class="welcome-text">@Lang.T("hero", "welcome")</p>
+            <h1><span class="hello-text">@Lang.T("hero", "hello")</span> @Lang.T("hero", "greeting")</h1>
+            <h1>@Lang.T("hero", "iam").</h1>
+            <p class="subtitle">@Lang.T("hero", "role")</p>
 
-        <div class="mt-4 d-flex justify-content-center justify-content-md-start gap-3">
-            <a href="/about" class="btn btn-primary">@Lang.T("hero", "aboutBtn")</a>
-            <a href="/files/your_cv.pdf" class="btn btn-outline-secondary" target="_blank" download>@Lang.T("hero", "cvBtn")</a>
+            <div class="mt-4 d-flex justify-content-center justify-content-md-start gap-3">
+                <a href="/about" class="btn btn-primary">@Lang.T("hero", "aboutBtn")</a>
+                <a href="/files/your_cv.pdf" class="btn btn-outline-secondary" target="_blank" download>@Lang.T("hero", "cvBtn")</a>
+            </div>
+        </div>
+
+        <div class="image-section text-center hero-image-wrapper" style="position: relative; z-index: 2;">
+            <img src="/images/profile.png" alt="Dilmurod's Photo" class="hero-photo img-fluid" />
         </div>
     </div>
-
-    <div class="image-section text-center hero-image-wrapper" style="position: relative; z-index: 1;">
-        <img src="/images/profile.png" alt="Dilmurod's Photo" class="hero-photo img-fluid" />
-    </div>
-</div>
+}
+else
+{ }
 
 @code {
+    private bool _langReady = false;
+    private bool _backgroundInitialized = false;
+
+    protected override async Task OnInitializedAsync()
+    {
+        var culture = await JS.InvokeAsync<string>("localStorage.getItem", "lang") ?? "en-US";
+        await Lang.LoadAsync(culture);
+        _langReady = true;
+        StateHasChanged(); 
+    }
+
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
-        if (firstRender)
+        if (_langReady && !_backgroundInitialized)
         {
             await JS.InvokeVoidAsync("initializeBackground");
+            await JS.InvokeVoidAsync("hideLoader");
+            _backgroundInitialized = true;
         }
     }
 
@@ -41,11 +60,11 @@
 
     private void HandleLanguageChanged()
     {
-        InvokeAsync(StateHasChanged); 
+        InvokeAsync(StateHasChanged);
     }
 
     public void Dispose()
     {
-        Lang.OnLanguageChanged -= HandleLanguageChanged; 
+        Lang.OnLanguageChanged -= HandleLanguageChanged;
     }
 }

@@ -1,42 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
 
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>Dilmurod Developer</title>
-        <base href="/" />
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Dilmurod Developer</title>
+    <base href="/" />
 
-        <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css" />
-        <link rel="stylesheet" href="css/app.css" />
-        <link rel="icon" type="image/png" href="/favicon.png" />
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
-    </head>
+    <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/app.css" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+</head>
 
-    <body>
-        <div id="app">
-            <svg class="loading-progress">
-                <circle r="40%" cx="50%" cy="50%" />
-                <circle r="40%" cx="50%" cy="50%" />
-            </svg>
-            <div class="loading-progress-text"></div>
+<body>
+    <div id="loader">
+        <div id="container">
+            <div class="divider" aria-hidden="true"></div>
+            <p class="loading-text" aria-label="Loading">
+                <span class="letter" aria-hidden="true">L</span>
+                <span class="letter" aria-hidden="true">O</span>
+                <span class="letter" aria-hidden="true">A</span>
+                <span class="letter" aria-hidden="true">D</span>
+                <span class="letter" aria-hidden="true">I</span>
+                <span class="letter" aria-hidden="true">N</span>
+                <span class="letter" aria-hidden="true">G</span>
+            </p>
         </div>
+    </div>
 
-        <div id="blazor-error-ui">
-            An unhandled error has occurred.
-            <a href="" class="reload">Reload</a>
-            <a class="dismiss">🗙</a>
-        </div>
-        <script>
-            window.setLang = (code) => {
-                localStorage.setItem("lang", code);
-                location.reload();
-            };
-        </script>
-        <script src="https://cdn.jsdelivr.net/npm/tsparticles@3/tsparticles.bundle.min.js"></script>
-        <script src="js/background.js"></script>
-        <script src="_framework/blazor.webassembly.js"></script>
-    </body>
+    <div id="app"></div>
+
+    <div id="blazor-error-ui" style="display:none;">
+        An unhandled error has occurred.
+        <a href="" class="reload">Reload</a>
+        <a class="dismiss">🗙</a>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('loader').style.display = 'flex';
+            document.getElementById('app').style.display = 'none';
+        });
+
+        window.hideLoader = () => {
+            const loader = document.getElementById('loader');
+            const app = document.getElementById('app');
+            if (loader) loader.style.display = 'none';
+            if (app) app.style.display = 'block';
+        };
+
+        window.setLang = (code) => {
+            localStorage.setItem("lang", code);
+            location.reload();
+        };
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/tsparticles@3/tsparticles.bundle.min.js"></script>
+    <script src="js/background.js"></script>
+
+    <script src="_framework/blazor.webassembly.js"></script>
+</body>
 
 </html>

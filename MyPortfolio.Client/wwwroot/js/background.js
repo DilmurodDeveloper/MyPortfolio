@@ -10,7 +10,6 @@
         "/images/csharp.png",
         "/images/sqlserver.png",
         "/images/github.png",
-        //"/images/azure.png"
     ];
 
     const numStars = 120;

@@ -1,4 +1,8 @@
-﻿@inject IJSRuntime JS
+﻿@using MyPortfolio.Client.Services
+@inject IJSRuntime JS
+@inject NavigationManager Nav
+@inject LanguageService Lang
+<link href="css/site.css" rel="stylesheet" />
 
 <div class="top-row ps-3 navbar d-flex align-items-center" style="background-color: var(--navbar-bg); color: var(--navbar-text);">
     <div class="container-fluid d-flex justify-content-between align-items-center">
@@ -22,17 +26,6 @@
         </div>
 
         <div class="d-flex align-items-center gap-2">
-            <button class="btn" @onclick="ToggleDarkMode" style="color: var(--icon-color);" aria-label="Toggle dark mode">
-                @if (IsDarkMode)
-                {
-                    <i class="bi bi-sun"></i>
-                }
-                else
-                {
-                    <i class="bi bi-moon"></i>
-                }
-            </button>
-
             <button title="Navigation menu" class="navbar-toggler position-relative" @onclick="ToggleNavMenu" aria-expanded="@(!collapseNavMenu)" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -43,16 +36,35 @@
 <div class="nav-overlay @(collapseNavMenu ? "" : "show")" @onclick="ToggleNavMenu"></div>
 
 <div class="nav-sidebar @(collapseNavMenu ? "" : "show")">
-    <button class="close-btn" @onclick="ToggleNavMenu" aria-label="Close menu">&times;</button>
+    <div class="d-flex justify-content-end px-3 pt-3">
+        <button class="close-btn" @onclick="ToggleNavMenu" aria-label="Close menu">&times;</button>
+    </div>
+    
+    <div class="d-flex justify-content-center gap-3 mt-2 text-center">
+        <div>
+            <img src="images/flags/uz.png" @onclick='() => ChangeLanguage("uz")' class="lang-flag" alt="UZ" title="Uzbek" />
+            <div class="lang-label">Uzbek</div>
+        </div>
+        <div>
+            <img src="images/flags/en.png" @onclick='() => ChangeLanguage("en")' class="lang-flag" alt="EN" title="English" />
+            <div class="lang-label">English</div>
+        </div>
+        <div>
+            <img src="images/flags/ru.png" @onclick='() => ChangeLanguage("ru")' class="lang-flag" alt="RU" title="Russian" />
+            <div class="lang-label">Русский</div>
+        </div>
+    </div>
 
     <div class="nav-scroll-wrapper">
         <nav class="nav-center">
-            @foreach (var item in Pages)
-            {
-                <NavLink class="nav-link mb-2" href="@item.Url" Match="NavLinkMatch.Prefix" @onclick:stopPropagation="true">
-                    <span aria-hidden="true"></span> @item.Name
-                </NavLink>
-            }
+            <NavLink class="nav-link mb-2" href="/" Match="NavLinkMatch.All">@Lang.T("nav", "home")</NavLink>
+            <NavLink class="nav-link mb-2" href="/about">@Lang.T("nav", "about")</NavLink>
+            <NavLink class="nav-link mb-2" href="/skills">@Lang.T("nav", "skills")</NavLink>
+            <NavLink class="nav-link mb-2" href="/education">@Lang.T("nav", "education")</NavLink>
+            <NavLink class="nav-link mb-2" href="/experience">@Lang.T("nav", "experience")</NavLink>
+            <NavLink class="nav-link mb-2" href="/projects">@Lang.T("nav", "projects")</NavLink>
+            <NavLink class="nav-link mb-2" href="/blog">@Lang.T("nav", "blog")</NavLink>
+            <NavLink class="nav-link mb-2" href="/contact">@Lang.T("nav", "contact")</NavLink>
         </nav>
     </div>
 
@@ -74,18 +86,17 @@
 
 @code {
     private bool collapseNavMenu = true;
-    private bool IsDarkMode = false;
 
     private void ToggleNavMenu()
     {
         collapseNavMenu = !collapseNavMenu;
     }
 
-    private async Task ToggleDarkMode()
+    private async Task ChangeLanguage(string lang)
     {
-        IsDarkMode = !IsDarkMode;
-        var mode = IsDarkMode ? "dark" : "light";
-        await JS.InvokeVoidAsync("toggleDarkMode", mode);
+        await JS.InvokeVoidAsync("localStorage.setItem", "lang", lang);
+        await Lang.LoadAsync(lang);
+        StateHasChanged(); 
     }
 
     private List<(string Title, string Url, string Icon)> SocialLinks = new()
@@ -97,17 +108,5 @@
         ("Telegram", "https://t.me/DilmurodDeveloper", "bi bi-telegram"),
         ("WhatsApp", "https://wa.me/+998991437101", "bi bi-whatsapp"),
         ("Download CV", "/files/your_cv.pdf", "bi bi-file-earmark-person-fill")
-    };
-
-    private List<(string Name, string Url)> Pages = new()
-    {
-        ("Home", "/"),
-        ("About", "/about"),
-        ("Skills", "/skills"),
-        ("Education", "/education"),
-        ("Experience", "/experience"),
-        ("Projects", "/projects"),
-        ("Blog", "/blog"),
-        ("Contact", "/contact")
     };
 }

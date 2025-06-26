@@ -1,0 +1,149 @@
+﻿.home-hero {
+    position: relative;
+    min-height: 100vh;
+    width: 100%;
+    padding-block: 3rem;
+    background-color: var(--home-bg);
+    transition: background-color 0.4s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    z-index: 1;
+}
+
+.text-section {
+    max-width: 600px;
+    padding-left: 0;
+}
+
+.welcome-text {
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--navbar-text);
+    margin-bottom: 2rem;
+}
+
+.text-section h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin: 0;
+    color: var(--navbar-text);
+}
+
+.hello-text {
+    color: orange;
+}
+
+.subtitle {
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: var(--navbar-text);
+    margin-top: 1rem;
+}
+
+.btn {
+    padding: 0.5rem 1.25rem;
+    font-size: 1rem;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+}
+
+a.btn {
+    text-decoration: none;
+}
+
+.btn-primary:hover {
+    background-color: #155ea3;
+    transform: scale(1.05);
+}
+
+.btn-outline-secondary:hover {
+    background-color: #eee;
+    color: #000;
+    transform: scale(1.05);
+}
+
+.image-section {
+    max-width: 400px;
+    padding-right: 55px;
+}
+
+.hero-image-wrapper {
+    position: relative;
+    display: inline-block;
+    transform: translateX(0);
+}
+
+    .hero-image-wrapper::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 100px;
+        background: linear-gradient(to bottom, transparent, var(--home-bg));
+        pointer-events: none;
+        z-index: 2;
+        transition: background 0.5s ease;
+    }
+
+.hero-photo {
+    width: 100%;
+    max-width: 380px;
+    height: auto;
+    border-radius: 3rem;
+    transition: filter 0.4s ease, mask-image 0.4s ease;
+}
+
+.animated {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+    .animated.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+@media (max-width: 768px) {
+    .home-hero {
+        text-align: center;
+        padding-inline: 1.2rem;
+    }
+
+    .text-section {
+        padding-left: 0;
+    }
+
+        .text-section h1 {
+            font-size: 2rem;
+        }
+
+    .hero-photo {
+        max-width: 250px;
+        margin-top: 1.5rem;
+    }
+
+    .mt-4.d-flex {
+        flex-direction: column;
+        gap: 1rem;
+    }
+}
+
+@media (min-width: 769px) {
+    .text-section {
+        padding-left: 150px;
+    }
+
+    .hero-image-wrapper {
+        transform: translateX(-40px);
+    }
+
+    .home-hero {
+        flex-direction: row;
+        align-items: center;
+    }
+}

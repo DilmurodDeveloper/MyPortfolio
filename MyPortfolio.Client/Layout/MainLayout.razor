@@ -1,13 +1,19 @@
-﻿@inherits LayoutComponentBase
-<div class="page">
+﻿@using MyPortfolio.Client.Services
+@inherits LayoutComponentBase
+@inject IJSRuntime JS
+@inject LanguageService Lang
+
+<div class="main-container">
     <NavMenu />
-
-    <main>
-        <div class="top-row px-4">
-        </div>
-
-        <article class="content px-4">
-            @Body
-        </article>
+    <main class="layout-body">
+        @Body
     </main>
 </div>
+
+@code {
+    protected override async Task OnInitializedAsync()
+    {
+        var culture = await JS.InvokeAsync<string>("localStorage.getItem", "lang") ?? "en-US";
+        await Lang.LoadAsync(culture);
+    }
+}

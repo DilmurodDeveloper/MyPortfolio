@@ -1,0 +1,22 @@
+{
+  "nav": {
+    "home": "Bosh sahifa",
+    "about": "Men haqimda",
+    "skills": "Ko'nikmalar",
+    "education": "Ta'lim",
+    "experience": "Tajriba",
+    "projects": "Loyihalar",
+    "blog": "Blog",
+    "contact": "ALoqa"
+  },
+
+  "hero": {
+    "welcome": "Shaxsiy sahifamga xush kelibsiz!",
+    "hello": "SALOM",
+    "greeting": "MENING",
+    "iam": "ISMIM DILMUROD",
+    "role": "Dasturiy ta'minot muhandisi | .NET dasturchi",
+    "aboutBtn": "Men haqimda",
+    "cvBtn": "CVni yuklab olish"
+  }
+}

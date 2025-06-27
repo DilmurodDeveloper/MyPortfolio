@@ -9,7 +9,6 @@
         "/images/dotnet.png",
         "/images/csharp.png",
         "/images/sqlserver.png",
-        "/images/github.png",
     ];
 
     const numStars = 120;

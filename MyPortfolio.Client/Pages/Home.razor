@@ -7,24 +7,33 @@
 
 @if (_langReady)
 {
-    <div class="container-fluid d-flex flex-column flex-md-row align-items-center justify-content-between py-5 home-hero" style="position: relative; overflow: hidden;">
+    <div class="container-fluid home-hero py-5 d-flex flex-column justify-content-center align-items-center animate-fade-in" style="position: relative; overflow: hidden;">
         <canvas id="starCanvas" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: 0; pointer-events: none;"></canvas>
         <canvas id="particleCanvas" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: 1; pointer-events: none;"></canvas>
 
-        <div class="text-section text-center text-md-start mb-4 mb-md-0" style="position: relative; z-index: 2;">
-            <p class="welcome-text">@Lang.T("hero", "welcome")</p>
-            <h1><span class="hello-text">@Lang.T("hero", "hello")</span> @Lang.T("hero", "greeting")</h1>
-            <h1>@Lang.T("hero", "iam").</h1>
-            <p class="subtitle">@Lang.T("hero", "role")</p>
+        <div class="d-flex flex-column flex-md-row align-items-center justify-content-between w-100 px-3" style="z-index: 2;">
+            <div class="text-section text-center text-md-start mb-4 mb-md-0 animate-fade-up delay-1" style="flex: 1;">
+                <p class="welcome-text">@Lang.T("hero", "welcome")</p>
+                <h1><span class="hello-text">@Lang.T("hero", "hello")</span> @Lang.T("hero", "greeting")</h1>
+                <h1>@Lang.T("hero", "iam").</h1>
+                <p class="subtitle">@Lang.T("hero", "role")</p>
+            </div>
 
-            <div class="mt-4 d-flex justify-content-center justify-content-md-start gap-3">
-                <a href="/about" class="btn btn-primary">@Lang.T("hero", "aboutBtn")</a>
-                <a href="/files/your_cv.pdf" class="btn btn-outline-secondary" target="_blank" download>@Lang.T("hero", "cvBtn")</a>
+            <div class="image-section text-center hero-image-wrapper mt-4 mt-md-0 animate-fade-up delay-2" style="flex: 1;">
+                <img src="/images/profile.png" alt="Dilmurod's Photo" class="hero-photo img-fluid" />
             </div>
         </div>
 
-        <div class="image-section text-center hero-image-wrapper" style="position: relative; z-index: 2;">
-            <img src="/images/profile.png" alt="Dilmurod's Photo" class="hero-photo img-fluid" />
+        <div class="footer-sections mt-5 pt-3 px-3 w-100 animate-fade-up delay-3" style="z-index: 2;">
+            <div class="footer-card-row">
+                @foreach (var item in Sections)
+                {
+                    <a href="@item.Link" class="footer-card" title="@item.Title">
+                        <i class="@item.IconClass"></i>
+                        <span>@item.Title</span>
+                    </a>
+                }
+            </div>
         </div>
     </div>
 }
@@ -40,7 +49,7 @@ else
         var culture = await JS.InvokeAsync<string>("localStorage.getItem", "lang") ?? "en-US";
         await Lang.LoadAsync(culture);
         _langReady = true;
-        StateHasChanged(); 
+        StateHasChanged();
     }
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
@@ -67,4 +76,17 @@ else
     {
         Lang.OnLanguageChanged -= HandleLanguageChanged;
     }
+
+    record NavSection(string Title, string Link, string IconClass);
+
+    List<NavSection> Sections => new()
+    {
+        new(Lang.T("nav", "about"), "/about", "fas fa-user"),
+        new(Lang.T("nav", "skills"), "/skills", "fas fa-code"),
+        new(Lang.T("nav", "education"), "/education", "fas fa-graduation-cap"),
+        new(Lang.T("nav", "experience"), "/experience", "fas fa-briefcase"),
+        new(Lang.T("nav", "projects"), "/projects", "fas fa-folder-open"),
+        new(Lang.T("nav", "blog"), "/blog", "fas fa-blog"),
+        new(Lang.T("nav", "contact"), "/contact", "fas fa-envelope")
+    };
 }

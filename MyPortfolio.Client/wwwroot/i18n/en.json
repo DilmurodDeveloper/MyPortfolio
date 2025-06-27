@@ -15,8 +15,6 @@
     "hello": "HELLO",
     "greeting": "MY NAME",
     "iam": "IS DILMUROD",
-    "role": "Software Engineer | .NET Developer",
-    "aboutBtn": "About Me",
-    "cvBtn": "Download CV"
+    "role": "Software Engineer | .NET Developer"
   }
 }

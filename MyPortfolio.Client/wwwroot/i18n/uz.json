@@ -15,8 +15,21 @@
     "hello": "SALOM",
     "greeting": "MENING",
     "iam": "ISMIM DILMUROD",
-    "role": "Dasturiy ta'minot muhandisi | .NET dasturchi",
-    "aboutBtn": "Men haqimda",
-    "cvBtn": "CVni yuklab olish"
+    "role": "Dasturiy ta'minot muhandisi | .NET dasturchi"
+  },
+
+  "about": {
+    "about_me": "Men haqimda",
+    "introduce": "Salom, men Dilmurodman",
+    "introduce_about": "Men .NET bakend dasturchiman. Agar sizga yangi vebsayt yaratadigan, mavjud dastur ishlashini yaxshilaydigan yoki eski kodni optimallashtiradigan mutaxassis kerak bo‘lsa —siz to‘g‘ri joydasiz!",
+    "location_strong": "Manzil:",
+    "location_about": "Urganch, O'zbekiston",
+    "experience_strong": "Tajriba:",
+    "experience_about": ".NET backend sohasida 2+ yillik real ishlab chiqarish tajribasi",
+    "services": "Quyidagilarda sizga yordam bera olaman:",
+    "services1": "Veb-ilovalar va API",
+    "services2": "ASP.NET Core va Entity Framework Core asosida backend tizimlar yaratish",
+    "services3": "Azureda xizmatlarni joylashtirish va boshqarish",
+    "services4": "Unit, integratsion va acceptance testlar yozish"
   }
 }

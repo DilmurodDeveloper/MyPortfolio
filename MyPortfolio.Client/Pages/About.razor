@@ -1,0 +1,93 @@
+﻿@page "/about"
+@using MyPortfolio.Client.Services
+@inject IJSRuntime JS
+@inject LanguageService Lang
+@inject NavigationManager NavManager
+
+<link href="css/about.css" rel="stylesheet" />
+
+<div class="container-fluid about-page py-5">
+    <div class="row align-items-center justify-content-center gx-5">
+        <div class="col-lg-5 text-center mb-4 mb-lg-0 animate-fade-up delay-1">
+            <img src="/images/profile.png" alt="Dilmurod" class="about-photo img-fluid" />
+        </div>
+
+        <div class="col-lg-7 animate-fade-up delay-2">
+            <div class="section-title mb-3">
+                <h1 class="display-5 fw-bold">@Lang.T("about", "about_me")</h1>
+            </div>
+
+            <h2 class="about-heading animate-fade-in">@Lang.T("about", "introduce")</h2>
+            <p class="about-intro animate-fade-in">@Lang.T("about", "introduce_about")</p>
+
+            <div class="experience-info mt-3 animate-fade-in">
+                <strong>
+                    <i class="fa-solid fa-location-dot" style="color: orange"></i> @Lang.T("about", "location_strong")
+                </strong> @Lang.T("about", "location_about")<br />
+                <strong>
+                    <i class="fa-solid fa-briefcase" style="color: orange"></i> @Lang.T("about", "experience_strong")
+                </strong> @Lang.T("about", "experience_about")
+            </div>
+
+            <h5 class="mt-4 mb-2 animate-fade-in">@Lang.T("about", "services")</h5>
+            <ul class="service-list animate-fade-in">
+                <li> @Lang.T("about", "services1")</li>
+                <li> @Lang.T("about", "services2")</li>
+                <li> @Lang.T("about", "services3")</li>
+                <li> @Lang.T("about", "services4")</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="footer-sections pt-3 px-3 w-100 animate-fade-up delay-3" style="z-index: 2;">
+        <div class="footer-card-row">
+            @foreach (var item in Sections)
+            {
+                var isActive = NavManager.Uri.Contains(item.Link, StringComparison.OrdinalIgnoreCase);
+                <a href="@item.Link" class="footer-card @(isActive ? "active" : "")" title="@item.Title">
+                    <i class="@item.IconClass"></i>
+                    <span>@item.Title</span>
+                </a>
+            }
+        </div>
+    </div>
+</div>
+
+@code {
+    private bool _langReady = false;
+    record NavSection(string Title, string Link, string IconClass);
+
+    protected override async Task OnInitializedAsync()
+    {
+        var culture = await JS.InvokeAsync<string>("localStorage.getItem", "lang") ?? "en-US";
+        await Lang.LoadAsync(culture);
+        _langReady = true;
+        StateHasChanged();
+    }
+
+    protected override void OnInitialized()
+    {
+        Lang.OnLanguageChanged += HandleLanguageChanged;
+    }
+
+    private void HandleLanguageChanged()
+    {
+        InvokeAsync(StateHasChanged);
+    }
+
+    public void Dispose()
+    {
+        Lang.OnLanguageChanged -= HandleLanguageChanged;
+    }
+
+    List<NavSection> Sections => new()
+    {
+        new(Lang.T("nav", "about"), "/about", "fas fa-user"),
+        new(Lang.T("nav", "skills"), "/skills", "fas fa-code"),
+        new(Lang.T("nav", "education"), "/education", "fas fa-graduation-cap"),
+        new(Lang.T("nav", "experience"), "/experience", "fas fa-briefcase"),
+        new(Lang.T("nav", "projects"), "/projects", "fas fa-folder-open"),
+        new(Lang.T("nav", "blog"), "/blog", "fas fa-blog"),
+        new(Lang.T("nav", "contact"), "/contact", "fas fa-envelope")
+    };
+}

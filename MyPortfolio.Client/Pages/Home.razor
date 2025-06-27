@@ -24,7 +24,7 @@
             </div>
         </div>
 
-        <div class="footer-sections mt-5 pt-3 px-3 w-100 animate-fade-up delay-3" style="z-index: 2;">
+        <div class="footer-sections mt-4 pt-3 px-3 w-100 animate-fade-up delay-3" style="z-index: 2;">
             <div class="footer-card-row">
                 @foreach (var item in Sections)
                 {
@@ -37,12 +37,11 @@
         </div>
     </div>
 }
-else
-{ }
 
 @code {
     private bool _langReady = false;
     private bool _backgroundInitialized = false;
+    record NavSection(string Title, string Link, string IconClass);
 
     protected override async Task OnInitializedAsync()
     {
@@ -76,8 +75,6 @@ else
     {
         Lang.OnLanguageChanged -= HandleLanguageChanged;
     }
-
-    record NavSection(string Title, string Link, string IconClass);
 
     List<NavSection> Sections => new()
     {

@@ -16,5 +16,20 @@
     "greeting": "MY NAME",
     "iam": "IS DILMUROD",
     "role": "Software Engineer | .NET Developer"
+  },
+
+  "about": {
+    "about_me": "About Me",
+    "introduce": "Hi there, I am Dilmurod",
+    "introduce_about": "I'm a backend .NET Developer. If you're looking for a professional .NET web developer to build a website, refactor legacy code, or enhance your app's performance — you’re in the right place!",
+    "location_strong": "Location",
+    "location_about": "Urgench, Uzbekistan",
+    "experience_strong": "Experience",
+    "experience_about": "2+ years building .NET backend solutions with production-grade code",
+    "services": "I can help you out with:",
+    "services1": "Web apps and APIs",
+    "services2": "Building backend systems with ASP.NET Core and Entity Framework Core",
+    "services3": "Deploying and managing services in Azure",
+    "services4": "Writing unit, integration, and acceptance tests"
   }
 }

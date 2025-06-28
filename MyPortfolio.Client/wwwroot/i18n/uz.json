@@ -15,13 +15,15 @@
     "hello": "SALOM",
     "greeting": "MENING",
     "iam": "ISMIM DILMUROD",
-    "role": "Dasturiy ta'minot muhandisi | .NET dasturchi"
+    "role": "Dasturiy ta'minot muhandisi | .NET dasturchi",
+    "viewWork": "Ishlarimni ko'rish",
+    "moreAbout": "Men haqimda batafsil"
   },
 
   "about": {
     "about_me": "Men haqimda",
     "introduce": "Salom, men Dilmurodman",
-    "introduce_about": "Men .NET bakend dasturchiman. Agar sizga yangi vebsayt yaratadigan, mavjud dastur ishlashini yaxshilaydigan yoki eski kodni optimallashtiradigan mutaxassis kerak bo‘lsa —siz to‘g‘ri joydasiz!",
+    "introduce_about": "Men .NET bakend dasturchiman. Agar sizga yangi vebsayt yaratadigan, mavjud dastur ishlashini yaxshilaydigan yoki eski kodni optimallashtiradigan mutaxassis kerak bo‘lsa siz to‘g‘ri joydasiz!",
     "location_strong": "Manzil:",
     "location_about": "Urganch, O'zbekiston",
     "experience_strong": "Tajriba:",
@@ -31,5 +33,11 @@
     "services2": "ASP.NET Core va Entity Framework Core asosida backend tizimlar yaratish",
     "services3": "Azureda xizmatlarni joylashtirish va boshqarish",
     "services4": "Unit, integratsion va acceptance testlar yozish"
+  },
+
+  "skills": {
+    "title": "Ko‘nikmalarim",
+    "story_title": "Men haqimda",
+    "story_text": ".NET backend dasturchisi sifatida so‘nggi yillarda o‘z mahoratimni real loyihalar, toza arxitektura va kengaytiriladigan tizimlar orqali charxlab keldim. Safarim murakkab muammolarni yechishga bo‘lgan qiziqishdan boshlangan va bugun men ishonchli APIlar yaratish, xizmatlarni integratsiya qilish va yuqori unumli, foydalanuvchi uchun qulay yechimlarni ishlab chiqishdan zavqlanaman."
   }
 }

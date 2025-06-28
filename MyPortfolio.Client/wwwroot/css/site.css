@@ -114,7 +114,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    overflow: hidden;
+    overflow: auto;
     padding: 1rem;
 }
 
@@ -127,7 +127,6 @@
     scrollbar-width: thin;
     padding-right: 0.5rem;
 }
-
     .nav-center::-webkit-scrollbar {
         width: 8px;
     }

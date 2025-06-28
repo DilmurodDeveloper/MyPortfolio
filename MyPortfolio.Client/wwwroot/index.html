@@ -14,7 +14,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
 </head>
 
-<body>
+<body class="loading">
     <div id="loader">
         <div id="container">
             <div class="divider" aria-hidden="true"></div>
@@ -39,28 +39,32 @@
     </div>
 
     <script>
+        window.hideLoader = () => {
+            const loader = document.getElementById('loader');
+            const app = document.getElementById('app');
+
+            if (loader) loader.style.display = 'none';
+            if (app) app.style.display = 'block';
+
+            document.body.classList.remove('loading');
+            document.body.classList.add('ready');
+        };
+
         document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('loader').style.display = 'flex';
             document.getElementById('app').style.display = 'none';
         });
-
-        window.hideLoader = () => {
-            const loader = document.getElementById('loader');
-            const app = document.getElementById('app');
-            if (loader) loader.style.display = 'none';
-            if (app) app.style.display = 'block';
-        };
 
         window.setLang = (code) => {
             localStorage.setItem("lang", code);
             location.reload();
         };
     </script>
-
-    <script src="https://cdn.jsdelivr.net/npm/tsparticles@3/tsparticles.bundle.min.js"></script>
-    <script src="js/background.js"></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <script src="js/particles.js"></script>
+    <script src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs" type="module"></script>\
     <script src="_framework/blazor.webassembly.js"></script>
+    <script src="js/site.js"></script>
 </body>
 
 </html>

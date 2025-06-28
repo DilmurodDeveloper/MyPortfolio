@@ -15,7 +15,9 @@
     "hello": "HELLO",
     "greeting": "MY NAME",
     "iam": "IS DILMUROD",
-    "role": "Software Engineer | .NET Developer"
+    "role": "Software Engineer | .NET Developer",
+    "viewWork": "View my work",
+    "moreAbout": "More about me"  
   },
 
   "about": {
@@ -31,5 +33,11 @@
     "services2": "Building backend systems with ASP.NET Core and Entity Framework Core",
     "services3": "Deploying and managing services in Azure",
     "services4": "Writing unit, integration, and acceptance tests"
+  },
+
+  "skills": {
+    "title": "My Skills",
+    "story_title": "My Story",
+    "story_text": "As a backend .NET developer, I’ve spent the last few years refining my craft through real-world projects, clean architecture, and scalable systems. My journey began with a passion for solving complex problems and today, I enjoy building resilient APIs, integrating services, and maintaining high-performance solutions that serve users efficiently."
   }
 }

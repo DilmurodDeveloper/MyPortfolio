@@ -1,8 +1,23 @@
 html, body {
-    height: 100%;
     margin: 0;
     padding: 0;
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    overflow: hidden;
+    scroll-behavior: smooth;
+    height: 100%;
+}
+
+.snap-container {
+    scroll-snap-type: y mandatory;
+    overflow-y: scroll;
+    overflow-y: hidden;
+    min-height: 100vh;
+    scroll-behavior: smooth;
+}
+
+.snap-section {
+    scroll-snap-align: start;
+    min-height: 100vh;
+    width: 100%;
 }
 
 h1:focus {
@@ -15,14 +30,17 @@ a, .btn-link {
 }
 
     a:hover {
-        text-decoration: underline;
+        text-decoration: none;
     }
 
 .btn-primary {
     color: #fff;
-    background-color: #1b6ec2;
+    background-color: blue;
     border-color: #1861ac;
 }
+    .btn-primary:hover {
+        background-color: #1b6ec2;
+    }
 
 .btn:focus,
 .btn:active:focus,
@@ -30,12 +48,6 @@ a, .btn-link {
 .form-control:focus,
 .form-check-input:focus {
     box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
-}
-
-.page {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
 }
 
 .main-layout {
@@ -161,3 +173,38 @@ code {
         opacity: 0.6;
     }
 }
+
+.dot-navigation {
+    position: fixed;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+    z-index: 1000;
+    padding-right: 2rem;
+}
+
+    .dot-navigation ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+        .dot-navigation ul li {
+            margin: 12px 0;
+        }
+
+    .dot-navigation button.dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        border: none;
+        background-color: #bbb;
+        cursor: pointer;
+        outline: none;
+        transition: background-color 0.3s ease;
+    }
+
+        .dot-navigation button.dot.active,
+        .dot-navigation button.dot:hover {
+            background-color: orange;
+        }

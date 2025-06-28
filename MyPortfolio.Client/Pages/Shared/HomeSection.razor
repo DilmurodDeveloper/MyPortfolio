@@ -1,0 +1,69 @@
+﻿@using MyPortfolio.Client.Services
+@inject NavigationManager Nav
+@inject IJSRuntime JS
+@inject LanguageService Lang
+
+<link href="css/home.css" rel="stylesheet" />
+
+@if (_langReady)
+{
+    <div class="container-fluid home-hero d-flex flex-column justify-content-center align-items-center animate-fade-in" style="position: relative; overflow: hidden; height: 100vh;">
+        <div id="tsparticles" style="position: absolute; width: 100%; height: 100%; z-index: -1;"></div>
+
+        <div class="d-flex flex-column flex-md-row align-items-center justify-content-between w-100 px-3" style="z-index: 1;">
+            <div class="text-section text-center text-md-start animate-fade-up delay-1" style="flex: 1;">
+                <p class="welcome-text">@Lang.T("hero", "welcome")</p>
+                <h1>
+                    <span class="hello-text">@Lang.T("hero", "hello")</span>
+                    @Lang.T("hero", "greeting")
+                </h1>
+                <h1>@Lang.T("hero", "iam")</h1>
+                <p class="subtitle mt-3">@Lang.T("hero", "role")</p>
+
+                <div class="hero-buttons mt-5 d-flex flex-column flex-sm-row gap-3">
+                    <a href="#projects" class="btn btn-primary btn-lg">@Lang.T("hero", "viewWork")</a>
+                    <a href="#about" class="btn btn-outline-light btn-lg">@Lang.T("hero", "moreAbout")</a>
+                </div>
+            </div>
+
+            <div class="image-section text-center animate-fade-up delay-2" style="flex: 1;">
+                <img src="/images/profile.png" alt="Dilmurod's Photo" class="hero-photo img-fluid" />
+            </div>
+        </div>
+    </div>
+}
+
+@code {
+    private bool _langReady = false;
+
+    protected override async Task OnInitializedAsync()
+    {
+        var culture = await JS.InvokeAsync<string>("localStorage.getItem", "lang") ?? "en-US";
+        await Lang.LoadAsync(culture);
+        _langReady = true;
+        StateHasChanged();
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await JS.InvokeVoidAsync("loadHeroParticles");
+        }
+    }
+
+    protected override void OnInitialized()
+    {
+        Lang.OnLanguageChanged += HandleLanguageChanged;
+    }
+
+    private void HandleLanguageChanged()
+    {
+        InvokeAsync(StateHasChanged);
+    }
+
+    public void Dispose()
+    {
+        Lang.OnLanguageChanged -= HandleLanguageChanged;
+    }
+}

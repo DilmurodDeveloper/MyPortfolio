@@ -1,0 +1,68 @@
+﻿@using MyPortfolio.Client.Services
+@inject IJSRuntime JS
+@inject LanguageService Lang
+
+<link href="css/about.css" rel="stylesheet" />
+
+@if (_langReady)
+{
+    <div class="container-fluid about-page py-0">
+        <div class="section-title mb-3">
+            <h1 class="display-5 fw-bold">@Lang.T("about", "about_me")</h1>
+        </div>
+        <div class="row align-items-center justify-content-center gx-5">
+            <div class="col-lg-5 text-center mb-lg-0 animate-fade-up delay-1">
+                <img src="/images/profile.png" alt="Dilmurod" class="about-photo img-fluid" />
+            </div>
+
+            <div class="col-lg-7 animate-fade-up delay-2">
+                <h2 class="about-heading animate-fade-in">@Lang.T("about", "introduce")</h2>
+                <p class="about-intro animate-fade-in">@Lang.T("about", "introduce_about")</p>
+
+                <div class="experience-info mt-3 animate-fade-in">
+                    <strong>
+                        <i class="fa-solid fa-location-dot" style="color: orange"></i> @Lang.T("about", "location_strong")
+                    </strong> @Lang.T("about", "location_about")<br />
+                    <strong>
+                        <i class="fa-solid fa-briefcase" style="color: orange"></i> @Lang.T("about", "experience_strong")
+                    </strong> @Lang.T("about", "experience_about")
+                </div>
+
+                <h5 class="mt-4 mb-2 animate-fade-in">@Lang.T("about", "services")</h5>
+                <ul class="service-list animate-fade-in">
+                    <li> @Lang.T("about", "services1")</li>
+                    <li> @Lang.T("about", "services2")</li>
+                    <li> @Lang.T("about", "services3")</li>
+                    <li> @Lang.T("about", "services4")</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+}
+
+@code {
+    private bool _langReady = false;
+
+    protected override async Task OnInitializedAsync()
+    {
+        var culture = await JS.InvokeAsync<string>("localStorage.getItem", "lang") ?? "en-US";
+        await Lang.LoadAsync(culture);
+        _langReady = true;
+        StateHasChanged();
+    }
+
+    protected override void OnInitialized()
+    {
+        Lang.OnLanguageChanged += HandleLanguageChanged;
+    }
+
+    private void HandleLanguageChanged()
+    {
+        InvokeAsync(StateHasChanged);
+    }
+
+    public void Dispose()
+    {
+        Lang.OnLanguageChanged -= HandleLanguageChanged;
+    }
+}

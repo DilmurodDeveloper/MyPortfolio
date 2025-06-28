@@ -1,0 +1,45 @@
+﻿@page "/"
+@using MyPortfolio.Client.Pages.Shared
+@inject IJSRuntime JS
+
+<div class="snap-container">
+    <section class="snap-section" id="home">
+        <HomeSection />
+    </section>
+    <section class="snap-section" id="about">
+        <AboutSection />
+    </section>
+    <section class="snap-section" id="skills">
+        <SkillsSection />
+    </section>
+</div>
+
+<nav class="dot-navigation">
+    <ul>
+        <li><button @onclick='() => ScrollToSection("home")' class="dot" id="dot-home" aria-label="Home Section"></button></li>
+        <li><button @onclick='() => ScrollToSection("about")' class="dot" id="dot-about" aria-label="About Section"></button></li>
+        <li><button @onclick='() => ScrollToSection("skills")' class="dot" id="dot-skills" aria-label="Skills Section"></button></li>
+    </ul>
+</nav>
+
+@code {
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await JS.InvokeVoidAsync("observeAndStoreSection");
+            await JS.InvokeVoidAsync("setupScrollSnap");
+
+            var hash = await JS.InvokeAsync<string>("eval", "location.hash.substring(1)");
+            if (!string.IsNullOrEmpty(hash))
+            {
+                await JS.InvokeVoidAsync("scrollToSectionById", hash);
+            }
+        }
+    }
+
+    private async Task ScrollToSection(string id)
+    {
+        await JS.InvokeVoidAsync("scrollToSectionById", id);
+    }
+}

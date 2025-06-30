@@ -1,0 +1,111 @@
+﻿@using MyPortfolio.Client.Services
+@inject IJSRuntime JS
+@inject LanguageService Lang
+
+<link href="css/education.css" rel="stylesheet" />
+
+@if (_langReady)
+{
+    <div class="container-fluid education-page py-5">
+        <div class="section-title edu text-center mb-4">
+            <h1 class="display-5 fw-bold">@Lang.T("education", "title")</h1>
+        </div>
+
+        <div class="row justify-content-center">
+            @foreach (var edu in EducationList)
+            {
+                <div class="col-md-5">
+                    <div class="edu-card d-flex flex-row">
+                        <div class="edu-img-container">
+                            <img src="@edu.Image" alt="@edu.Title" class="edu-img" />
+                        </div>
+
+                        <div class="edu-content px-3 py-3 d-flex flex-column justify-content-center">
+                            <div class="edu-title">
+                                <h5 class="fw-bold">@edu.Title</h5>
+                            </div>
+                            <div class="edu-details">
+                                <p><strong>@Lang.T("education", "degree_label"):</strong> @edu.Degree</p>
+                                <p><strong>@Lang.T("education", "field_label"):</strong> @edu.Field</p>
+                                <p><strong>@Lang.T("education", "years_label"):</strong> @edu.Years</p>
+                                <p><strong>@Lang.T("education", "location_label"):</strong> @edu.Location</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+        <div class="education-quote-wrapper d-flex flex-column align-items-center mt-4 text-center">
+            <dotlottie-player src="https://lottie.host/6662cd56-2454-440e-8045-62dfeef4d4f7/7GESFf3bhw.lottie"
+                              background="transparent"
+                              speed="1"
+                              style="width: 200px; height: 200px"
+                              loop
+                              autoplay>
+            </dotlottie-player>
+
+            <blockquote class="edu-final-quote mt-2">
+                <p><em>"Education gave me precision — development gave me purpose."</em></p>
+            </blockquote>
+        </div>
+    </div>
+}
+
+@code {
+    private bool _langReady = false;
+
+    private class EducationItem
+    {
+        public string? Title { get; set; }
+        public string? Image { get; set; }
+        public string? Degree { get; set; }
+        public string? Field { get; set; }
+        public string? Years { get; set; }
+        public string? Location { get; set; }
+    }
+
+    private List<EducationItem> EducationList = new()
+    {
+        new()
+        {
+            Title = "TUIT Urganch Branch",
+            Image = "/images/education/tuit1.jpg",
+            Degree = "Bachelor's Degree",
+            Field = "Software Engineering",
+            Years = "2020 - 2024",
+            Location = "Urganch, Uzbekistan"
+        },
+        new()
+        {
+            Title = ".NET Practicum – Mohirdev",
+            Image = "/images/education/mohirdev1.png",
+            Degree = "Certificate",
+            Field = ".NET Development",
+            Years = "Completed",
+            Location = "Online"
+        }
+    };
+
+    protected override async Task OnInitializedAsync()
+    {
+        var culture = await JS.InvokeAsync<string>("localStorage.getItem", "lang") ?? "en-US";
+        await Lang.LoadAsync(culture);
+        _langReady = true;
+        StateHasChanged();
+    }
+
+    protected override void OnInitialized()
+    {
+        Lang.OnLanguageChanged += HandleLanguageChanged;
+    }
+
+    private void HandleLanguageChanged()
+    {
+        InvokeAsync(StateHasChanged);
+    }
+
+    public void Dispose()
+    {
+        Lang.OnLanguageChanged -= HandleLanguageChanged;
+    }
+}

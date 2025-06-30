@@ -1,9 +1,14 @@
-﻿window.observeAndStoreSection = () => {
+﻿window.scrollLock = {
+    isLocked: false
+};
+
+window.observeAndStoreSection = () => {
     const sections = document.querySelectorAll('.snap-section');
     const dots = {
         home: document.getElementById('dot-home'),
         about: document.getElementById('dot-about'),
-        skills: document.getElementById('dot-skills')
+        skills: document.getElementById('dot-skills'),
+        education: document.getElementById('dot-education')
     };
 
     const observer = new IntersectionObserver((entries) => {
@@ -30,6 +35,8 @@ window.setupScrollSnap = () => {
     let currentIndex = 0;
 
     const scrollTo = (i) => {
+        if (window.scrollLock.isLocked) return;
+
         if (i >= 0 && i < sections.length) {
             const id = sections[i].id;
             sections[i].scrollIntoView({ behavior: 'smooth' });
@@ -51,9 +58,9 @@ window.setupScrollSnap = () => {
     };
 
     window.addEventListener('wheel', (e) => {
-        if (isScrolling) return;
-        isScrolling = true;
+        if (isScrolling || window.scrollLock.isLocked) return;
 
+        isScrolling = true;
         if (e.deltaY > 0) scrollTo(currentIndex + 1);
         else scrollTo(currentIndex - 1);
 
@@ -63,6 +70,8 @@ window.setupScrollSnap = () => {
     let touchY = 0;
     window.addEventListener('touchstart', e => touchY = e.touches[0].clientY);
     window.addEventListener('touchend', e => {
+        if (window.scrollLock.isLocked) return;
+
         const deltaY = touchY - e.changedTouches[0].clientY;
         if (Math.abs(deltaY) > 50 && !isScrolling) {
             isScrolling = true;
@@ -78,10 +87,22 @@ window.setupScrollSnap = () => {
 };
 
 window.scrollToSectionById = (id) => {
+    if (window.scrollLock.isLocked) return;
+
     const section = document.getElementById(id);
     if (section) {
         section.scrollIntoView({ behavior: 'smooth' });
         history.replaceState(null, null, `#${id}`);
         sessionStorage.setItem("activeSection", id);
+    }
+};
+
+window.setScrollLock = (shouldLock) => {
+    window.scrollLock.isLocked = shouldLock;
+
+    if (shouldLock) {
+        document.body.classList.add('nav-open');
+    } else {
+        document.body.classList.remove('nav-open');
     }
 };

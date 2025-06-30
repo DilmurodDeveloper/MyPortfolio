@@ -7,12 +7,12 @@
 @if (_langReady)
 {
     <div class="container-fluid skills-page">
-        <div class="section-title text-center animate-fade-up delay-1">
+        <div class="section-title text-center">
             <h1 class="display-5 fw-bold">@Lang.T("skills", "title")</h1>
         </div>
 
         <div class="row gx-5 gy-4">
-            <div class="col-lg-6 animate-fade-up delay-2">
+            <div class="col-lg-6">
                 <h4 class="story-title">@Lang.T("skills", "story_title")</h4>
                 <p class="story-text">
                     @Lang.T("skills", "story_text")
@@ -27,7 +27,7 @@
                 </dotlottie-player>
             </div>
 
-            <div class="col-lg-6 animate-fade-up delay-3">
+            <div class="col-lg-6">
                 @foreach (var skill in SkillList)
                 {
                     <div class="skill-bar">

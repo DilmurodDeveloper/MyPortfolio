@@ -8,7 +8,6 @@ html, body {
 
 .snap-container {
     scroll-snap-type: y mandatory;
-    overflow-y: scroll;
     overflow-y: hidden;
     min-height: 100vh;
     scroll-behavior: smooth;
@@ -29,10 +28,6 @@ a, .btn-link {
     text-decoration: none;
 }
 
-    a:hover {
-        text-decoration: none;
-    }
-
 .btn-primary {
     color: #fff;
     background-color: blue;
@@ -48,22 +43,6 @@ a, .btn-link {
 .form-control:focus,
 .form-check-input:focus {
     box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
-}
-
-.main-layout {
-    min-height: 100vh;
-}
-
-main {
-    min-height: 100vh;
-}
-
-.content {
-    min-height: 100vh;
-    padding-top: 1.1rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
 }
 
 .valid.modified:not([type=checkbox]) {
@@ -107,70 +86,49 @@ code {
     color: #c02d76;
 }
 
-#loader {
+.loader {
     position: fixed;
-    inset: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     background-color: #111827;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     z-index: 9999;
-    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-#container {
-    text-align: center;
+.spinner {
+    width: 60px;
+    height: 60px;
+    position: relative;
 }
 
-.loading-text {
-    font-size: 2rem;
-    font-weight: bold;
-    color: orange;
-    letter-spacing: 0.1em;
+.double-bounce1,
+.double-bounce2 {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-color: orange;
+    opacity: 0.6;
+    position: absolute;
+    top: 0;
+    left: 0;
+    animation: bounce 2s infinite ease-in-out;
 }
 
-    .loading-text .letter {
-        display: inline-block;
-        animation: bounce 1.2s infinite ease-in-out;
-    }
-
-        .loading-text .letter:nth-child(1) {
-            animation-delay: 0s;
-        }
-
-        .loading-text .letter:nth-child(2) {
-            animation-delay: 0.1s;
-        }
-
-        .loading-text .letter:nth-child(3) {
-            animation-delay: 0.2s;
-        }
-
-        .loading-text .letter:nth-child(4) {
-            animation-delay: 0.3s;
-        }
-
-        .loading-text .letter:nth-child(5) {
-            animation-delay: 0.4s;
-        }
-
-        .loading-text .letter:nth-child(6) {
-            animation-delay: 0.5s;
-        }
-
-        .loading-text .letter:nth-child(7) {
-            animation-delay: 0.6s;
-        }
+.double-bounce2 {
+    animation-delay: -1s;
+}
 
 @keyframes bounce {
     0%, 100% {
-        transform: translateY(0);
-        opacity: 1;
+        transform: scale(0.0);
     }
 
     50% {
-        transform: translateY(-10px);
-        opacity: 0.6;
+        transform: scale(1.0);
     }
 }
 

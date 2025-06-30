@@ -2,13 +2,13 @@
     position: relative;
     min-height: 100vh;
     width: 100%;
-    height: 100vh;
     background-color: var(--home-bg);
     display: flex;
     flex-direction: column;
     padding-bottom: 0;
     margin-bottom: 0;
     gap: 2rem;
+    z-index: 1;
 }
     .home-hero::before {
         content: "";
@@ -42,8 +42,9 @@
 
 .hero-photo {
     width: 100%;
-    max-width: 400px;
-    max-height: 500px;
+    max-width: 450px;
+    max-height: 450px;
+    padding-right: 7rem;
     transition: filter 0.4s ease, mask-image 0.4s ease;
     mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
     -webkit-mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
@@ -55,51 +56,6 @@
     .hero-buttons a {
         font-size: 1rem;
     }
-
-@keyframes fadeInUp {
-    0% {
-        opacity: 0;
-        transform: translateY(40px);
-    }
-
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes fadeIn {
-    0% {
-        opacity: 0;
-    }
-
-    100% {
-        opacity: 1;
-    }
-}
-
-.animate-fade-in {
-    animation: fadeIn 1s ease-in-out forwards;
-}
-
-.animate-fade-up {
-    position: relative;
-    opacity: 0;
-    animation: fadeInUp 1s ease-out forwards;
-    z-index: 1;
-}
-
-.delay-1 {
-    animation-delay: 0.3s;
-}
-
-.delay-2 {
-    animation-delay: 0.6s;
-}
-
-.delay-3 {
-    animation-delay: 1s;
-}
 
 @media (max-width: 768px) {
     .home-hero {
@@ -120,10 +76,6 @@
         margin-top: 1.5rem;
     }
 
-    .hero-image-wrapper {
-        transform: translateX(15px);
-    }
-
     .mt-4.d-flex {
         flex-direction: column;
         gap: 1rem;
@@ -133,10 +85,6 @@
 @media (min-width: 769px) {
     .text-section {
         padding-left: 150px;
-    }
-
-    .hero-image-wrapper {
-        transform: translateX(15px);
     }
 
     .home-hero {

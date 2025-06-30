@@ -39,5 +39,13 @@
     "title": "My Skills",
     "story_title": "My Story",
     "story_text": "As a backend .NET developer, I’ve spent the last few years refining my craft through real-world projects, clean architecture, and scalable systems. My journey began with a passion for solving complex problems and today, I enjoy building resilient APIs, integrating services, and maintaining high-performance solutions that serve users efficiently."
+  },
+
+  "education": {
+    "title": "Education",
+    "degree_label": "Degree",
+    "field_label": "Field",
+    "years_label": "Years",
+    "location_label": "Location"
   }
 }

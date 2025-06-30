@@ -39,5 +39,40 @@
     "title": "Ko‘nikmalarim",
     "story_title": "Men haqimda",
     "story_text": ".NET backend dasturchisi sifatida so‘nggi yillarda o‘z mahoratimni real loyihalar, toza arxitektura va kengaytiriladigan tizimlar orqali charxlab keldim. Safarim murakkab muammolarni yechishga bo‘lgan qiziqishdan boshlangan va bugun men ishonchli APIlar yaratish, xizmatlarni integratsiya qilish va yuqori unumli, foydalanuvchi uchun qulay yechimlarni ishlab chiqishdan zavqlanaman."
+  },
+
+  "education": {
+    "title": "Ta'lim",
+    "degree_label": "Daraja",
+    "field_label": "Yo'nalish",
+    "years_label": "Yillar",
+    "location_label": "Manzil",
+    "tuit_title": "TATU Urganch filiali",
+    "tuit_degree": "Bakalavr darajasi",
+    "tuit_field": "Dasturiy injiniring",
+    "tuit_years": "2020 - 2024",
+    "tuit_location": "Urganch, Oʻzbekiston",
+    "mohirdev_title": ".NET Amaliyot — Mohirdev",
+    "mohirdev_degree": "Sertifikat",
+    "mohirdev_field": ".NET dasturlash",
+    "mohirdev_years": "Tugallangan",
+    "mohirdev_location": "Onlayn",
+    "quote": "Ta'lim menga aniqlik berdi - rivojlanish menga maqsad berdi."
+  },
+
+  "experience": {
+    "title": "Tajriba",
+    "company_amusoft": "Amusoft",
+    "role_amusoft": "Backend dasturchi | Amaliyot",
+    "duration_amusoft": "Aprel 2022 – Sentabr 2022",
+    "location_amusoft": "Urganch, O‘zbekiston",
+    "company_a1tech": "A1 Tech Group",
+    "role_a1tech": "Backend dasturchi | Amaliyot",
+    "duration_a1tech": "Mart 2023 – Iyul 2023",
+    "location_a1tech": "Urganch, O‘zbekiston",
+    "company_self": "Mustaqil dasturchi",
+    "role_self": "Backend dasturchi (.NET)",
+    "duration_self": "Iyul 2023 – Hozirgacha",
+    "location_self": "Masofadan / Frilans"
   }
 }

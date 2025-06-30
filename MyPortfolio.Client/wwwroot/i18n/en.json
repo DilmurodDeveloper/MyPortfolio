@@ -46,6 +46,33 @@
     "degree_label": "Degree",
     "field_label": "Field",
     "years_label": "Years",
-    "location_label": "Location"
+    "location_label": "Location",
+    "tuit_title": "TUIT Urganch Branch",
+    "tuit_degree": "Bachelor's Degree",
+    "tuit_field": "Software Engineering",
+    "tuit_years": "2020 - 2024",
+    "tuit_location": "Urganch, Uzbekistan",
+    "mohirdev_title": ".NET Practicum – Mohirdev",
+    "mohirdev_degree": "Certificate",
+    "mohirdev_field": ".NET Development",
+    "mohirdev_years": "Completed",
+    "mohirdev_location": "Online",
+    "quote": "Education gave me precision — development gave me purpose."
+  },
+
+  "experience": {
+    "title": "Experience",
+    "company_amusoft": "Amusoft",
+    "role_amusoft": "Backend Developer | Internship",
+    "duration_amusoft": "April 2022 – September 2022",
+    "location_amusoft": "Urgench, Uzbekistan",
+    "company_a1tech": "A1 Tech Group",
+    "role_a1tech": "Backend Developer | Internship",
+    "duration_a1tech": "March 2023 – July 2023",
+    "location_a1tech": "Urgench, Uzbekistan",
+    "company_self": "Self Employed",
+    "role_self": "Backend Developer (.NET)",
+    "duration_self": "July 2023 – Present",
+    "location_self": "Remote / Freelance"
   }
 }

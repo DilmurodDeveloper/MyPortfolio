@@ -8,7 +8,8 @@ window.observeAndStoreSection = () => {
         home: document.getElementById('dot-home'),
         about: document.getElementById('dot-about'),
         skills: document.getElementById('dot-skills'),
-        education: document.getElementById('dot-education')
+        education: document.getElementById('dot-education'),
+        experience: document.getElementById('dot-experience')
     };
 
     const observer = new IntersectionObserver((entries) => {

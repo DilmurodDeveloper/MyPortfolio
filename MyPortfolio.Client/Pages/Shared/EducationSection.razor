@@ -6,8 +6,8 @@
 
 @if (_langReady)
 {
-    <div class="container-fluid education-page py-5">
-        <div class="section-title edu text-center mb-4">
+    <div class="container-fluid education-page py-4">
+        <div class="section-title text-center mb-4">
             <h1 class="display-5 fw-bold">@Lang.T("education", "title")</h1>
         </div>
 
@@ -35,7 +35,7 @@
                 </div>
             }
         </div>
-        <div class="education-quote-wrapper d-flex flex-column align-items-center mt-4 text-center">
+        <div class="education-quote-wrapper d-flex flex-column align-items-center mt-0 text-center">
             <dotlottie-player src="https://lottie.host/6662cd56-2454-440e-8045-62dfeef4d4f7/7GESFf3bhw.lottie"
                               background="transparent"
                               speed="1"
@@ -44,8 +44,8 @@
                               autoplay>
             </dotlottie-player>
 
-            <blockquote class="edu-final-quote mt-2">
-                <p><em>"Education gave me precision — development gave me purpose."</em></p>
+            <blockquote class="edu-final-quote">
+                <p><em>"@Lang.T("education", "quote")"</em></p>
             </blockquote>
         </div>
     </div>
@@ -53,6 +53,7 @@
 
 @code {
     private bool _langReady = false;
+    private List<EducationItem> EducationList = new();
 
     private class EducationItem
     {
@@ -64,44 +65,50 @@
         public string? Location { get; set; }
     }
 
-    private List<EducationItem> EducationList = new()
+    private List<EducationItem> GetTranslatedEducationItems()
     {
-        new()
+        return new List<EducationItem>
         {
-            Title = "TUIT Urganch Branch",
-            Image = "/images/education/tuit1.jpg",
-            Degree = "Bachelor's Degree",
-            Field = "Software Engineering",
-            Years = "2020 - 2024",
-            Location = "Urganch, Uzbekistan"
-        },
-        new()
-        {
-            Title = ".NET Practicum – Mohirdev",
-            Image = "/images/education/mohirdev1.png",
-            Degree = "Certificate",
-            Field = ".NET Development",
-            Years = "Completed",
-            Location = "Online"
-        }
-    };
+            new()
+            {
+                Title = Lang.T("education", "tuit_title"),
+                Image = "/images/education/tuit1.jpg",
+                Degree = Lang.T("education", "tuit_degree"),
+                Field = Lang.T("education", "tuit_field"),
+                Years = Lang.T("education", "tuit_years"),
+                Location = Lang.T("education", "tuit_location")
+            },
+            new()
+            {
+                Title = Lang.T("education", "mohirdev_title"),
+                Image = "/images/education/mohirdev1.png",
+                Degree = Lang.T("education", "mohirdev_degree"),
+                Field = Lang.T("education", "mohirdev_field"),
+                Years = Lang.T("education", "mohirdev_years"),
+                Location = Lang.T("education", "mohirdev_location")
+            }
+        };
+    }
 
     protected override async Task OnInitializedAsync()
     {
         var culture = await JS.InvokeAsync<string>("localStorage.getItem", "lang") ?? "en-US";
         await Lang.LoadAsync(culture);
+
+        EducationList = GetTranslatedEducationItems();
         _langReady = true;
         StateHasChanged();
+    }
+
+    private void HandleLanguageChanged()
+    {
+        EducationList = GetTranslatedEducationItems();
+        InvokeAsync(StateHasChanged);
     }
 
     protected override void OnInitialized()
     {
         Lang.OnLanguageChanged += HandleLanguageChanged;
-    }
-
-    private void HandleLanguageChanged()
-    {
-        InvokeAsync(StateHasChanged);
     }
 
     public void Dispose()

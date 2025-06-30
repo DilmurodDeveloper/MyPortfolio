@@ -1,0 +1,103 @@
+﻿@using MyPortfolio.Client.Services
+@inject IJSRuntime JS
+@inject LanguageService Lang
+
+<link href="css/experience.css" rel="stylesheet" />
+
+@if (_langReady)
+{
+    <div class="container-fluid experience-page py-4">
+        <div class="text-center section-title text-uppercase">
+            <h2><i class="bi bi-briefcase-fill me-2"></i>@Lang.T("experience", "title")</h2>
+        </div>
+
+        <div class="timeline">
+
+            @foreach (var exp in ExperienceItems!)
+            {
+                <div class="timeline-item @(exp.IsLeft ? "left" : "right")">
+                    <div class="content">
+                        <h5 class="fw-bold mb-1 text-uppercase">@exp.Company</h5>
+                        <p class="mb-1"><strong>@exp.Role</strong></p>
+                        <p class="mb-0"><i class="bi bi-geo-alt-fill me-1"></i>@exp.Location</p>
+                        <p class="mb-0"><small>@exp.Duration</small></p>
+                    </div>
+                </div>
+            }
+            <div class="timeline-line"></div>
+        </div>
+    </div>
+}
+
+@code {
+    private bool _langReady = false;
+    private List<ExperienceModel>? ExperienceItems;
+
+    protected override void OnInitialized()
+    {
+        Lang.OnLanguageChanged += HandleLanguageChanged;
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        var culture = await JS.InvokeAsync<string>("localStorage.getItem", "lang") ?? "en-US";
+        await Lang.LoadAsync(culture);
+        ExperienceItems = BuildExperienceItems();
+        _langReady = true;
+        StateHasChanged();
+    }
+
+    private void HandleLanguageChanged()
+    {
+        ExperienceItems = BuildExperienceItems();
+        InvokeAsync(StateHasChanged);
+    }
+
+    public void Dispose()
+    {
+        Lang.OnLanguageChanged -= HandleLanguageChanged;
+    }
+
+    private List<ExperienceModel> BuildExperienceItems() => new()
+    {
+        new ExperienceModel(
+            Lang.T("experience", "company_amusoft"),
+            Lang.T("experience", "role_amusoft"),
+            Lang.T("experience", "duration_amusoft"),
+            Lang.T("experience", "location_amusoft"),
+            true),
+
+        new ExperienceModel(
+            Lang.T("experience", "company_a1tech"),
+            Lang.T("experience", "role_a1tech"),
+            Lang.T("experience", "duration_a1tech"),
+            Lang.T("experience", "location_a1tech"),
+            false),
+
+        new ExperienceModel(
+            Lang.T("experience", "company_self"),
+            Lang.T("experience", "role_self"),
+            Lang.T("experience", "duration_self"),
+            Lang.T("experience", "location_self"),
+            true)
+    };
+
+    public class ExperienceModel
+    {
+        public string Company { get; }
+        public string Role { get; }
+        public string Duration { get; }
+        public string Location { get; }
+        public bool IsLeft { get; }
+
+        public ExperienceModel(string company, string role, string duration, string location, bool isLeft)
+        {
+            Company = company;
+            Role = role;
+            Duration = duration;
+            Location = location;
+            IsLeft = isLeft;
+        }
+    }
+}
+

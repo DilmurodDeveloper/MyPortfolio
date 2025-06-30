@@ -33,6 +33,10 @@
         background: orange;
     }
 
+.row {
+    padding-top: 2rem;
+}
+
 .story-title {
     text-transform: uppercase;
     font-size: 1.2rem;

@@ -6,7 +6,7 @@
 
 <div class="top-row ps-3 navbar d-flex align-items-center" style="background-color: var(--navbar-bg); color: var(--navbar-text);">
     <div class="container-fluid d-flex justify-content-between align-items-center">
-        <a class="navbar-brand brand-logo" href="#home">
+        <a class="navbar-brand brand-logo" href="/">
             <div class="brand-icon">
                 <i class="fa-brands fa-dochub"></i>
             </div>
@@ -19,7 +19,7 @@
         <div class="d-none d-md-flex gap-3 mx-auto social-icons">
             @foreach (var social in SocialLinks)
             {
-                <a href="@social.Url" target="_blank" title="@social.Title" class="fs-5" style="color: var(--social-icon);">
+                <a href="@social.Url" target="_blank" title="@social.Title" class="fs-5">
                     <i class="@social.Icon"></i>
                 </a>
             }
@@ -80,7 +80,7 @@
     <hr class="nav-footer-divider" />
 
     <footer class="nav-footer text-center py-3" style="color: var(--navbar-text); font-size: 0.9rem;">
-        © DILMUROD MADIRIMOV 2025
+        © Dilmurod Madirimov 2025
     </footer>
 </div>
 
@@ -90,11 +90,15 @@
     private void ToggleNavMenu()
     {
         collapseNavMenu = !collapseNavMenu;
-    }
 
-    protected override void OnInitialized()
-    {
-        collapseNavMenu = true; 
+        if (collapseNavMenu)
+        {
+            JS.InvokeVoidAsync("eval", "window.scrollLock.isLocked = false; document.body.classList.remove('nav-open');");
+        }
+        else
+        {
+            JS.InvokeVoidAsync("eval", "window.scrollLock.isLocked = true; document.body.classList.add('nav-open');");
+        }
     }
 
     private async Task ChangeLanguage(string lang)

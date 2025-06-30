@@ -7,11 +7,11 @@
 
 @if (_langReady)
 {
-    <div class="container-fluid home-hero d-flex flex-column justify-content-center align-items-center animate-fade-in" style="position: relative; overflow: hidden; height: 100vh;">
-        <div id="tsparticles" style="position: absolute; width: 100%; height: 100%; z-index: -1;"></div>
+    <div class="container-fluid home-hero d-flex flex-column justify-content-center align-items-center">
+        <div id="particles-js" style="position: absolute; width: 100%; height: 100%;"></div>
 
         <div class="d-flex flex-column flex-md-row align-items-center justify-content-between w-100 px-3" style="z-index: 1;">
-            <div class="text-section text-center text-md-start animate-fade-up delay-1" style="flex: 1;">
+            <div class="text-section text-center text-md-start">
                 <p class="welcome-text">@Lang.T("hero", "welcome")</p>
                 <h1>
                     <span class="hello-text">@Lang.T("hero", "hello")</span>
@@ -26,11 +26,17 @@
                 </div>
             </div>
 
-            <div class="image-section text-center animate-fade-up delay-2" style="flex: 1;">
+            <div class="image-section text-center">
                 <img src="/images/profile.png" alt="Dilmurod's Photo" class="hero-photo img-fluid" />
             </div>
         </div>
     </div>
+
+    <script>
+        particlesJS.load('particles-js', 'js/particles-config.json', function () {
+          console.log('Particles config loaded successfully!');
+        });
+    </script>
 }
 
 @code {
@@ -42,14 +48,6 @@
         await Lang.LoadAsync(culture);
         _langReady = true;
         StateHasChanged();
-    }
-
-    protected override async Task OnAfterRenderAsync(bool firstRender)
-    {
-        if (firstRender)
-        {
-            await JS.InvokeVoidAsync("loadHeroParticles");
-        }
     }
 
     protected override void OnInitialized()

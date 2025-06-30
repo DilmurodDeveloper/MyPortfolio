@@ -4,8 +4,8 @@
     padding-top: 1rem;
     padding-bottom: 2rem;
     color: var(--navbar-text);
-    height: 100vh;
-    overflow-y: hidden;
+    min-height: 100vh;
+    overflow-y: auto;
     overflow-x: hidden;
 }
     .skills-page::before {
@@ -76,49 +76,6 @@
         border-radius: 10px;
         transition: width 0.6s ease-in-out;
     }
-
-@keyframes fadeInUp {
-    0% {
-        opacity: 0;
-        transform: translateY(40px);
-    }
-
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes fadeIn {
-    0% {
-        opacity: 0;
-    }
-
-    100% {
-        opacity: 1;
-    }
-}
-
-.animate-fade-in {
-    animation: fadeIn 1s ease-in-out forwards;
-}
-
-.animate-fade-up {
-    opacity: 0;
-    animation: fadeInUp 1s ease-out forwards;
-}
-
-.delay-1 {
-    animation-delay: 0.3s;
-}
-
-.delay-2 {
-    animation-delay: 0.6s;
-}
-
-.delay-3 {
-    animation-delay: 1s;
-}
 
 @media (max-width: 768px) {
     .story-title {

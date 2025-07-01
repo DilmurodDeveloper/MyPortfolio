@@ -4,7 +4,7 @@ namespace MyPortfolio.Client.Services
 {
     public class LanguageService
     {
-        private readonly HttpClient _http;
+        private readonly HttpClient http;
         public event Action? OnLanguageChanged;
 
         public Dictionary<string, JsonElement>? Strings { get; private set; }
@@ -14,7 +14,7 @@ namespace MyPortfolio.Client.Services
 
         public LanguageService(HttpClient http)
         {
-            _http = http;
+            this.http = http;
         }
 
         public async Task LoadAsync(string cultureCode)
@@ -26,7 +26,7 @@ namespace MyPortfolio.Client.Services
             {
                 try
                 {
-                    var stream = await _http.GetStreamAsync($"/i18n/{code}.json");
+                    var stream = await http.GetStreamAsync($"/i18n/{code}.json");
                     return await JsonSerializer.DeserializeAsync<Dictionary<string, JsonElement>>(stream);
                 }
                 catch

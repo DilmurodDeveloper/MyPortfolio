@@ -1,21 +1,19 @@
-﻿using Microsoft.EntityFrameworkCore;
-using MyPortfolio.API.Models;
+﻿using MyPortfolio.API.Models;
 
 namespace MyPortfolio.API.Data
 {
     public static class SeedData
     {
-        public static void Initialize(IServiceProvider serviceProvider)
+        public static void Initialize(AppDbContext context)
         {
-            using var context = new AppDbContext(
-                serviceProvider.GetRequiredService<DbContextOptions<AppDbContext>>());
-
             if (!context.Users.Any())
             {
+                var passwordHash = BCrypt.Net.BCrypt.HashPassword("@admin1234!");
+
                 var admin = new User
                 {
-                    Username = "Dilmurod",
-                    PasswordHash = BCrypt.Net.BCrypt.HashPassword("@admin1234!"),
+                    Username = "DilmurodDev",
+                    PasswordHash = passwordHash,
                     Role = "Admin"
                 };
 

@@ -14,7 +14,7 @@ namespace MyPortfolio.API.Data
                 {
                     Username = "DilmurodDev",
                     PasswordHash = passwordHash,
-                    Role = "@admin1234!"
+                    Role = "Admin"
                 };
 
                 context.Users.Add(admin);

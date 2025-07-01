@@ -36,42 +36,48 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
 </head>
 
-    <body class="loading">
-        <div class="loader" id="loader">
-            <div class="spinner">
-                <div class="double-bounce1"></div>
-                <div class="double-bounce2"></div>
-            </div>
+<body class="loading">
+    <div class="loader" id="loader">
+        <div class="spinner">
+            <div class="double-bounce1"></div>
+            <div class="double-bounce2"></div>
         </div>
+    </div>
 
-        <div id="app"></div>
+    <div id="app"></div>
 
-        <div id="blazor-error-ui" style="display:none;">
-            An unhandled error has occurred.
-            <a href="" class="reload">Reload</a>
-            <a class="dismiss">🗙</a>
-        </div>
+    <div id="blazor-error-ui" style="display:none;">
+        An unhandled error has occurred.
+        <a href="" class="reload">Reload</a>
+        <a class="dismiss">🗙</a>
+    </div>
 
-        <script type="module">
-            window.hideLoader = () => {
-                const loader = document.getElementById('loader');
-                const app = document.getElementById('app');
+    <script type="module">
+        window.hideLoader = () => {
+            const loader = document.getElementById('loader');
+            const app = document.getElementById('app');
 
-                if (loader) loader.style.display = 'none';
-                if (app) app.style.display = 'block';
+            if (loader) loader.style.display = 'none';
+            if (app) app.style.display = 'block';
 
-                document.body.classList.remove('loading');
-                document.body.classList.add('ready');
-            };
+            document.body.classList.remove('loading');
+            document.body.classList.add('ready');
+        };
 
-            window.setLang = (code) => {
-                localStorage.setItem("lang", code);
-                location.reload();
-            };
-        </script>
-        <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
-        <script src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs" type="module"></script>
-        <script src="js/site.js"></script>
-        <script src="_framework/blazor.webassembly.js"></script>
-    </body>
+        window.setLang = (code) => {
+            localStorage.setItem("lang", code);
+            location.reload();
+        };
+    </script>
+
+    <script>
+        window.getToken = () => localStorage.getItem("authToken");
+        window.clearToken = () => localStorage.removeItem("authToken");
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <script src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs" type="module"></script>
+    <script src="js/site.js"></script>
+    <script src="_framework/blazor.webassembly.js"></script>
+</body>
 </html>

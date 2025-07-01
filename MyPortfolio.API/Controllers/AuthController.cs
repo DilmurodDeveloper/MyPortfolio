@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using MyPortfolio.API.Services;
-using MyPortfolio.Shared.DTOs;
+using MyPortfolio.API.Services.Auth;
+using MyPortfolio.Shared.DTOs.Login;
 using RESTFulSense.Controllers;
 
 namespace MyPortfolio.API.Controllers
@@ -9,22 +9,28 @@ namespace MyPortfolio.API.Controllers
     [Route("api/[controller]")]
     public class AuthController : RESTFulController
     {
-        private readonly IAuthService auth;
+        private readonly IAuthService authService;
 
-        public AuthController(IAuthService auth)
+        public AuthController(IAuthService authService)
         {
-            this.auth = auth;
+            this.authService = authService;
         }
 
         [HttpPost("login")]
-        public IActionResult Login([FromBody] LoginRequestDto dto)
+        public IActionResult Login([FromBody] LoginDto dto)
         {
-            var token = auth.Authenticate(dto.Username, dto.Password);
-            if (token == null)
-                return Unauthorized();
+            var result = authService.Login(dto);
 
-            return Ok(new { token });
+            if (result is null)
+            {
+                return Unauthorized(
+                    new
+                    {
+                        message = "Invalid username or password"
+                    });
+            }
+
+            return Created(result);
         }
     }
-
 }

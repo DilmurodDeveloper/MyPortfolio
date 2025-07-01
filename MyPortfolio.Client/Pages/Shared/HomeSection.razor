@@ -1,9 +1,4 @@
-﻿@using MyPortfolio.Client.Services
-@inject NavigationManager Nav
-@inject IJSRuntime JS
-@inject LanguageService Lang
-
-<link href="css/home.css" rel="stylesheet" />
+﻿<link href="css/home.css" rel="stylesheet" />
 
 @if (_langReady)
 {
@@ -37,31 +32,4 @@
           console.log('Particles config loaded successfully!');
         });
     </script>
-}
-
-@code {
-    private bool _langReady = false;
-
-    protected override async Task OnInitializedAsync()
-    {
-        var culture = await JS.InvokeAsync<string>("localStorage.getItem", "lang") ?? "en-US";
-        await Lang.LoadAsync(culture);
-        _langReady = true;
-        StateHasChanged();
-    }
-
-    protected override void OnInitialized()
-    {
-        Lang.OnLanguageChanged += HandleLanguageChanged;
-    }
-
-    private void HandleLanguageChanged()
-    {
-        InvokeAsync(StateHasChanged);
-    }
-
-    public void Dispose()
-    {
-        Lang.OnLanguageChanged -= HandleLanguageChanged;
-    }
 }

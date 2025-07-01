@@ -1,8 +1,4 @@
-﻿@using MyPortfolio.Client.Services
-@inject IJSRuntime JS
-@inject LanguageService Lang
-
-<link href="css/about.css" rel="stylesheet" />
+﻿<link href="css/about.css" rel="stylesheet" />
 
 @if (_langReady)
 {
@@ -38,31 +34,4 @@
             </div>
         </div>
     </div>
-}
-
-@code {
-    private bool _langReady = false;
-
-    protected override async Task OnInitializedAsync()
-    {
-        var culture = await JS.InvokeAsync<string>("localStorage.getItem", "lang") ?? "en-US";
-        await Lang.LoadAsync(culture);
-        _langReady = true;
-        StateHasChanged();
-    }
-
-    protected override void OnInitialized()
-    {
-        Lang.OnLanguageChanged += HandleLanguageChanged;
-    }
-
-    private void HandleLanguageChanged()
-    {
-        InvokeAsync(StateHasChanged);
-    }
-
-    public void Dispose()
-    {
-        Lang.OnLanguageChanged -= HandleLanguageChanged;
-    }
 }

@@ -1,6 +1,4 @@
 ﻿@page "/"
-@using MyPortfolio.Client.Pages.Shared
-@inject IJSRuntime JS
 
 <div class="snap-container">
     <section class="snap-section" id="home">
@@ -29,25 +27,3 @@
         <li><button @onclick='() => ScrollToSection("experience")' class="dot" id="dot-experience" aria-label="Experience Section"></button></li>
     </ul>
 </nav>
-
-@code {
-    protected override async Task OnAfterRenderAsync(bool firstRender)
-    {
-        if (firstRender)
-        {
-            await JS.InvokeVoidAsync("observeAndStoreSection");
-            await JS.InvokeVoidAsync("setupScrollSnap");
-
-            var hash = await JS.InvokeAsync<string>("eval", "location.hash.substring(1)");
-            if (!string.IsNullOrEmpty(hash))
-            {
-                await JS.InvokeVoidAsync("scrollToSectionById", hash);
-            }
-        }
-    }
-
-    private async Task ScrollToSection(string id)
-    {
-        await JS.InvokeVoidAsync("scrollToSectionById", id);
-    }
-}

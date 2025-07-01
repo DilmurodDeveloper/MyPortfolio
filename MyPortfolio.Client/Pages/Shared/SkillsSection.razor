@@ -1,8 +1,4 @@
-﻿@using MyPortfolio.Client.Services
-@inject IJSRuntime JS
-@inject LanguageService Lang
-
-<link href="css/skills.css" rel="stylesheet" />
+﻿<link href="css/skills.css" rel="stylesheet" />
 
 @if (_langReady)
 {
@@ -18,12 +14,13 @@
                     @Lang.T("skills", "story_text")
                 </p>
 
-                <dotlottie-player src="https://lottie.host/a67c8dfd-e3ca-45ac-bda8-cb344708de86/BgrrlWgU9l.lottie"
-                                  background="transparent"
-                                  speed="1"
-                                  style="width: 200px; height: 200px"
-                                  loop
-                                  autoplay>
+                <dotlottie-player 
+                    src="https://lottie.host/a67c8dfd-e3ca-45ac-bda8-cb344708de86/BgrrlWgU9l.lottie"
+                    background="transparent"
+                    speed="1"
+                    style="width: 200px; height: 200px"
+                    loop
+                    autoplay>
                 </dotlottie-player>
             </div>
 
@@ -43,43 +40,4 @@
             </div>
         </div>
     </div>
-}
-
-@code {
-    private bool _langReady = false;
-    record Skill(string Name, int Level);
-    record NavSection(string Title, string Link, string IconClass);
-
-    protected override async Task OnInitializedAsync()
-    {
-        var culture = await JS.InvokeAsync<string>("localStorage.getItem", "lang") ?? "en-US";
-        await Lang.LoadAsync(culture);
-        _langReady = true;
-        StateHasChanged();
-    }
-
-    protected override void OnInitialized()
-    {
-        Lang.OnLanguageChanged += HandleLanguageChanged;
-    }
-
-    private void HandleLanguageChanged()
-    {
-        InvokeAsync(StateHasChanged);
-    }
-
-    public void Dispose()
-    {
-        Lang.OnLanguageChanged -= HandleLanguageChanged;
-    }
-
-    List<Skill> SkillList => new()
-    {
-        new("C#", 86),
-        new("ASP.NET Core", 84),
-        new("Entity Framework", 82),
-        new("RESTful API", 80),
-        new("SQL / PostgreSQL", 75),
-        new("Azure DevOps", 70),
-    };
 }

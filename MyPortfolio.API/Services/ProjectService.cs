@@ -14,7 +14,7 @@ namespace MyPortfolio.API.Services
         public void Add(Project project)
         {
             project.Id = projects.Count + 1;
-            project.CreatedAt = DateTime.UtcNow;
+            project.CreatedAt = DateTimeOffset.UtcNow;
             projects.Add(project);
         }
 

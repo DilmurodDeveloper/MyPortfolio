@@ -8,4 +8,5 @@ public class AppDbContext : DbContext
     public DbSet<Project> Projects { get; set; }
     public DbSet<ContactMessage> ContactMessages { get; set; }
     public DbSet<BlogPost> BlogPosts { get; set; }
+    public DbSet<User> Users { get; set; }
 }

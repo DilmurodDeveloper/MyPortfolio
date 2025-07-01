@@ -1,28 +1,12 @@
-﻿@using MyPortfolio.Client.Services
-@inherits LayoutComponentBase
-@inject IJSRuntime JS
-@inject LanguageService Lang
+﻿@inherits LayoutComponentBase
 
 <div class="main-container">
-    <NavMenu />
-    
+    @if (!HideNavbar)
+    {
+        <NavMenu />
+    }
+
     <main class="layout-body">
         @Body
     </main>
 </div>
-
-@code {
-    protected override async Task OnInitializedAsync()
-    {
-        var culture = await JS.InvokeAsync<string>("localStorage.getItem", "lang");
-        await Lang.LoadAsync(culture ?? "en-US");
-    }
-
-    protected override async Task OnAfterRenderAsync(bool firstRender)
-    {
-        if (firstRender)
-        {
-            await JS.InvokeVoidAsync("hideLoader");
-        }
-    }
-}

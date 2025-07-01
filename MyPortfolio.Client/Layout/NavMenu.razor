@@ -1,8 +1,4 @@
-﻿@using MyPortfolio.Client.Services
-@inject IJSRuntime JS
-@inject NavigationManager Nav
-@inject LanguageService Lang
-<link href="css/site.css" rel="stylesheet" />
+﻿<link href="css/site.css" rel="stylesheet" />
 
 <div class="top-row ps-3 navbar d-flex align-items-center" style="background-color: var(--navbar-bg); color: var(--navbar-text);">
     <div class="container-fluid d-flex justify-content-between align-items-center">
@@ -83,39 +79,3 @@
         © Dilmurod Madirimov 2025
     </footer>
 </div>
-
-@code {
-    private bool collapseNavMenu = true;
-
-    private void ToggleNavMenu()
-    {
-        collapseNavMenu = !collapseNavMenu;
-
-        if (collapseNavMenu)
-        {
-            JS.InvokeVoidAsync("eval", "window.scrollLock.isLocked = false; document.body.classList.remove('nav-open');");
-        }
-        else
-        {
-            JS.InvokeVoidAsync("eval", "window.scrollLock.isLocked = true; document.body.classList.add('nav-open');");
-        }
-    }
-
-    private async Task ChangeLanguage(string lang)
-    {
-        await JS.InvokeVoidAsync("localStorage.setItem", "lang", lang);
-        await Lang.LoadAsync(lang);
-        StateHasChanged(); 
-    }
-
-    private List<(string Title, string Url, string Icon)> SocialLinks = new()
-    {
-        ("GitHub", "https://github.com/DilmurodDeveloper", "bi bi-github"),
-        ("LinkedIn", "https://linkedin.com/in/dilmurodmadirimov", "bi bi-linkedin"),
-        ("Facebook", "https://facebook.com/dilmurod.dev", "bi bi-facebook"),
-        ("Instagram", "https://instagram.com/dilmurod_developer", "bi bi-instagram"),
-        ("Telegram", "https://t.me/DilmurodDeveloper", "bi bi-telegram"),
-        ("WhatsApp", "https://wa.me/+998991437101", "bi bi-whatsapp"),
-        ("Download CV", "/files/your_cv.pdf", "bi bi-file-earmark-person-fill")
-    };
-}

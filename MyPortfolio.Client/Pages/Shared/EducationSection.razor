@@ -1,8 +1,4 @@
-﻿@using MyPortfolio.Client.Services
-@inject IJSRuntime JS
-@inject LanguageService Lang
-
-<link href="css/education.css" rel="stylesheet" />
+﻿<link href="css/education.css" rel="stylesheet" />
 
 @if (_langReady)
 {
@@ -36,12 +32,13 @@
             }
         </div>
         <div class="education-quote-wrapper d-flex flex-column align-items-center mt-0 text-center">
-            <dotlottie-player src="https://lottie.host/6662cd56-2454-440e-8045-62dfeef4d4f7/7GESFf3bhw.lottie"
-                              background="transparent"
-                              speed="1"
-                              style="width: 200px; height: 200px"
-                              loop
-                              autoplay>
+            <dotlottie-player 
+                src="https://lottie.host/6662cd56-2454-440e-8045-62dfeef4d4f7/7GESFf3bhw.lottie"
+                background="transparent"
+                speed="1"
+                style="width: 200px; height: 200px"
+                loop
+                autoplay>
             </dotlottie-player>
 
             <blockquote class="edu-final-quote">
@@ -49,70 +46,4 @@
             </blockquote>
         </div>
     </div>
-}
-
-@code {
-    private bool _langReady = false;
-    private List<EducationItem> EducationList = new();
-
-    private class EducationItem
-    {
-        public string? Title { get; set; }
-        public string? Image { get; set; }
-        public string? Degree { get; set; }
-        public string? Field { get; set; }
-        public string? Years { get; set; }
-        public string? Location { get; set; }
-    }
-
-    private List<EducationItem> GetTranslatedEducationItems()
-    {
-        return new List<EducationItem>
-        {
-            new()
-            {
-                Title = Lang.T("education", "tuit_title"),
-                Image = "/images/education/tuit1.jpg",
-                Degree = Lang.T("education", "tuit_degree"),
-                Field = Lang.T("education", "tuit_field"),
-                Years = Lang.T("education", "tuit_years"),
-                Location = Lang.T("education", "tuit_location")
-            },
-            new()
-            {
-                Title = Lang.T("education", "mohirdev_title"),
-                Image = "/images/education/mohirdev1.png",
-                Degree = Lang.T("education", "mohirdev_degree"),
-                Field = Lang.T("education", "mohirdev_field"),
-                Years = Lang.T("education", "mohirdev_years"),
-                Location = Lang.T("education", "mohirdev_location")
-            }
-        };
-    }
-
-    protected override async Task OnInitializedAsync()
-    {
-        var culture = await JS.InvokeAsync<string>("localStorage.getItem", "lang") ?? "en-US";
-        await Lang.LoadAsync(culture);
-
-        EducationList = GetTranslatedEducationItems();
-        _langReady = true;
-        StateHasChanged();
-    }
-
-    private void HandleLanguageChanged()
-    {
-        EducationList = GetTranslatedEducationItems();
-        InvokeAsync(StateHasChanged);
-    }
-
-    protected override void OnInitialized()
-    {
-        Lang.OnLanguageChanged += HandleLanguageChanged;
-    }
-
-    public void Dispose()
-    {
-        Lang.OnLanguageChanged -= HandleLanguageChanged;
-    }
 }

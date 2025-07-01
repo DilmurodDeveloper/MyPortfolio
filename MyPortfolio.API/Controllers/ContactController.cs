@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using MyPortfolio.API.Models;
 using MyPortfolio.API.Services;
 using MyPortfolio.Shared.DTOs;
@@ -8,6 +9,7 @@ namespace MyPortfolio.API.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
+    [Authorize(Roles = "Admin")]
     public class ContactController : RESTFulController
     {
         private readonly IContactService contactService;

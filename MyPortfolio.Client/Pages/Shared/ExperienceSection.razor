@@ -1,8 +1,4 @@
-﻿@using MyPortfolio.Client.Services
-@inject IJSRuntime JS
-@inject LanguageService Lang
-
-<link href="css/experience.css" rel="stylesheet" />
+﻿<link href="css/experience.css" rel="stylesheet" />
 
 @if (_langReady)
 {
@@ -28,76 +24,3 @@
         </div>
     </div>
 }
-
-@code {
-    private bool _langReady = false;
-    private List<ExperienceModel>? ExperienceItems;
-
-    protected override void OnInitialized()
-    {
-        Lang.OnLanguageChanged += HandleLanguageChanged;
-    }
-
-    protected override async Task OnInitializedAsync()
-    {
-        var culture = await JS.InvokeAsync<string>("localStorage.getItem", "lang") ?? "en-US";
-        await Lang.LoadAsync(culture);
-        ExperienceItems = BuildExperienceItems();
-        _langReady = true;
-        StateHasChanged();
-    }
-
-    private void HandleLanguageChanged()
-    {
-        ExperienceItems = BuildExperienceItems();
-        InvokeAsync(StateHasChanged);
-    }
-
-    public void Dispose()
-    {
-        Lang.OnLanguageChanged -= HandleLanguageChanged;
-    }
-
-    private List<ExperienceModel> BuildExperienceItems() => new()
-    {
-        new ExperienceModel(
-            Lang.T("experience", "company_amusoft"),
-            Lang.T("experience", "role_amusoft"),
-            Lang.T("experience", "duration_amusoft"),
-            Lang.T("experience", "location_amusoft"),
-            true),
-
-        new ExperienceModel(
-            Lang.T("experience", "company_a1tech"),
-            Lang.T("experience", "role_a1tech"),
-            Lang.T("experience", "duration_a1tech"),
-            Lang.T("experience", "location_a1tech"),
-            false),
-
-        new ExperienceModel(
-            Lang.T("experience", "company_self"),
-            Lang.T("experience", "role_self"),
-            Lang.T("experience", "duration_self"),
-            Lang.T("experience", "location_self"),
-            true)
-    };
-
-    public class ExperienceModel
-    {
-        public string Company { get; }
-        public string Role { get; }
-        public string Duration { get; }
-        public string Location { get; }
-        public bool IsLeft { get; }
-
-        public ExperienceModel(string company, string role, string duration, string location, bool isLeft)
-        {
-            Company = company;
-            Role = role;
-            Duration = duration;
-            Location = location;
-            IsLeft = isLeft;
-        }
-    }
-}
-

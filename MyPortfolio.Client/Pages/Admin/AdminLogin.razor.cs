@@ -1,6 +1,8 @@
 ﻿using System.Net.Http.Json;
 using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.JSInterop;
+using MyPortfolio.Client.Services;
 using MyPortfolio.Shared.DTOs.Login;
 
 namespace MyPortfolio.Client.Pages.Admin
@@ -10,6 +12,7 @@ namespace MyPortfolio.Client.Pages.Admin
         [Inject] public IJSRuntime JS { get; set; } = default!;
         [Inject] public NavigationManager Nav { get; set; } = default!;
         [Inject] public IHttpClientFactory HttpClientFactory { get; set; } = default!;
+        [Inject] public AuthenticationStateProvider AuthProvider { get; set; } = default!;
 
         private LoginDto loginModel = new();
         private string? errorMessage;
@@ -18,7 +21,6 @@ namespace MyPortfolio.Client.Pages.Admin
 
         private async Task HandleLogin()
         {
-            isLoading = true;
             errorMessage = null;
 
             try
@@ -32,6 +34,12 @@ namespace MyPortfolio.Client.Pages.Admin
                     if (result is not null)
                     {
                         await JS.InvokeVoidAsync("localStorage.setItem", "authToken", result.Token);
+
+                        if (AuthProvider is CustomAuthStateProvider customProvider)
+                        {
+                            customProvider.NotifyUserAuthentication(result.Token);
+                        }
+
                         Nav.NavigateTo("/admin/dashboard");
                     }
                 }
@@ -44,8 +52,6 @@ namespace MyPortfolio.Client.Pages.Admin
             {
                 errorMessage = $"Error: {ex.Message}";
             }
-
-            isLoading = false;
         }
     }
 }

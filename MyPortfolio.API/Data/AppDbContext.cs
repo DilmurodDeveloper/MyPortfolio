@@ -8,6 +8,7 @@ public class AppDbContext : DbContext
     { }
 
     public DbSet<User> Users { get; set; } = default!;
+    public DbSet<Project> Projects { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

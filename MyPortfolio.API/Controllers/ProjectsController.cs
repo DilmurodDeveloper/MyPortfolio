@@ -1,95 +1,54 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using MyPortfolio.API.Models;
-using MyPortfolio.API.Services;
-using MyPortfolio.Shared.DTOs;
+using MyPortfolio.API.Services.Projects;
+using MyPortfolio.Shared.DTOs.Projects;
 
 namespace MyPortfolio.API.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    [Authorize(Roles = "Admin")]
     public class ProjectsController : ControllerBase
     {
         private readonly IProjectService projectService;
 
-        public ProjectsController(IProjectService projectService)
+        public ProjectsController(IProjectService service)
         {
-            this.projectService = projectService;
+            projectService = service;
         }
 
-        [HttpGet("all")]
-        public IActionResult GetAll()
-        {
-            var projects = projectService.GetAll();
-            var result = projects.Select(p => new ProjectDto
-            {
-                Id = p.Id,
-                Title = p.Title,
-                Description = p.Description,
-                ImageUrl = p.ImageUrl,
-                ProjectUrl = p.ProjectUrl,
-                CreatedAt = p.CreatedAt
-            });
-
-            return Ok(result);
-        }
+        [HttpGet]
+        public async Task<IActionResult> GetAll() =>
+            Ok(await projectService.GetAllAsync());
 
         [HttpGet("{id}")]
-        public IActionResult GetById(int id)
+        public async Task<IActionResult> GetById(int id)
         {
-            var project = projectService.GetById(id);
-            if (project == null) return NotFound();
-
-            var result = new ProjectDto
-            {
-                Id = project.Id,
-                Title = project.Title,
-                Description = project.Description,
-                ImageUrl = project.ImageUrl,
-                ProjectUrl = project.ProjectUrl,
-                CreatedAt = project.CreatedAt
-            };
-
-            return Ok(result);
+            var result = await projectService.GetByIdAsync(id);
+            return result is null ? NotFound() : Ok(result);
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPost]
-        public IActionResult Create(ProjectRequestDto dto)
+        public async Task<IActionResult> Create([FromBody] CreateProjectDto dto)
         {
-            var project = new Project
-            {
-                Title = dto.Title,
-                Description = dto.Description,
-                ImageUrl = dto.ImageUrl,
-                ProjectUrl = dto.ProjectUrl
-            };
-
-            projectService.Add(project);
-
-            return CreatedAtAction(nameof(GetById), new { id = project.Id }, dto);
+            var id = await projectService.CreateAsync(dto);
+            return CreatedAtAction(nameof(GetById), new { id }, null);
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPut("{id}")]
-        public IActionResult Update(int id, ProjectRequestDto dto)
+        public async Task<IActionResult> Update(int id, [FromBody] UpdateProjectDto dto)
         {
-            var existing = projectService.GetById(id);
-            if (existing == null) return NotFound();
-
-            existing.Title = dto.Title;
-            existing.Description = dto.Description;
-            existing.ImageUrl = dto.ImageUrl;
-            existing.ProjectUrl = dto.ProjectUrl;
-
-            projectService.Update(existing);
-            return NoContent();
+            var success = await projectService.UpdateAsync(id, dto);
+            return success ? NoContent() : NotFound();
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpDelete("{id}")]
-        public IActionResult Delete(int id)
+        public async Task<IActionResult> Delete(int id)
         {
-            projectService.Delete(id);
-            return NoContent();
+            var success = await projectService.DeleteAsync(id);
+            return success ? NoContent() : NotFound();
         }
     }
 }

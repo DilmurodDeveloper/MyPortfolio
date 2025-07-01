@@ -23,14 +23,11 @@
     <meta name="twitter:description" content="Reliable backend solutions using RESTful APIs, Entity Framework, and ASP.NET Core." />
     <meta name="twitter:image" content="https://dilmuroddev.uz/assets/preview.jpg" />
      
-    <!--Title-->
-    <title>Dilmurod Developer</title>
     <base href="/" />
 
     <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css" />
     <link rel="stylesheet" href="css/app.css" />
     <link rel="icon" type="image/png" href="/favicon.png" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
@@ -71,8 +68,18 @@
     </script>
 
     <script>
-        window.getToken = () => localStorage.getItem("authToken");
-        window.clearToken = () => localStorage.removeItem("authToken");
+        window.addEventListener('load', function () {
+            var loader = document.getElementById('loader');
+            var path = window.location.pathname.toLowerCase();
+
+            if (path === '/admin/dashboard' || path === '/admin/login') {
+                loader.style.display = 'none';
+            } else {
+                setTimeout(() => {
+                    loader.style.display = 'none';
+                }, 1000);
+            }
+        });
     </script>
 
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>

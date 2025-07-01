@@ -1,0 +1,85 @@
+﻿@page "/admin/dashboard"
+@attribute [Authorize(Roles = "Admin")]
+
+<link href="css/admindashboard.css" rel="stylesheet" />
+
+<div class="admin-layout">
+    @if (!isSidebarHidden)
+    {
+        <Sidebar />
+    }
+
+    <div class="dashboard-container">
+        <div class="admin-navbar">
+            <button class="menu-toggle" @onclick="ToggleSidebar">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <div class="navbar-user">
+                <button @onclick="ToggleUserMenu">
+                    <i class="fas fa-user-circle"></i>
+                </button>
+
+                @if (isUserMenuOpen)
+                {
+                    <ul class="user-menu">
+                        <li>
+                            <button @onclick="Logout" class="logout-btn">
+                                <i class="fa-solid fa-right-from-bracket"></i> Logout
+                            </button>
+                        </li>
+                    </ul>
+                }
+            </div>
+        </div>
+
+        <h2 class="dashboard-title">Admin Dashboard</h2>
+
+        <div class="stat-cards">
+            <div class="stat-card">
+                <i class="fas fa-folder"></i>
+                <h4>Projects</h4>
+                <p>12</p>
+            </div>
+            <div class="stat-card">
+                <i class="fas fa-pen-nib"></i>
+                <h4>Blogs</h4>
+                <p>6</p>
+            </div>
+            <div class="stat-card">
+                <i class="fas fa-envelope"></i>
+                <h4>Messages</h4>
+                <p>3</p>
+            </div>
+        </div>
+
+        <div class="latest-sections">
+            <div class="latest-block">
+                <h5>🆕 Latest Projects</h5>
+                <ul>
+                    <li>Portfolio Website (2024-06-15)</li>
+                    <li>Dashboard Admin UI (2024-06-10)</li>
+                    <li>JWT Auth Setup (2024-06-01)</li>
+                </ul>
+            </div>
+
+            <div class="latest-block">
+                <h5>📰 Latest Blogs</h5>
+                <ul>
+                    <li>Creating Beautiful Dashboards</li>
+                    <li>Blazor Routing Tips</li>
+                    <li>Secure APIs with JWT</li>
+                </ul>
+            </div>
+
+            <div class="latest-block">
+                <h5>✉️ Latest Messages</h5>
+                <ul>
+                    <li>Ali: "Salom, portfolio yoqdi..."</li>
+                    <li>Malika: "Qanday qilib buyurtma beraman?"</li>
+                    <li>Sardor: "Texnik savol..."</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

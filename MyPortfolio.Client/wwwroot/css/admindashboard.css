@@ -1,0 +1,77 @@
+﻿.dashboard-title {
+    font-size: 1.75rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    color: #1f2937;
+}
+
+.stat-cards {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+}
+
+.stat-card {
+    flex: 1 1 200px;
+    background-color: white;
+    border-radius: 8px;
+    padding: 1.25rem;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    text-align: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+    .stat-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .stat-card i {
+        font-size: 1.8rem;
+        color: #3b82f6;
+        margin-bottom: 0.5rem;
+    }
+
+    .stat-card h4 {
+        margin: 0.5rem 0 0.25rem;
+        font-weight: 600;
+        color: #111827;
+    }
+
+    .stat-card p {
+        font-size: 1.4rem;
+        font-weight: 700;
+        color: #10b981;
+    }
+
+.latest-sections {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+
+.latest-block {
+    flex: 1 1 300px;
+    background-color: white;
+    border-radius: 8px;
+    padding: 1.25rem;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+}
+
+    .latest-block h5 {
+        margin-bottom: 0.75rem;
+        font-size: 1rem;
+        color: #1f2937;
+    }
+
+    .latest-block ul {
+        list-style-type: disc;
+        margin-left: 1.2rem;
+        color: #374151;
+        font-size: 14px;
+    }
+
+        .latest-block ul li {
+            margin-bottom: 0.5rem;
+        }

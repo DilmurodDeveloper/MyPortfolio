@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Components.Web;
+﻿using Blazored.LocalStorage;
+using Microsoft.AspNetCore.Components.Authorization;
+using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using MyPortfolio.Client;
 using MyPortfolio.Client.Services;
@@ -15,6 +17,9 @@ builder.Services.AddScoped(sp => new HttpClient
 
 builder.Services.AddScoped<LanguageService>();
 builder.Services.AddScoped<AuthMessageHandler>();
+builder.Services.AddAuthorizationCore();
+builder.Services.AddScoped<AuthenticationStateProvider, CustomAuthStateProvider>();
+builder.Services.AddBlazoredLocalStorage();
 
 builder.Services.AddHttpClient("AuthorizedClient", client =>
 {

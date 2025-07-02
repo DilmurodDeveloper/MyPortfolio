@@ -1,0 +1,75 @@
+﻿@page "/admin/projects"
+@layout AdminLayout
+@attribute [Authorize(Roles = "Admin")]
+
+<link href="css/adminprojects.css" rel="stylesheet" />
+
+<h2 class="dashboard-title">Projects</h2>
+
+<div class="form-container">
+    <input type="text" placeholder="Title" @bind="projectForm.Title" class="form-input" />
+    <input type="text" placeholder="Description" @bind="projectForm.Description" class="form-input" />
+    <input type="url" placeholder="Github Link" @bind="projectForm.GithubLink" class="form-input" />
+    <input type="url" placeholder="Image URL" @bind="projectForm.ImageUrl" class="form-input" />
+
+    <button class="btn-save" @onclick="HandleSave">
+        @((isEditMode ? "🔄 Update" : "➕ Add") + " Project")
+    </button>
+
+    @if (isEditMode)
+    {
+        <button class="btn-cancel" @onclick="CancelEdit">❌ Cancel</button>
+    }
+</div>
+
+@if (projects is null)
+{
+    <p>⏳ Loading...</p>
+}
+else if (projects.Count == 0)
+{
+    <p>📭 No projects yet.</p>
+}
+else
+{
+    <table class="projects-table">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Github</th>
+                <th>Image</th>
+                <th>Date</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var (p, i) in projects.Select((x, i) => (x, i)))
+            {
+                <tr>
+                    <td>@(i + 1)</td>
+                    <td>@p.Title</td>
+                    <td>@p.Description</td>
+                    <td>
+                        @if (!string.IsNullOrWhiteSpace(p.GithubLink))
+                        {
+                            <a href="@p.GithubLink" target="_blank">Link</a>
+                        }
+                    </td>
+                    <td>
+                        @if (!string.IsNullOrWhiteSpace(p.ImageUrl))
+                        {
+                            <img src="@p.ImageUrl" width="60" />
+                        }
+                    </td>
+                    <td>@p.CreatedAt.LocalDateTime.ToString("yyyy-MM-dd HH:mm:ss")</td>
+                    <td>
+                        <button class="btn-edit" @onclick="() => LoadForEdit(p)">✏️</button>
+                        <button class="btn-delete" @onclick="() => Delete(p.Id)">🗑️</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

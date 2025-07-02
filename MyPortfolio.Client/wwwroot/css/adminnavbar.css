@@ -1,0 +1,69 @@
+﻿.menu-toggle {
+    background: none;
+    border: none;
+    font-size: 1.4rem;
+    color: white;
+    cursor: pointer;
+}
+
+.navbar-user {
+    position: relative;
+    padding-right: 1.5rem;
+}
+
+    .navbar-user button {
+        background: none;
+        border: none;
+        font-size: 1.7rem;
+        color: white;
+        cursor: pointer;
+    }
+
+.user-menu {
+    position: absolute;
+    top: 2.5rem;
+    right: 1px;
+    background-color: white;
+    color: #1f2937;
+    border-radius: 4px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    list-style: none;
+    padding: 0.5rem;
+    width: auto;
+    z-index: 100;
+}
+
+    .user-menu li {
+        margin: 0.1rem;
+    }
+
+        .user-menu li button {
+            background: none;
+            border: none;
+            width: 100%;
+            font-size: 14px;
+            text-align: left;
+            color: #1f2937;
+            cursor: pointer;
+        }
+
+            .user-menu li button:hover {
+                background-color: #f1f5f9;
+            }
+
+.logout-btn {
+    background-color: transparent;
+    border: none;
+    color: #333;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+    padding: 4px 8px;
+    transition: color 0.2s ease;
+}
+
+    .logout-btn:hover {
+        color: #dc3545;
+    }

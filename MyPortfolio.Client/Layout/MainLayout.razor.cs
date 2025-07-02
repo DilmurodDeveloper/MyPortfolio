@@ -10,7 +10,10 @@ namespace MyPortfolio.Client.Layout
         [Inject] public NavigationManager Nav { get; set; } = default!;
         [Inject] public LanguageService Lang { get; set; } = default!;
 
-        private bool HideNavbar => Nav.Uri.Contains("/admin/login");
+        private bool HideNavbar =>
+            Nav.Uri.Contains("/admin/login") ||
+            Nav.Uri.Contains("/admin/dashboard") ||
+            Nav.Uri.Contains("/admin/projects");
 
         protected override async Task OnInitializedAsync()
         {

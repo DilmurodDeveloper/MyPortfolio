@@ -1,0 +1,24 @@
+﻿<link href="css/adminnavbar.css" rel="stylesheet" />
+
+<div class="admin-navbar">
+    <button class="menu-toggle" @onclick="OnToggleSidebarClicked">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <div class="navbar-user">
+        <button @onclick="ToggleUserMenu">
+            <i class="fas fa-user-circle"></i>
+        </button>
+
+        @if (isUserMenuOpen)
+        {
+            <ul class="user-menu">
+                <li>
+                    <button @onclick="Logout" class="logout-btn">
+                        <i class="fa-solid fa-right-from-bracket"></i> Logout
+                    </button>
+                </li>
+            </ul>
+        }
+    </div>
+</div>

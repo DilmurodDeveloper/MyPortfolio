@@ -23,7 +23,7 @@ builder.Services.AddBlazoredLocalStorage();
 
 builder.Services.AddHttpClient("AuthorizedClient", client =>
 {
-    client.BaseAddress = new Uri("http://localhost:5129/");
+    client.BaseAddress = new Uri("https://localhost:7051/");
 }).AddHttpMessageHandler<AuthMessageHandler>();
 
 await builder.Build().RunAsync();

@@ -1,5 +1,5 @@
 ﻿.sidebar {
-    width: 220px;
+    width: 200px;
     background-color: #1f2937;
     color: #f9fafb;
     display: flex;
@@ -12,6 +12,7 @@
     transform: translateX(0);
     opacity: 1;
 }
+
     .sidebar.hidden {
         transform: translateX(-100%);
         opacity: 0;
@@ -24,7 +25,6 @@
 }
 
     .sidebar-header h2 {
-        text-align: center;
         justify-content: center;
         font-size: 1.2rem;
         font-weight: 700;
@@ -37,8 +37,7 @@
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
-    width: 220px;
-    border-right: 2px solid #374151;
+    padding-left: 15px;
 }
 
 .nav-item {
@@ -57,11 +56,11 @@
         color: springgreen;
     }
 
-.sidebar-footer {
-    margin-top: auto;
-    text-align: center;
-    font-size: 1rem;
-    color: white;
-    border-top: 2px solid #334155;
-    padding-bottom: 0.7rem;
-}
+    .nav-item.active {
+        background-color: rgba(255, 255, 255, 0.1);
+        color: yellowgreen !important;
+        font-weight: 600;
+        border-left: 4px solid springgreen;
+        padding-left: 21px; 
+        transition: all 0.2s ease-in-out;
+    }

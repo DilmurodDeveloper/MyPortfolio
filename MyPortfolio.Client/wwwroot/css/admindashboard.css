@@ -1,170 +1,77 @@
-﻿.admin-layout {
-    display: flex;
-    background-color: #f9fafb;
-    min-height: 100vh;
-    overflow: hidden;
-}
-
-.dashboard-container {
-    flex: 1;
-    padding: 1.5rem 2rem;
-    display: flex;
-    flex-direction: column;
-    background-color: #f8fafc;
-}
-
-.admin-navbar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background-color: #1f2937;
-    color: white;
-    padding: 0.75rem 1.25rem;
-    margin: -1.5rem -2rem 2rem -2rem;
-    position: sticky;
-    top: 0;
-    z-index: 50;
-    border-bottom: 1px solid #334155;
-}
-
-.menu-toggle {
-    background: none;
-    border: none;
-    font-size: 1.4rem;
-    color: white;
-    cursor: pointer;
-}
-
-.navbar-user {
-    position: relative;
-    padding-right: 1.5rem; 
-}
-
-    .navbar-user button {
-        background: none;
-        border: none;   
-        font-size: 1.68rem;
-        color: white;
-        cursor: pointer;
-    }
-
-.user-menu {
-    position: absolute;
-    top: 2.5rem;
-    right: 1px;
-    background-color: white;
-    color: #1f2937;
-    border-radius: 4px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    list-style: none;
-    padding: 0.5rem;
-    width: auto;
-    z-index: 100;
-}
-
-    .user-menu li {
-        margin: 0.1rem;
-    }
-
-        .user-menu li button {
-            background: none;
-            border: none;
-            width: 100%;
-            font-size: 14px;
-            text-align: left;
-            color: #1f2937;
-            cursor: pointer;
-        }
-
-            .user-menu li button:hover {
-                background-color: #f1f5f9;
-            }
-
-.logout-btn {
-    background-color: transparent;
-    border: none;
-    color: #333;
-    font-size: 14px;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    cursor: pointer;
-    padding: 4px 8px;
-    transition: color 0.2s ease;
-}
-
-    .logout-btn:hover {
-        color: #dc3545;
-    }
-
-.dashboard-title {
-    font-size: 1.5rem;
-    font-weight: bold;
+﻿.dashboard-title {
+    font-size: 1.75rem;
+    font-weight: 600;
     margin-bottom: 1.5rem;
+    color: #1f2937;
 }
 
 .stat-cards {
     display: flex;
     gap: 1.5rem;
-    margin-bottom: 2rem;
     flex-wrap: wrap;
+    margin-bottom: 2rem;
 }
 
 .stat-card {
-    flex: 1;
-    min-width: 200px;
-    background-color: #ffffff;
-    padding: 1rem;
+    flex: 1 1 200px;
+    background-color: white;
     border-radius: 8px;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    padding: 1.25rem;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
     text-align: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
+    .stat-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
     .stat-card i {
-        font-size: 1.6rem;
-        color: #0ea5e9;
+        font-size: 1.8rem;
+        color: #3b82f6;
         margin-bottom: 0.5rem;
     }
 
     .stat-card h4 {
-        margin: 0.2rem 0;
-        font-size: 1rem;
+        margin: 0.5rem 0 0.25rem;
+        font-weight: 600;
+        color: #111827;
     }
 
     .stat-card p {
         font-size: 1.4rem;
-        font-weight: bold;
-        color: #1e293b;
+        font-weight: 700;
+        color: #10b981;
     }
 
 .latest-sections {
     display: flex;
-    gap: 1.5rem;
     flex-wrap: wrap;
+    gap: 1.5rem;
 }
 
 .latest-block {
-    flex: 1;
-    min-width: 220px;
-    background: white;
-    padding: 1rem;
+    flex: 1 1 300px;
+    background-color: white;
     border-radius: 8px;
-    border: 1px solid #e2e8f0;
+    padding: 1.25rem;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.05);
 }
 
     .latest-block h5 {
-        font-size: 1rem;
-        font-weight: 600;
         margin-bottom: 0.75rem;
+        font-size: 1rem;
+        color: #1f2937;
     }
 
     .latest-block ul {
-        list-style: none;
-        padding-left: 0;
-        line-height: 1.6;
-        font-size: 0.95rem;
-        color: #334155;
+        list-style-type: disc;
+        margin-left: 1.2rem;
+        color: #374151;
+        font-size: 14px;
     }
+
+        .latest-block ul li {
+            margin-bottom: 0.5rem;
+        }

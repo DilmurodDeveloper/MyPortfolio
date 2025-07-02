@@ -5,7 +5,7 @@ using Microsoft.JSInterop;
 using MyPortfolio.Client.Services;
 using MyPortfolio.Shared.DTOs.Login;
 
-namespace MyPortfolio.Client.Pages.Admin
+namespace MyPortfolio.Client.Pages.Admin.Pages
 {
     public partial class AdminLogin
     {

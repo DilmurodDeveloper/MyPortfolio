@@ -12,7 +12,8 @@ namespace MyPortfolio.Client.Layout
 
         private bool HideNavbar =>
             Nav.Uri.Contains("/admin/login") ||
-            Nav.Uri.Contains("/admin/dashboard");
+            Nav.Uri.Contains("/admin/dashboard") ||
+            Nav.Uri.Contains("/admin/projects");
 
         protected override async Task OnInitializedAsync()
         {

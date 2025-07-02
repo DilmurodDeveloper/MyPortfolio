@@ -2,12 +2,13 @@
 using Microsoft.AspNetCore.Mvc;
 using MyPortfolio.API.Services.Blogs;
 using MyPortfolio.Shared.DTOs.Blogs;
+using RESTFulSense.Controllers;
 
 namespace MyPortfolio.API.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class BlogsController : ControllerBase
+    public class BlogsController : RESTFulController
     {
         private readonly IBlogService blogService;
 

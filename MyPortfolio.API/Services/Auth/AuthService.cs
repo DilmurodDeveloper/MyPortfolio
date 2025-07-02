@@ -2,9 +2,9 @@
 using System.Security.Claims;
 using System.Text;
 using Microsoft.IdentityModel.Tokens;
-using MyPortfolio.API.Models;
 using MyPortfolio.API.Services.Auth;
 using MyPortfolio.Shared.DTOs.Login;
+using MyPortfolio.Shared.Models;
 
 public class AuthService : IAuthService
 {

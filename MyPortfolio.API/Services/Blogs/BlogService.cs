@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using MyPortfolio.API.Models;
 using MyPortfolio.Shared.DTOs.Blogs;
+using MyPortfolio.Shared.Models;
 
 namespace MyPortfolio.API.Services.Blogs
 {

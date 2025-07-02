@@ -1,70 +1,54 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using MyPortfolio.API.Models;
-using MyPortfolio.API.Services;
-using MyPortfolio.Shared.DTOs;
+using MyPortfolio.API.Services.Blogs;
+using MyPortfolio.Shared.DTOs.Blogs;
 
 namespace MyPortfolio.API.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    [Authorize(Roles = "Admin")]
-    public class BlogController : ControllerBase
+    public class BlogsController : ControllerBase
     {
         private readonly IBlogService blogService;
 
-        public BlogController(IBlogService blogService)
+        public BlogsController(IBlogService blogService)
         {
             this.blogService = blogService;
         }
 
-        [HttpGet("all")]
-        public IActionResult GetAll()
-        {
-            var posts = blogService.GetAll();
-            return Ok(posts);
-        }
+        [HttpGet]
+        public async Task<IActionResult> GetAll() =>
+            Ok(await blogService.GetAllAsync());
 
         [HttpGet("{id}")]
-        public IActionResult GetById(int id)
+        public async Task<IActionResult> GetById(int id)
         {
-            var post = blogService.GetById(id);
-            return post is null ? NotFound() : Ok(post);
+            var blog = await blogService.GetByIdAsync(id);
+            return blog is null ? NotFound() : Ok(blog);
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPost]
-        public IActionResult Create(BlogPostRequestDto dto)
+        public async Task<IActionResult> Create(CreateBlogDto dto)
         {
-            var post = new BlogPost
-            {
-                Title = dto.Title,
-                Content = dto.Content,
-                ImageUrl = dto.ImageUrl
-            };
-
-            blogService.Add(post);
-            return CreatedAtAction(nameof(GetById), new { id = post.Id }, post);
+            var id = await blogService.CreateAsync(dto);
+            return CreatedAtAction(nameof(GetById), new { id }, null);
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPut("{id}")]
-        public IActionResult Update(int id, BlogPostRequestDto dto)
+        public async Task<IActionResult> Update(int id, UpdateBlogDto dto)
         {
-            var post = blogService.GetById(id);
-            if (post == null) return NotFound();
-
-            post.Title = dto.Title;
-            post.Content = dto.Content;
-            post.ImageUrl = dto.ImageUrl;
-
-            blogService.Update(post);
-            return NoContent();
+            var ok = await blogService.UpdateAsync(id, dto);
+            return ok ? NoContent() : NotFound();
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpDelete("{id}")]
-        public IActionResult Delete(int id)
+        public async Task<IActionResult> Delete(int id)
         {
-            blogService.Delete(id);
-            return NoContent();
+            var ok = await blogService.DeleteAsync(id);
+            return ok ? NoContent() : NotFound();
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace MyPortfolio.API.Models
 {
-    public class BlogPost
+    public class Blog
     {
         public int Id { get; set; }
         public string Title { get; set; } = default!;

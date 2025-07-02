@@ -1,5 +1,4 @@
-﻿using MyPortfolio.API.Models;
-using MyPortfolio.Shared.DTOs.Blogs;
+﻿using MyPortfolio.Shared.DTOs.Blogs;
 
 namespace MyPortfolio.API.Services.Blogs
 {

@@ -1,0 +1,70 @@
+﻿@page "/admin/blogs"
+@layout AdminLayout
+@attribute [Authorize(Roles = "Admin")]
+
+<link href="css/adminblogs.css" rel="stylesheet" />
+
+<h2 class="dashboard-title">Blogs</h2>
+
+<div class="form-container">
+    <div class="form-group">
+        <input type="text" placeholder="Title" @bind="form.Title" class="form-input" />
+    </div>
+    <div class="form-group">
+        <textarea placeholder="Content" @bind="form.Content" class="form-input" rows="4"></textarea>
+    </div>
+    <div class="form-group">
+        <input type="url" placeholder="Image URL" @bind="form.ImageUrl" class="form-input" />
+    </div>
+
+    <div class="form-buttons">
+        <button class="btn-save" @onclick="HandleSave">@((isEdit ? "🔄 Update" : "➕ Add") + " Blog")</button>
+        @if (isEdit)
+        {
+            <button class="btn-cancel" @onclick="ResetForm">❌ Cancel</button>
+        }
+    </div>
+</div>
+
+@if (blogs is null)
+{
+    <p>⏳ Loading blogs...</p>
+}
+else if (blogs.Count == 0)
+{
+    <p>📭 No blog entries found.</p>
+}
+else
+{
+    <table class="projects-table">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Title</th>
+                <th>Published</th>
+                <th>Image</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var (blog, index) in blogs.Select((b, i) => (b, i)))
+            {
+            <tr>
+                <td>@(index + 1)</td>
+                <td>@blog.Title</td>
+                <td>@blog.PublishedAt.LocalDateTime.ToString("yyyy-MM-dd HH:mm:ss")</td>
+                <td>
+                    @if (!string.IsNullOrWhiteSpace(blog.ImageUrl))
+                    {
+                    <img src="@blog.ImageUrl" width="60" />
+                    }
+                </td>
+                <td>
+                    <button class="btn-edit" @onclick="() => Edit(blog)">✏️</button>
+                    <button class="btn-delete" @onclick="() => Delete(blog.Id)">🗑️</button>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+}

@@ -2,28 +2,44 @@
 @layout AdminLayout
 @attribute [Authorize(Roles = "Admin")]
 
-<link href="css/adminblogs.css" rel="stylesheet" />
+<link href="css/admin/adminblogs.css" rel="stylesheet" />
 
 <h2 class="dashboard-title">Blogs</h2>
 
-<div class="form-container">
-    <div class="form-group">
-        <input type="text" placeholder="Title" @bind="form.Title" class="form-input" />
-    </div>
-    <div class="form-group">
-        <textarea placeholder="Content" @bind="form.Content" class="form-input" rows="4"></textarea>
-    </div>
-    <div class="form-group">
-        <input type="url" placeholder="Image URL" @bind="form.ImageUrl" class="form-input" />
-    </div>
+<div class="form-toggle-wrapper">
+    <button class="btn-toggle-form @(showForm ? "btn-closed" : "btn-open")" @onclick="ToggleForm">
+        @((showForm ? "× Close Form" : "+ Add Project"))
+    </button>
 
-    <div class="form-buttons">
-        <button class="btn-save" @onclick="HandleSave">@((isEdit ? "🔄 Update" : "➕ Add") + " Blog")</button>
-        @if (isEdit)
-        {
-            <button class="btn-cancel" @onclick="ResetForm">❌ Cancel</button>
-        }
-    </div>
+    @if (showForm)
+    {
+        <div class="form-container">
+            <h5 class="danger-title text-secondary font-monospace">
+                <i class="fa-solid fa-triangle-exclamation" style="color: orange"></i> Eslatma:
+                <b class="text-danger">*</b> bilan belgilangan maydonlar toldirilishi shart!
+            </h5>
+            <div class="form-group">
+                <small class="form-label">Title<b class="text-danger">*</b></small>
+                <input type="text" placeholder="Enter title..." @bind="form.Title" class="form-input" />
+            </div>
+            <div class="form-group">
+                <small class="form-label">Content<b class="text-danger">*</b></small>
+                <textarea placeholder="Enter content..." @bind="form.Content" class="form-input" rows="4"></textarea>
+            </div>
+            <div class="form-group">
+                <small class="form-label">Image URL<b class="text-danger">*</b></small>
+                <input type="url" placeholder="Enter URL..." @bind="form.ImageUrl" class="form-input" />
+            </div>
+
+            <div class="form-buttons">
+                <button class="btn-save" @onclick="HandleSave">@((isEdit ? "Update" : "Add") + " Blog")</button>
+                @if (isEdit)
+                {
+                    <button class="btn-cancel" @onclick="ResetForm">Cancel</button>
+                }
+            </div>
+        </div>
+    }
 </div>
 
 @if (blogs is null)
@@ -41,8 +57,9 @@ else
             <tr>
                 <th>#</th>
                 <th>Title</th>
-                <th>Published</th>
+                <th>Content</th>
                 <th>Image</th>
+                <th>Published Date</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -52,16 +69,17 @@ else
             <tr>
                 <td>@(index + 1)</td>
                 <td>@blog.Title</td>
-                <td>@blog.PublishedAt.LocalDateTime.ToString("yyyy-MM-dd HH:mm:ss")</td>
+                <td>@blog.Content</td>
                 <td>
                     @if (!string.IsNullOrWhiteSpace(blog.ImageUrl))
                     {
                     <img src="@blog.ImageUrl" width="60" />
                     }
                 </td>
+                <td>@blog.PublishedAt.LocalDateTime.ToString("dd-MM-yyyy HH:mm:ss")</td>
                 <td>
-                    <button class="btn-edit" @onclick="() => Edit(blog)">✏️</button>
-                    <button class="btn-delete" @onclick="() => Delete(blog.Id)">🗑️</button>
+                    <button class="btn-edit" @onclick="() => Edit(blog)">Edit</button>
+                    <button class="btn-delete" @onclick="() => Delete(blog.Id)">Delete</button>
                 </td>
             </tr>
             }

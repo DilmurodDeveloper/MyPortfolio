@@ -68,7 +68,7 @@ a, .btn-link {
     box-shadow: 0 -1px 2px rgba(0, 0, 0, 0.2);
     z-index: 1000;
     color: white;
-    background: url(data:image/svg+xml;base64,...skipped...) no-repeat 1rem/1.8rem, #b32121;
+    background: no-repeat 1rem/1.8rem, #b32121;
 }
 
     #blazor-error-ui .dismiss {

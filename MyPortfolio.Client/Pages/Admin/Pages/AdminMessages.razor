@@ -1,0 +1,46 @@
+﻿@page "/admin/messages"
+@layout AdminLayout
+@attribute [Authorize(Roles = "Admin")]
+
+<link href="css/admin/adminmessages.css" rel="stylesheet" />
+
+<h2 class="dashboard-title">Contact Messages</h2>
+
+@if (messages is null)
+{
+    <p>⏳ Loading messages...</p>
+}
+else if (messages.Count == 0)
+{
+    <p>📭 No messages received yet.</p>
+}
+else
+{
+    <table class="messages-table">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Full Name</th>
+                <th>Email</th>
+                <th>Message</th>
+                <th>Sent At</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var (msg, index) in messages.Select((m, i) => (m, i)))
+            {
+                <tr>
+                    <td>@(index + 1)</td>
+                    <td>@msg.FullName</td>
+                    <td>@msg.Email</td>
+                    <td style="max-width: 300px;">@msg.Message</td>
+                    <td>@msg.CreatedAt.LocalDateTime.ToString("dd-MM-yyyy HH:mm:ss")</td>
+                    <td>
+                        <button class="btn-delete" @onclick="() => Delete(msg.Id)">Delete</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

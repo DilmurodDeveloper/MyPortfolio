@@ -1,8 +1,16 @@
 ﻿.dashboard-title {
-    font-size: 1.75rem;
+    font-size: 1.5rem;
+    text-transform: uppercase;
     font-weight: 600;
     color: #1f2937;
+    padding-top: 0.5rem;
     margin-bottom: 1.5rem;
+}
+
+.danger-title {
+    font-size: 0.75rem;
+    font-weight: 600;
+    margin-bottom: 0.1rem;
 }
 
 .form-container {
@@ -55,6 +63,26 @@
     cursor: pointer;
 }
 
+.btn-edit,
+.btn-delete {
+    border: none;
+    border-radius: 4px;
+    padding: 4px 8px;
+    cursor: pointer;
+    font-size: 13px;
+    margin-right: 4px;
+}
+
+.btn-edit {
+    background-color: #facc15;
+    color: #111827;
+}
+
+.btn-delete {
+    background-color: #ef4444;
+    color: white;
+}
+
 .projects-table {
     width: 100%;
     border-collapse: collapse;
@@ -65,7 +93,8 @@
 }
 
     .projects-table thead {
-        background-color: #f1f5f9;
+        background-color: black;
+        color: white;
         font-weight: 600;
     }
 
@@ -76,14 +105,28 @@
         font-size: 14px;
     }
 
-    .projects-table tr:hover {
-        background-color: #f9fafb;
-    }
+.form-toggle-wrapper {
+    margin-bottom: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    align-items: flex-start;
+}
 
-.btn-edit, .btn-delete {
-    background: none;
+.btn-toggle-form {
+    padding: 0.6rem 1.2rem;
+    font-weight: 600;
     border: none;
+    border-radius: 6px;
+    color: white;
     cursor: pointer;
-    font-size: 16px;
-    margin-right: 0.5rem;
+    transition: background-color 0.3s ease;
+}
+
+.btn-open {
+    background-color: #00b894;
+}
+
+.btn-closed {
+    background-color: #d63031;
 }

@@ -5,12 +5,6 @@
     overflow: hidden;
 }
 
-.sidebar {
-    width: 220px;
-    background-color: #1f2937;
-    color: white;
-}
-
 .dashboard-container {
     display: flex;
     flex-direction: column;
@@ -23,11 +17,10 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: #1f2937;
+    background-color: #e6e6fa;
     color: white;
     padding: 0 1rem;
     height: 48px;
-    border-bottom: 1px solid #334155;
     position: sticky;
     top: 0;
     z-index: 50;
@@ -41,12 +34,17 @@
     max-height: calc(100vh - 48px - 32px);
 }
 
-.admin-footer {
-    text-align: center;
-    height: 32px;
-    padding: 0;
-    font-size: 0.85rem;
+.sidebar {
+    width: 200px;
     background-color: #1f2937;
-    color: #e2e8f0;
-    border-top: 1px solid #334155;
+    color: #f9fafb;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 100vh;
+    box-shadow: 2px 0 6px rgba(0, 0, 0, 0.1);
+    border-right: 2px solid dimgray;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    transform: translateX(0);
+    opacity: 1;
 }

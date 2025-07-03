@@ -1,0 +1,134 @@
+﻿* {
+    box-sizing: border-box;
+}
+
+/* --- Root --- */
+.experience-page {
+    background-color: #0d1117;
+    color: #e6f1ff;
+    font-family: 'Inter', sans-serif;
+    padding-top: 4rem;
+    padding-bottom: 3rem;
+    min-height: 100vh;
+}
+
+/* --- Section title --- */
+.experience-section-title h2 {
+    padding-top: 60px;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #64ffda;
+    margin-bottom: 1.5rem;
+}
+
+/* --- Timeline container --- */
+.timeline {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+/* --- Vertical line --- */
+.timeline-line {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 4px;
+    height: 95%;
+    background: #64ffda;
+    z-index: 0;
+}
+
+/* --- Timeline item --- */
+.timeline-item {
+    width: 50%;
+    padding: 1rem 2rem;
+    position: relative;
+    box-sizing: border-box;
+}
+
+    .timeline-item::before {
+        content: "";
+        position: absolute;
+        top: 16px;
+        width: 20px;
+        height: 20px;
+        background-color: #00b894;
+        border: 3px solid white;
+        border-radius: 50%;
+        z-index: 2;
+    }
+
+    .timeline-item.left {
+        left: 0;
+        text-align: right;
+    }
+
+        .timeline-item.left::before {
+            right: -10px;
+        }
+
+    .timeline-item.right {
+        left: 50%;
+        text-align: left;
+    }
+
+        .timeline-item.right::before {
+            left: -10px;
+        }
+
+/* --- Card Content --- */
+.content {
+    background-color: #1f2530;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    position: relative;
+    z-index: 1;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+    .content:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.5);
+    }
+
+    /* --- Text Styling --- */
+    .content h5 {
+        font-size: 1rem;
+        color: #64ffda;
+    }
+
+    .content p {
+        font-size: 0.95rem;
+        color: #aab8c2;
+        margin-bottom: 0.3rem;
+    }
+
+@media (max-width: 768px) {
+    .timeline-item {
+        width: 100%;
+        text-align: center;
+    }
+
+    .timeline-line {
+        left: 30px;
+        transform: none;
+    }
+
+    .timeline-item.left,
+    .timeline-item.right {
+        left: 0 !important;
+    }
+
+    .timeline-item::before {
+        left: -10px;
+        right: auto;
+    }
+
+    .content {
+        text-align: left;
+    }
+}

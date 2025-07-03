@@ -2,23 +2,54 @@
 @layout AdminLayout
 @attribute [Authorize(Roles = "Admin")]
 
-<link href="css/adminprojects.css" rel="stylesheet" />
+<link href="css/admin/adminprojects.css" rel="stylesheet" />
 
 <h2 class="dashboard-title">Projects</h2>
 
-<div class="form-container">
-    <input type="text" placeholder="Title" @bind="projectForm.Title" class="form-input" />
-    <input type="text" placeholder="Description" @bind="projectForm.Description" class="form-input" />
-    <input type="url" placeholder="Github Link" @bind="projectForm.GithubLink" class="form-input" />
-    <input type="url" placeholder="Image URL" @bind="projectForm.ImageUrl" class="form-input" />
-
-    <button class="btn-save" @onclick="HandleSave">
-        @((isEditMode ? "🔄 Update" : "➕ Add") + " Project")
+<div class="form-toggle-wrapper">
+    <button class="btn-toggle-form @(showForm ? "btn-closed" : "btn-open")" @onclick="ToggleForm">
+        @((showForm ? "× Close Form" : "+ Add Project"))
     </button>
 
-    @if (isEditMode)
+    @if (showForm)
     {
-        <button class="btn-cancel" @onclick="CancelEdit">❌ Cancel</button>
+        <div class="form-container">
+            <h5 class="danger-title text-secondary font-monospace">
+                <i class="fa-solid fa-triangle-exclamation" style="color: orange"></i> Eslatma:
+                <b class="text-danger">*</b> bilan belgilangan maydonlar toldirilishi shart!
+            </h5>
+
+            <div class="form-group">
+                <small class="form-label">Title<b class="text-danger">*</b></small>
+                <input type="text" placeholder="Enter title..." @bind="projectForm.Title" class="form-input" />
+            </div>
+
+            <div class="form-group">
+                <small class="form-label">Description<b class="text-danger">*</b></small>
+                <textarea type="text" placeholder="Enter description..." @bind="projectForm.Description" class="form-input" rows="4"></textarea>
+            </div>
+
+            <div class="form-group">
+                <small class="form-label">Github Link<b class="text-danger">*</b></small>
+                <input type="url" placeholder="Enter link..." @bind="projectForm.GithubLink" class="form-input" />
+            </div>
+
+            <div class="form-group">
+                <small class="form-label">Image URL<b class="text-danger">*</b></small>
+                <input type="url" placeholder="Enter URL..." @bind="projectForm.ImageUrl" class="form-input" />
+            </div>
+
+            <div class="form-actions">
+                <button class="btn-save" @onclick="HandleSave">
+                    @((isEditMode ? "Update" : "Add") + " Project")
+                </button>
+
+                @if (isEditMode)
+                {
+                    <button class="btn-cancel" @onclick="CancelEdit">Cancel</button>
+                }
+            </div>
+        </div>
     }
 </div>
 
@@ -63,10 +94,10 @@ else
                             <img src="@p.ImageUrl" width="60" />
                         }
                     </td>
-                    <td>@p.CreatedAt.LocalDateTime.ToString("yyyy-MM-dd HH:mm:ss")</td>
+                    <td>@p.CreatedAt.LocalDateTime.ToString("dd-MM-yyyy HH:mm:ss")</td>
                     <td>
-                        <button class="btn-edit" @onclick="() => LoadForEdit(p)">✏️</button>
-                        <button class="btn-delete" @onclick="() => Delete(p.Id)">🗑️</button>
+                        <button class="btn-edit" @onclick="() => LoadForEdit(p)">Edit</button>
+                        <button class="btn-delete" @onclick="() => Delete(p.Id)">Delete</button>
                     </td>
                 </tr>
             }

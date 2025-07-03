@@ -10,6 +10,7 @@ namespace MyPortfolio.Client.Pages.Admin.Pages
         [Inject] private IJSRuntime JS { get; set; } = default!;
         [Inject] private IHttpClientFactory HttpFactory { get; set; } = default!;
 
+        private bool showForm = false;
         private List<BlogDto>? blogs;
         private CreateBlogDto form = new();
         private bool isEdit = false;
@@ -81,6 +82,15 @@ namespace MyPortfolio.Client.Pages.Admin.Pages
             else
             {
                 Console.WriteLine($"❌ Delete failed: {result.StatusCode}");
+            }
+        }
+
+        private void ToggleForm()
+        {
+            showForm = !showForm;
+            if (!showForm)
+            {
+                ResetForm();
             }
         }
 

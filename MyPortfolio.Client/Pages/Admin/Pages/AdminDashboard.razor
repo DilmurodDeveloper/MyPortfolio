@@ -2,53 +2,115 @@
 @attribute [Authorize(Roles = "Admin")]
 @layout AdminLayout
 
-<link href="css/admindashboard.css" rel="stylesheet" />
+<link href="css/admin/admindashboard.css" rel="stylesheet" />
 
 <h2 class="dashboard-title">Admin Dashboard</h2>
 
-<div class="stat-cards">
-    <div class="stat-card">
-        <i class="fas fa-folder"></i>
+ <div class="stat-cards">
+    <div class="stat-card card-projects" @onclick='() => NavigateTo("/admin/projects")'>
+        <i class="fas fa-folder-open"></i>
         <h4>Projects</h4>
-        <p>12</p>
+        <p>@TotalProjects</p>
     </div>
-    <div class="stat-card">
-        <i class="fas fa-pen-nib"></i>
+    <div class="stat-card card-blogs" @onclick='() => NavigateTo("/admin/blogs")'>
+        <i class="fas fa-newspaper"></i>
         <h4>Blogs</h4>
-        <p>6</p>
+        <p>@TotalBlogs</p>
     </div>
-    <div class="stat-card">
-        <i class="fas fa-envelope"></i>
+    <div class="stat-card card-messages" @onclick='() => NavigateTo("/admin/messages")'>
+        <i class="fas fa-comments"></i>  
         <h4>Messages</h4>
-        <p>3</p>
+        <p>@TotalMessages</p>
     </div>
 </div>
 
-<div class="latest-sections">
-    <div class="latest-block">
-        <h5>🆕 Latest Projects</h5>
-        <ul>
-            <li>Portfolio Website (2024-06-15)</li>
-            <li>Dashboard Admin UI (2024-06-10)</li>
-            <li>JWT Auth Setup (2024-06-01)</li>
-        </ul>
+<div class="latest-tables">
+    <div class="latest-table">
+        <h5><i class="fas fa-comments"></i> Latest Messages</h5>
+        <table>
+            <thead>
+                <tr>
+                    <th><i class="fas fa-hashtag"></i></th>
+                    <th><i class="fas fa-user"></i> Full Name</th>
+                    <th><i class="fas fa-envelope"></i> Email</th>
+                    <th><i class="fas fa-comment-dots message-table"></i> Message</th>
+                    <th><i class="fas fa-clock"></i> Sent At</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var m in LatestMessages.Select((item, index) => new { item, index }))
+                {
+                    <tr>
+                        <td style="width: 1px">@(m.index + 1)</td>
+                        <td style="width: 200px">@m.item.FullName</td>
+                        <td style="width: 200px">@m.item.Email</td>
+                        <td style="width: 430px; text-align: justify">@m.item.Message</td>
+                        <td style="width: 169px">@m.item.CreatedAt.ToLocalTime().ToString("dd-MM-yyyy HH:mm:ss")</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
     </div>
 
-    <div class="latest-block">
-        <h5>📰 Latest Blogs</h5>
-        <ul>
-            <li>Creating Beautiful Dashboards</li>
-            <li>Blazor Routing Tips</li>
-            <li>Secure APIs with JWT</li>
-        </ul>
+    <div class="latest-table">
+        <h5><i class="fas fa-folder-open"></i> Latest Projects</h5>
+        <table>
+            <thead>
+                <tr>
+                    <th><i class="fas fa-hashtag"></i></th>
+                    <th><i class="fas fa-file-alt"></i> Name</th>
+                    <th><i class="fas fa-file"></i> Description</th>
+                    <th><i class="fab fa-github"></i> Github</th>
+                    <th><i class="fas fa-image"></i> Image</th>
+                    <th><i class="fas fa-calendar-check"></i> Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var p in LatestProjects.Select((item, index) => new { item, index }))
+                {
+                    <tr>
+                        <td style="width: 1px">@(p.index + 1)</td>
+                        <td style="width: 200px">@p.item.Title</td>
+                        <td style="width: 330px; text-align: justify">@p.item.Description</td>
+                        <td style="width: 200px">
+                            <a href="@p.item.GithubLink" target="_blank">Repository Link</a>
+                        </td>
+                        <td style="width: 100px">
+                            <img src="@p.item.ImageUrl" alt="Image" width="40" />
+                        </td>
+                        <td style="width: 169px">@p.item.CreatedAt.ToLocalTime().ToString("dd-MM-yyyy HH:mm:ss")</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
     </div>
 
-    <div class="latest-block">
-        <h5>✉️ Latest Messages</h5>
-        <ul>
-            <li>Ali: "Salom, portfolio yoqdi..."</li>
-            <li>Malika: "Qanday qilib buyurtma beraman?"</li>
-            <li>Sardor: "Texnik savol..."</li>
-        </ul>
+    <div class="latest-table">
+        <h5><i class="fas fa-newspaper"></i> Latest Blogs</h5>
+        <table>
+            <thead>
+                <tr>
+                    <th><i class="fas fa-hashtag"></i></th>
+                    <th><i class="fas fa-book-open"></i> Title</th>
+                    <th><i class="fas fa-file-alt"></i> Content</th>
+                    <th><i class="fas fa-image"></i> Image</th>
+                    <th><i class="fas fa-calendar-check"></i> Published Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var b in LatestBlogs.Select((item, index) => new { item, index }))
+                {
+                    <tr>
+                        <td style="width: 1px">@(b.index + 1)</td>
+                        <td style="width: 200px">@b.item.Title</td>
+                        <td style="width: 480px">@b.item.Content</td>
+                        <td style="width: 150px">
+                            <img src="@b.item.ImageUrl" alt="Image" width="40" />
+                        </td>
+                        <td style="width: 169px">@b.item.PublishedAt.ToLocalTime().ToString("dd-MM-yyyy HH:mm:ss")</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
     </div>
 </div>

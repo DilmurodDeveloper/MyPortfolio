@@ -1,4 +1,4 @@
-﻿namespace MyPortfolio.API.Models
+﻿namespace MyPortfolio.Shared.Models
 {
     public class Blog
     {

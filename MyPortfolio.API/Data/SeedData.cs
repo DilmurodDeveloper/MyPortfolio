@@ -1,4 +1,4 @@
-﻿using MyPortfolio.API.Models;
+﻿using MyPortfolio.Shared.Models;
 
 namespace MyPortfolio.API.Data
 {

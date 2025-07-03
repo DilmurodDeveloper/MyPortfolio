@@ -2,12 +2,13 @@
 using Microsoft.AspNetCore.Mvc;
 using MyPortfolio.API.Services.Projects;
 using MyPortfolio.Shared.DTOs.Projects;
+using RESTFulSense.Controllers;
 
 namespace MyPortfolio.API.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class ProjectsController : ControllerBase
+    public class ProjectsController : RESTFulController
     {
         private readonly IProjectService projectService;
 

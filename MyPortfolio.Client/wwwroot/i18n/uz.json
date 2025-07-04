@@ -38,7 +38,7 @@
   "skills": {
     "title": "Ko‘nikmalarim",
     "story_title": "Men haqimda",
-    "story_text": ".NET backend dasturchisi sifatida so‘nggi yillarda o‘z mahoratimni real loyihalar, toza arxitektura va kengaytiriladigan tizimlar orqali charxlab keldim. Safarim murakkab muammolarni yechishga bo‘lgan qiziqishdan boshlangan va bugun men ishonchli APIlar yaratish, xizmatlarni integratsiya qilish va yuqori unumli, foydalanuvchi uchun qulay yechimlarni ishlab chiqishdan zavqlanaman."
+    "story_text": ".NET backend dasturchisi sifatida so'nggi yillarda o'z mahoratimni real loyihalar, toza arxitektura va kengaytiriladigan tizimlar orqali charxlab keldim. Safarim murakkab muammolarni yechishga bo'lgan qiziqishdan boshlangan va bugun men ishonchli APIlar yaratish, xizmatlarni integratsiya qilish va yuqori unumli, foydalanuvchi uchun qulay yechimlarni ishlab chiqishdan zavqlanaman."
   },
 
   "education": {
@@ -51,7 +51,7 @@
     "tuit_degree": "Bakalavr darajasi",
     "tuit_field": "Dasturiy injiniring",
     "tuit_years": "2020 - 2024",
-    "tuit_location": "Urganch, Oʻzbekiston",
+    "tuit_location": "Urganch, O'zbekiston",
     "mohirdev_title": ".NET Amaliyot — Mohirdev",
     "mohirdev_degree": "Sertifikat",
     "mohirdev_field": ".NET dasturlash",
@@ -65,11 +65,11 @@
     "company_amusoft": "Amusoft",
     "role_amusoft": "Backend dasturchi | Amaliyot",
     "duration_amusoft": "Aprel 2022 – Sentabr 2022",
-    "location_amusoft": "Urganch, O‘zbekiston",
+    "location_amusoft": "Urganch, O'zbekiston",
     "company_a1tech": "A1 Tech Group",
     "role_a1tech": "Backend dasturchi | Amaliyot",
     "duration_a1tech": "Mart 2023 – Iyul 2023",
-    "location_a1tech": "Urganch, O‘zbekiston",
+    "location_a1tech": "Urganch, O'zbekiston",
     "company_self": "Mustaqil dasturchi",
     "role_self": "Backend dasturchi (.NET)",
     "duration_self": "Iyul 2023 – Hozirgacha",
@@ -82,5 +82,15 @@
 
   "blogs": {
     "title": "Mening Fikrlarim"
+  },
+
+  "contact": {
+    "title": "Bog'lanish",
+    "fullName": "To'liq ism",
+    "email": "Elektron pochta",
+    "message": "Xabar",
+    "send": "Xabar yuborish",
+    "success": "Rahmat! Xabaringiz yuborildi.",
+    "error": "Xatolik yuz berdi. Iltimos, qayta urinib ko‘ring."
   }
 }

@@ -4,14 +4,6 @@
 
 window.observeAndStoreSection = () => {
     const sections = document.querySelectorAll('.snap-section');
-    const dots = {
-        home: document.getElementById('dot-home'),
-        about: document.getElementById('dot-about'),
-        skills: document.getElementById('dot-skills'),
-        education: document.getElementById('dot-education'),
-        experience: document.getElementById('dot-experience'),
-        projects: document.getElementById('dot-projects')
-    };
 
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -19,13 +11,11 @@ window.observeAndStoreSection = () => {
                 const id = entry.target.id;
                 sessionStorage.setItem("activeSection", id);
                 history.replaceState(null, null, `#${id}`);
-
-                Object.values(dots).forEach(dot => dot.classList.remove('active'));
-                if (dots[id]) dots[id].classList.add('active');
+                currentIndex = Array.from(sections).findIndex(s => s.id === id);
             }
         });
     }, {
-        threshold: 0.6
+        threshold: 0.3
     });
 
     sections.forEach(section => observer.observe(section));

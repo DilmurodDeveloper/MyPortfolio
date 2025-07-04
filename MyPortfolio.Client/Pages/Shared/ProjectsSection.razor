@@ -1,0 +1,37 @@
+﻿<link href="css/website/projects.css" rel="stylesheet" />
+
+@if (_langReady)
+{
+    <div class="projects-section">
+        <h1 class="text-center section-title">@Lang.T("projects", "title")</h1>
+
+        <div class="carousel-wrapper">
+            <button class="scroll-btn left" @onclick="ScrollLeft">&#10094;</button>
+
+            <div class="carousel-viewport">
+                <div class="carousel-track" style="@GetTransformStyle()">
+                    @foreach (var project in projects ?? new())
+                    {
+                        <div class="carousel-slide">
+                            <div class="project-card-horizontal">
+                                <img src="@project.ImageUrl" alt="@project.Title" class="project-img" />
+                                <div class="project-content">
+                                    <h5 class="project-title">@project.Title</h5>
+                                    <p class="project-description" title="@project.Description">@project.Description</p>
+                                    @if (!string.IsNullOrEmpty(project.GithubLink))
+                                    {
+                                        <a href="@project.GithubLink" target="_blank" class="btn btn-outline-light">
+                                            <i class="fab fa-github me-1"></i> GitHub
+                                        </a>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+
+            <button class="scroll-btn right" @onclick="ScrollRight">&#10095;</button>
+        </div>
+    </div>
+}

@@ -71,6 +71,7 @@ namespace MyPortfolio.Client.Pages.Admin.Pages
             };
             editId = p.Id;
             isEditMode = true;
+            showForm = true;
         }
 
         private void CancelEdit() => ResetForm();

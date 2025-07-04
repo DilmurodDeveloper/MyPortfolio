@@ -9,7 +9,8 @@ window.observeAndStoreSection = () => {
         about: document.getElementById('dot-about'),
         skills: document.getElementById('dot-skills'),
         education: document.getElementById('dot-education'),
-        experience: document.getElementById('dot-experience')
+        experience: document.getElementById('dot-experience'),
+        projects: document.getElementById('dot-projects')
     };
 
     const observer = new IntersectionObserver((entries) => {
@@ -106,4 +107,8 @@ window.setScrollLock = (shouldLock) => {
     } else {
         document.body.classList.remove('nav-open');
     }
+};
+
+window.scrollCarousel = (element, amount) => {
+    element.scrollBy({ left: amount, behavior: 'smooth' });
 };

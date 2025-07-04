@@ -66,6 +66,7 @@ namespace MyPortfolio.Client.Pages.Admin.Pages
                 ImageUrl = blog.ImageUrl
             };
             isEdit = true;
+            showForm = true;
             editId = blog.Id;
         }
 

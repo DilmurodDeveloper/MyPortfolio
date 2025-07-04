@@ -1,0 +1,236 @@
+﻿/* --- Root layout --- */
+.projects-section {
+    min-height: 100vh;
+    background-color: #0d1117;
+    padding: 4rem 2rem;
+    color: #e6f1ff;
+    font-family: 'Inter', sans-serif;
+    position: relative;
+    overflow: hidden;
+}
+
+/* --- Section Title --- */
+.section-title {
+    padding-top: 30px;
+    padding-bottom: 2rem;
+    text-transform: uppercase;
+    font-size: 1.4rem;
+    font-weight: 700;
+    text-align: center;
+    color: #64ffda;
+}
+
+/* --- Carousel Wrapper --- */
+.carousel-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+/* --- Carousel Viewport --- */
+.carousel-viewport {
+    overflow: hidden;
+    width: 100%;
+    max-width: 960px;
+    padding-top: 1rem;
+    margin: 0 auto;
+}
+
+/* --- Carousel Track --- */
+.carousel-track {
+    display: flex;
+    transition: transform 0.5s ease;
+    width: max-content;
+    gap: 1.5rem;
+}
+
+    .carousel-track::-webkit-scrollbar {
+        display: none;
+    }
+
+/* --- Carousel Slide --- */
+.carousel-slide {
+    flex: 0 0 auto;
+    width: 300px;
+    box-sizing: border-box;
+}
+
+/* --- Project Card --- */
+.project-card-horizontal {
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto;
+    background-color: #1f2530;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+    .project-card-horizontal:hover {
+        transform: translateY(-5px);
+    }
+
+/* --- Project Image --- */
+.project-img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+/* --- Project Content --- */
+.project-content {
+    padding: 1rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.project-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #64ffda;
+    margin-bottom: 0.5rem;
+}
+
+.project-description {
+    font-size: 1rem;
+    color: #8892b0;
+    text-align: justify;
+    font-family: 'Times New Roman', serif;
+    max-height: 5rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+
+/* --- Project Links --- */
+.project-links {
+    margin-top: 1rem;
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+    .project-links a {
+        font-size: 0.9rem;
+        padding: 0.5rem 1rem;
+        border-radius: 6px;
+        text-decoration: none;
+        transition: background 0.3s ease;
+    }
+
+    .project-links .btn-primary {
+        background-color: #00b894;
+        border: none;
+        color: white;
+    }
+
+        .project-links .btn-primary:hover {
+            background-color: #019878;
+        }
+
+    .project-links .btn-outline-light {
+        border: 2px solid white;
+        color: white;
+    }
+
+        .project-links .btn-outline-light:hover {
+            background-color: white;
+            color: #0d1117;
+        }
+
+/* --- Scroll Buttons --- */
+.scroll-btn {
+    background: none;
+    border: none;
+    color: #64ffda;
+    font-size: 2rem;
+    cursor: pointer;
+    padding: 0 5rem;
+    z-index: 2;
+    transition: color 0.3s ease;
+}
+
+    .scroll-btn:hover {
+        color: #00b894;
+    }
+
+    .scroll-btn.left {
+        margin-right: -1rem;
+    }
+
+    .scroll-btn.right {
+        margin-left: -1rem;
+    }
+
+/* --- Responsive --- */
+@media (max-width: 1200px) {
+    .carousel-slide {
+        width: 260px;
+    }
+
+    .carousel-viewport {
+        max-width: 860px;
+    }
+}
+
+@media (max-width: 992px) {
+    .carousel-slide {
+        width: 240px;
+    }
+
+    .carousel-viewport {
+        max-width: 720px;
+    }
+}
+
+@media (max-width: 768px) {
+    .carousel-slide {
+        width: 100%;
+    }
+
+    .carousel-viewport {
+        max-width: 100%;
+        padding: 0 1rem;
+    }
+
+    .projects-section {
+        padding: 2rem 1rem;
+    }
+
+    .section-title {
+        font-size: 1.1rem;
+    }
+
+    .project-card-horizontal {
+        width: 100%;
+    }
+
+    .project-img {
+        height: 160px;
+    }
+
+    .project-title {
+        font-size: 1rem;
+    }
+
+    .project-description {
+        font-size: 0.95rem;
+    }
+
+    .project-links {
+        justify-content: center;
+    }
+
+    .scroll-btn {
+        padding: 0 0.5rem;
+    }
+}

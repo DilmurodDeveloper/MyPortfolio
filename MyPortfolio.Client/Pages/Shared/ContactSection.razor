@@ -1,0 +1,105 @@
+﻿<link href="css/website/contact.css" rel="stylesheet" />
+
+@if(_langReady)
+{
+    <div class="contact-section">
+        <h1 class="contact-section-title text-center">@Lang.T("contact", "title")</h1>
+        <div class="contact-container">
+            <div class="contact-visual">
+                <dotlottie-player 
+                    src="https://lottie.host/1cb574d6-9fe9-4638-878a-60b691973ec2/T6Dnj15UcM.lottie"
+                    background="transparent"
+                    speed="1"
+                    style="width: 500px; height: 500px"
+                    loop
+                    autoplay>
+                </dotlottie-player>
+            </div>
+
+            <div class="contact-form">
+                @if (successMessage != null)
+                {
+                    <div class="alert alert-success text-center">@successMessage</div>
+                }
+
+                <EditForm Model="formModel" OnValidSubmit="HandleSubmit">
+                    <DataAnnotationsValidator />
+
+                    <div class="form-group">
+                    <label for="fullName">@Lang.T("contact", "fullName")</label>
+                        <InputText id="fullName" class="form-control" autocomplete="off" @bind-Value="formModel.FullName" />
+                        <div style="color: red">
+                            <ValidationMessage For="@(() => formModel.FullName)" />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                    <label for="email">@Lang.T("contact", "email")</label>
+                        <InputText id="email" type="email" class="form-control" autocomplete="off" @bind-Value="formModel.Email" />
+                        <div style="color: red">
+                            <ValidationMessage For="@(() => formModel.Email)" />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                    <label for="message">@Lang.T("contact", "message")</label>
+                        <InputTextArea id="message" class="form-control" @bind-Value="formModel.Message" rows="5" />
+                        <div style="color: red">
+                            <ValidationMessage For="@(() => formModel.Message)" />
+                        </div>
+                    </div>
+
+                <button type="submit" class="submit-button">@Lang.T("contact", "send")</button>
+                </EditForm>
+            </div>
+        </div>
+    </div>
+}
+@code {
+    [Inject] public IJSRuntime JS { get; set; } = default!;
+    [Inject] public LanguageService Lang { get; set; } = default!;
+    [Inject] public IHttpClientFactory HttpFactory { get; set; } = default!;
+
+    private bool _langReady = false;
+    private CreateContactMessageDto formModel = new();
+    private string? successMessage;
+
+    protected override async Task OnInitializedAsync()
+    {
+        var culture = await JS.InvokeAsync<string>("localStorage.getItem", "lang") ?? "en-US";
+        await Lang.LoadAsync(culture);
+        _langReady = true;
+        StateHasChanged();
+    }
+
+    protected override void OnInitialized()
+    {
+        Lang.OnLanguageChanged += HandleLanguageChanged;
+    }
+
+    private void HandleLanguageChanged()
+    {
+        InvokeAsync(StateHasChanged);
+    }
+
+    public void Dispose()
+    {
+        Lang.OnLanguageChanged -= HandleLanguageChanged;
+    }
+
+    private async Task HandleSubmit()
+    {
+        var client = HttpFactory.CreateClient("AuthorizedClient");
+        var response = await client.PostAsJsonAsync("api/contactmessages", formModel);
+
+        if (response.IsSuccessStatusCode)
+        {
+            successMessage = Lang.T("contact", "success");
+            formModel = new();
+        }
+        else
+        {
+            successMessage = Lang.T("contact", "error");
+        }
+    }
+}

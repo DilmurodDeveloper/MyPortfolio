@@ -82,5 +82,15 @@
 
   "blogs": {
     "title": "My Thoughts"
+  },
+
+  "contact": {
+    "title": "Contact Me",
+    "fullName": "Full Name",
+    "email": "Email",
+    "message": "Message",
+    "send": "Send Message",
+    "success": "Thank you! Your message has been sent.",
+    "error": "Something went wrong. Please try again."
   }
 }

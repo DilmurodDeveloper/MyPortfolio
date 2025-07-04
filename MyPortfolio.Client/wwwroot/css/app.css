@@ -11,32 +11,6 @@
     width: 100%;
 }
 
-h1:focus {
-    outline: none;
-}
-
-a, .btn-link {
-    color: #0071c1;
-    text-decoration: none;
-}
-
-.btn-primary {
-    color: #fff;
-    background-color: blue;
-    border-color: #1861ac;
-}
-    .btn-primary:hover {
-        background-color: #1b6ec2;
-    }
-
-.btn:focus,
-.btn:active:focus,
-.btn-link.nav-link:focus,
-.form-control:focus,
-.form-check-input:focus {
-    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
-}
-
 .valid.modified:not([type=checkbox]) {
     outline: 1px solid #26b050;
 }
@@ -72,10 +46,6 @@ a, .btn-link {
 
 .blazor-error-boundary::after {
     content: "An error has occurred.";
-}
-
-code {
-    color: #c02d76;
 }
 
 .loader {
@@ -123,38 +93,3 @@ code {
         transform: scale(1.0);
     }
 }
-
-.dot-navigation {
-    position: fixed;
-    top: 50%;
-    right: 20px;
-    transform: translateY(-50%);
-    z-index: 1000;
-    padding-right: 2rem;
-}
-
-    .dot-navigation ul {
-        list-style: none;
-        margin: 0;
-        padding: 0;
-    }
-
-        .dot-navigation ul li {
-            margin: 12px 0;
-        }
-
-    .dot-navigation button.dot {
-        width: 12px;
-        height: 12px;
-        border-radius: 50%;
-        border: none;
-        background-color: #bbb;
-        cursor: pointer;
-        outline: none;
-        transition: background-color 0.3s ease;
-    }
-
-        .dot-navigation button.dot.active,
-        .dot-navigation button.dot:hover {
-            background-color: orange;
-        }

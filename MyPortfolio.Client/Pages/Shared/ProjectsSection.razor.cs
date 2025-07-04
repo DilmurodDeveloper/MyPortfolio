@@ -11,6 +11,7 @@ namespace MyPortfolio.Client.Pages.Shared
         [Inject] public IJSRuntime JS { get; set; } = default!;
         [Inject] public LanguageService Lang { get; set; } = default!;
         [Inject] public IHttpClientFactory HttpFactory { get; set; } = default!;
+
         private List<ProjectDto> projects = new();
         private bool _langReady = false;
         private int currentIndex = 0;

@@ -1,0 +1,39 @@
+﻿@page "/blogs"
+
+<link href="css/website/blogs.css" rel="stylesheet" />
+
+@if (_langReady)
+{
+    <div class="blogs-page">
+        <h1 class="section-title">@Lang.T("blogs", "title")</h1>
+
+        @if (blogs == null)
+        {
+            <p class="text-center text-muted">Loading blogs...</p>
+        }
+        else if (!blogs.Any())
+        {
+            <p class="text-center text-muted">No blogs found.</p>
+        }
+        else
+        {
+            @foreach (var blog in blogs)
+            {
+                <div class="blog-card-horizontal">
+                    <div class="blog-image-wrapper">
+                        <img src="@blog.ImageUrl" alt="@blog.Title" class="blog-cover" />
+                    </div>
+                    <div class="blog-body">
+                        <h2 class="blog-title">@blog.Title</h2>
+                        <p class="blog-snippet">@Truncate(blog.Content, 600)</p>
+                        <div class="blog-meta">
+                            <span class="blog-author">By Dilmurod Madirimov</span>
+                            <span class="blog-date">@blog.PublishedAt.ToString("MMMM dd, yyyy")</span>
+                        </div>
+                        <a href="/blogs/@blog.Id" class="read-more">Read More →</a>
+                    </div>
+                </div>
+            }
+        }
+    </div>
+}

@@ -1,4 +1,12 @@
-﻿/* --- Hero Section --- */
+﻿html, body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    scroll-behavior: smooth;
+    height: 100%;
+}
+
+/* --- Hero Section --- */
 .home-hero {
     position: relative;
     min-height: 100vh;

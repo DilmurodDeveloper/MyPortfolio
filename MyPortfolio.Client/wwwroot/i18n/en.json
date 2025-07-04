@@ -17,7 +17,7 @@
     "iam": "IS DILMUROD",
     "role": "Software Engineer | Junior .NET Developer",
     "viewWork": "View my work",
-    "moreAbout": "More about me"  
+    "moreAbout": "More about me"
   },
 
   "about": {
@@ -78,5 +78,9 @@
 
   "projects": {
     "title": "Projects"
+  },
+
+  "blogs": {
+    "title": "My Thoughts"
   }
 }

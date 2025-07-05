@@ -1,31 +1,32 @@
 ﻿@page "/admin/login"
 
 <link href="css/admin/adminlogin.css" rel="stylesheet" />
+<div class="login-page">
+    <div class="login-wrapper">
+        <h3 class="login-title">Admin Login</h3>
 
-<div class="login-wrapper">
-    <h3 class="login-title">Admin Login</h3>
+        <EditForm Model="@loginModel" OnValidSubmit="@HandleLogin">
+            <DataAnnotationsValidator />
+            <ValidationSummary />
 
-    <EditForm Model="@loginModel" OnValidSubmit="@HandleLogin">
-        <DataAnnotationsValidator />
-        <ValidationSummary />
+            <div class="form-group">
+                <label class="form-label">Username</label>
+                <InputText class="form-control input-field" @bind-Value="loginModel.Username" placeholder="Enter your username" />
+            </div>
 
-        <div class="form-group">
-            <label class="form-label">Username</label>
-            <InputText class="form-control input-field" @bind-Value="loginModel.Username" placeholder="Enter your username" />
-        </div>
+            <div class="form-group">
+                <label class="form-label">Password</label>
+                <InputText class="form-control input-field" @bind-Value="loginModel.Password" placeholder="Enter your password" type="@passwordType" />
+            </div>
 
-        <div class="form-group">
-            <label class="form-label">Password</label>
-            <InputText class="form-control input-field" @bind-Value="loginModel.Password" placeholder="Enter your password" type="@passwordType" />
-        </div>
+            @if (!string.IsNullOrEmpty(errorMessage))
+            {
+                <div class="alert alert-danger mt-2">@errorMessage</div>
+            }
 
-        @if (!string.IsNullOrEmpty(errorMessage))
-        {
-            <div class="alert alert-danger mt-2">@errorMessage</div>
-        }
-
-        <button class="btn login-button" type="submit" disabled="@isLoading">
-            @(isLoading ? "Logging in..." : "Login")
-        </button>
-    </EditForm>
+            <button class="btn login-button" type="submit" disabled="@isLoading">
+                @(isLoading ? "Logging in..." : "Login")
+            </button>
+        </EditForm>
+    </div>
 </div>

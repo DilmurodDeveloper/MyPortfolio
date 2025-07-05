@@ -12,15 +12,11 @@ namespace MyPortfolio.Client.Layout
 
         protected bool collapseNavMenu = true;
 
-        protected void ToggleNavMenu()
+        protected async Task ToggleNavMenu()
         {
             collapseNavMenu = !collapseNavMenu;
 
-            var jsCode = collapseNavMenu
-                ? "window.scrollLock.isLocked = false; document.body.classList.remove('nav-open');"
-                : "window.scrollLock.isLocked = true; document.body.classList.add('nav-open');";
-
-            JS.InvokeVoidAsync("eval", jsCode);
+            await JS.InvokeVoidAsync("setScrollLock", !collapseNavMenu);
         }
 
         protected async Task ChangeLanguage(string lang)

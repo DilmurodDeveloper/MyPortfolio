@@ -31,11 +31,11 @@
     padding: 1rem 2rem;
     overflow-y: auto;
     min-height: 0;
-    max-height: calc(100vh - 48px - 32px);
+    max-height: calc(100vh - 48px);
 }
 
 .sidebar {
-    width: 200px;
+    width: 210px;
     background-color: #1f2937;
     color: #f9fafb;
     display: flex;

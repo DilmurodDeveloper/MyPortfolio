@@ -68,8 +68,8 @@ else
             {
             <tr>
                 <td>@(index + 1)</td>
-                <td>@blog.Title</td>
-                <td>@blog.Content</td>
+                <td style="width: 200px !important">@blog.Title</td>
+                    <td class="content-cell">@blog.Content</td>
                 <td>
                     @if (!string.IsNullOrWhiteSpace(blog.ImageUrl))
                     {

@@ -1,6 +1,22 @@
+:root {
+    --navbar-bg: transparent;
+    --navbar-text: #e4e4e7;
+    --nav-menu-bg: #1f1f1f;
+    --nav-link-color: #b5b5b5;
+    --nav-link-hover-bg: #334155;
+    --nav-link-hover-text: #93c5fd;
+    --social-icon: #e5e7eb;
+    --social-icon-hover: #60a5fa;
+    --toggler-filter: invert(1);
+    --icon-color: #f5f5f5;
+    --home-bg: #111827;
+    --btn-primary-bg: #3b82f6;
+    --btn-primary-text: #fff;
+}
+
 .snap-container {
-    scroll-snap-type: y mandatory;
-    overflow-y: hidden;
+    scroll-snap-type: none;
+    overflow-y: auto;
     min-height: 100vh;
     scroll-behavior: smooth;
 }
@@ -9,6 +25,13 @@
     scroll-snap-align: start;
     min-height: 100vh;
     width: 100%;
+}
+
+.main-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: var(--home-bg);
 }
 
 .valid.modified:not([type=checkbox]) {
@@ -41,7 +64,7 @@
         position: absolute;
         top: 0.5rem;
         right: 0.75rem;
-        cursor: pointer;
+        cursor: pointer;    
     }
 
 .blazor-error-boundary::after {
@@ -93,3 +116,37 @@
         transform: scale(1.0);
     }
 }
+
+.dot-navigation {
+    position: fixed;
+    top: 50%;
+    right: 50px;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    z-index: 1000;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: gray;
+    transition: background-color 0.3s ease;
+}
+
+    .dot.active {
+        background-color: orange;
+    }
+
+.fade-in {
+    opacity: 0;
+    transform: translateY(15px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+    .fade-in.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }

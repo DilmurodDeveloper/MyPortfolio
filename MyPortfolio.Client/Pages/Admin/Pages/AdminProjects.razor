@@ -63,44 +63,46 @@ else if (projects.Count == 0)
 }
 else
 {
-    <table class="projects-table">
-        <thead>
-            <tr>
-                <th>#</th>
-                <th>Name</th>
-                <th>Description</th>
-                <th>Github</th>
-                <th>Image</th>
-                <th>Date</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var (p, i) in projects.Select((x, i) => (x, i)))
-            {
+    <div class="table-wrapper">
+        <table class="projects-table">
+            <thead>
                 <tr>
-                    <td>@(i + 1)</td>
-                    <td>@p.Title</td>
-                    <td>@p.Description</td>
-                    <td>
-                        @if (!string.IsNullOrWhiteSpace(p.GithubLink))
-                        {
-                            <a href="@p.GithubLink" target="_blank">Link</a>
-                        }
-                    </td>
-                    <td>
-                        @if (!string.IsNullOrWhiteSpace(p.ImageUrl))
-                        {
-                            <img src="@p.ImageUrl" width="60" />
-                        }
-                    </td>
-                    <td>@p.CreatedAt.LocalDateTime.ToString("dd-MM-yyyy HH:mm:ss")</td>
-                    <td>
-                        <button class="btn-edit" @onclick="() => LoadForEdit(p)">Edit</button>
-                        <button class="btn-delete" @onclick="() => Delete(p.Id)">Delete</button>
-                    </td>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Github</th>
+                    <th>Image</th>
+                    <th>Date</th>
+                    <th>Actions</th>
                 </tr>
-            }
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                @foreach (var (p, i) in projects.Select((x, i) => (x, i)))
+                {
+                    <tr>
+                        <td>@(i + 1)</td>
+                        <td style="width: 100px !important">@p.Title</td>
+                        <td class="content-cell">@p.Description</td>
+                        <td>
+                            @if (!string.IsNullOrWhiteSpace(p.GithubLink))
+                            {
+                                <a href="@p.GithubLink" target="_blank">Link</a>
+                            }
+                        </td>
+                        <td>
+                            @if (!string.IsNullOrWhiteSpace(p.ImageUrl))
+                            {
+                                <img src="@p.ImageUrl" width="60" />
+                            }
+                        </td>
+                        <td>@p.CreatedAt.LocalDateTime.ToString("dd-MM-yyyy HH:mm:ss")</td>
+                        <td style="width: 150px !important">
+                            <button class="btn-edit" @onclick="() => LoadForEdit(p)">Edit</button>
+                            <button class="btn-delete" @onclick="() => Delete(p.Id)">Delete</button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
 }

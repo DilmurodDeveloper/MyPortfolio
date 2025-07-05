@@ -193,6 +193,7 @@
 @media (max-width: 992px) {
     .carousel-slide {
         width: 240px;
+        justify-content: center;
     }
 
     .carousel-viewport {
@@ -202,12 +203,12 @@
 
 @media (max-width: 768px) {
     .carousel-slide {
-        width: 100%;
+        width: 300px;
     }
 
     .carousel-viewport {
         max-width: 100%;
-        padding: 0 1rem;
+        padding: 2rem 1rem;
     }
 
     .projects-section {
@@ -239,6 +240,6 @@
     }
 
     .scroll-btn {
-        padding: 0 0.5rem;
+        padding: 0 0.6rem;
     }
 }

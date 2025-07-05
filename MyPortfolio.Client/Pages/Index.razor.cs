@@ -13,6 +13,7 @@ namespace MyPortfolio.Client.Pages
             {
                 await JS.InvokeVoidAsync("observeAndStoreSection");
                 await JS.InvokeVoidAsync("setupScrollSnap");
+                await JS.InvokeVoidAsync("setupSectionAnimations");
 
                 var hash = await JS.InvokeAsync<string>("eval", "location.hash.substring(1)");
                 if (!string.IsNullOrEmpty(hash))

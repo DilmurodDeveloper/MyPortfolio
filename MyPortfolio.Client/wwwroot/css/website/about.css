@@ -17,6 +17,7 @@
 
 /* --- Section Title --- */
 .about-section-title {
+    padding-top: 20px;
     display: flex;
     justify-content: center;
     padding-bottom: 2rem;
@@ -102,6 +103,10 @@
         padding: 1rem;
     }
 
+    .dot-navigation {
+        display: none; 
+    }
+
     .about-page .row {
         flex-direction: column;
         justify-content: center;
@@ -127,13 +132,8 @@
 }
 
 @media (max-width: 576px) {
-    #dot-home,
-    #dot-about,
-    #dot-skills,
-    #dot-education,
-    #dot-experience,
-    #dot-projects {
-        display: none !important;
+    .dot-navigation {
+        display: none; 
     }
 
     .about-section-title h1 {

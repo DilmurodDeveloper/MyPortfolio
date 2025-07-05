@@ -29,11 +29,12 @@
 
 /* --- Education card layout --- */
 .edu-card {
+    display: flex;
     background-color: #1f2530;
     border-radius: 8px;
+    flex-direction: row;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
     overflow: hidden;
-    display: flex;
     gap: 1rem;
     padding: 1rem;
 }
@@ -98,6 +99,32 @@ dotlottie-player {
 }
 
 /* --- Responsive --- */
+@media (max-width: 1068px) {
+    .edu-card {
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 1rem;
+        padding-left: 0.9rem;
+        flex-direction: column;
+    }
+
+    .edu-content {
+        align-items: start;
+    }
+
+    .edu-details p {
+        font-size: 0.9rem;
+    }
+
+    .education-section-title h1 {
+        font-size: 1rem;
+    }
+
+    .edu-title h5 {
+        font-size: 0.8rem;
+    }
+}
+
 @media (max-width: 768px) {
     .edu-card {
         justify-content: center;

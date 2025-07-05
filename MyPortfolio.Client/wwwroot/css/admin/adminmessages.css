@@ -8,6 +8,7 @@
 
 .messages-table {
     width: 100%;
+    max-width: 1000px;
     border-collapse: collapse;
     background-color: #fff;
     border-radius: 8px;

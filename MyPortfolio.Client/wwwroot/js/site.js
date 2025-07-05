@@ -29,6 +29,12 @@ window.setupScrollSnap = () => {
     const scrollTo = (i) => {
         if (window.scrollLock.isLocked) return;
 
+        if (i >= sections.length) {
+            window.scrollToSectionById(sections[0].id); 
+            currentIndex = 0;
+            return;
+        }
+
         if (i >= 0 && i < sections.length) {
             const id = sections[i].id;
             sections[i].scrollIntoView({ behavior: 'smooth' });
@@ -74,13 +80,10 @@ window.setupScrollSnap = () => {
     });
 
     window.addEventListener("popstate", goToHash);
-
     goToHash();
 };
 
 window.scrollToSectionById = (id) => {
-    if (window.scrollLock.isLocked) return;
-
     const section = document.getElementById(id);
     if (section) {
         section.scrollIntoView({ behavior: 'smooth' });
@@ -102,3 +105,22 @@ window.setScrollLock = (shouldLock) => {
 window.scrollCarousel = (element, amount) => {
     element.scrollBy({ left: amount, behavior: 'smooth' });
 };
+
+window.setupSectionAnimations = () => {
+    const sections = document.querySelectorAll('.fade-in');
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.remove('visible'); // Klassni olib tashlaymiz
+                void entry.target.offsetWidth; // Reflow tetiklash (trick)
+                entry.target.classList.add('visible'); // Klassni qayta qo‘shamiz
+            }
+        });
+    }, {
+        threshold: 0.3
+    });
+
+    sections.forEach(section => observer.observe(section));
+};
+

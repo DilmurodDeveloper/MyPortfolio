@@ -83,8 +83,19 @@
     color: white;
 }
 
+.content-cell {
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.5rem;
+    height: calc(1.4rem * 5);
+}
+
 .projects-table {
     width: 100%;
+    max-width: 1000px;
     border-collapse: collapse;
     background-color: white;
     box-shadow: 0 2px 4px rgba(0,0,0,0.05);

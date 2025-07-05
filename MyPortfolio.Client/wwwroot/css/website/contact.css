@@ -99,10 +99,24 @@ textarea.form-control {
 @media (max-width: 768px) {
     .contact-container {
         flex-direction: column;
-        gap: 2rem;
+        gap: 1rem;
     }
 
-    .section-title {
-        text-align: center;
+    .contact-section-title {
+        font-size: 1.2rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .contact-visual {
+        display: none;
+    }
+
+    .contact-form {
+        width: 100%;
+    }
+
+    .submit-button {
+        width: 100%;
     }
 }
+

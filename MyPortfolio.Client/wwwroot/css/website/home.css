@@ -52,7 +52,6 @@
 
 .hello-text {
     font-size: 2.5rem;
-    font-weight: bold;
     display: inline-block;
     margin-right: 0.5rem;
     color: #e6f1ff;
@@ -65,6 +64,12 @@
 }
 
 /* --- Hero Buttons --- */
+.hero-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
 .hero-buttons a {
     font-weight: 600;
     padding: 0.75rem 1.5rem;
@@ -114,17 +119,12 @@
         font-size: 2rem;
     }
 
-    .text-section h1 {
-        font-size: 1.8rem;
+    .dot-navigation {
+        display: none; 
     }
 
-    #dot-home,
-    #dot-about,
-    #dot-skills,
-    #dot-education,
-    #dot-experience,
-    #dot-projects {
-        display: none !important;
+    .text-section h1 {
+        font-size: 1.8rem;
     }
 
     .subtitle {

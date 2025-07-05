@@ -1,0 +1,79 @@
+﻿@page "/not-found"
+
+@inject NavigationManager Navigation
+
+<div class="not-found-container">
+    <i class="fas fa-exclamation-triangle icon"></i>
+    <h2>Oops... You got lost.</h2>
+    <p>Nothing here, bud!</p>
+
+    <div class="button-group">
+        <a href="/" class="btn back-btn">
+            <i class="fas fa-arrow-left"></i> Back
+        </a>
+    </div>
+</div>
+
+<style>
+    .not-found-container {
+
+        text-align: center;
+        padding: 5rem 1rem;
+        font-family: 'Segoe UI', sans-serif;
+        color: #333;
+    }
+
+    .icon {
+        font-size: 4rem;
+        color: #dc3545;
+        margin-bottom: 1rem;
+    }
+
+    h2 {
+        color: wheat;
+        font-size: 2rem;
+        margin-bottom: 0.5rem;
+    }
+
+    p {
+        font-size: 1.2rem;
+        color: #777;
+        margin-bottom: 2rem;
+    }
+
+    .button-group {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        flex-wrap: wrap;
+    }
+
+    .btn {
+        padding: 0.75rem 1.5rem;
+        font-size: 1rem;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background 0.3s ease;
+        text-decoration: none;
+        color: white;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .back-btn {
+        background-color: #6c757d;
+    }
+
+        .back-btn:hover {
+            background-color: #5a6268;
+        }
+</style>
+
+@code {
+    private void GoBack()
+    {
+        Navigation.NavigateTo("/", forceLoad: true);
+    }
+}

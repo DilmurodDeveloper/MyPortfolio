@@ -3,8 +3,8 @@ FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
 
-COPY ["MyPortfolio.API/MyPortfolio.API.csproj", "MyPortfolio.API/"]
-COPY ["MyPortfolio.Shared/MyPortfolio.Shared.csproj", "MyPortfolio.Shared/"]
+COPY ["../MyPortfolio.Shared/MyPortfolio.Shared.csproj", "../MyPortfolio.Shared/"]
+COPY ["MyPortfolio.API.csproj", "."]
 RUN dotnet restore "MyPortfolio.API/MyPortfolio.API.csproj"
 
 COPY . .

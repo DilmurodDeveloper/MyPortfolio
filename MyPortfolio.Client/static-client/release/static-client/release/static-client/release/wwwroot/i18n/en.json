@@ -1,0 +1,96 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "skills": "Skills",
+    "education": "Education",
+    "experience": "Experience",
+    "projects": "Projects",
+    "blog": "Blog",
+    "contact": "Contact"
+  },
+
+  "hero": {
+    "welcome": "Welcome to my personal page!",
+    "hello": "HELLO",
+    "greeting": "MY NAME",
+    "iam": "IS DILMUROD",
+    "role": "Software Engineer | Junior .NET Developer",
+    "viewWork": "View my work",
+    "moreAbout": "More about me"
+  },
+
+  "about": {
+    "about_me": "About Me",
+    "introduce": "Hi there, I am Dilmurod",
+    "introduce_about": "I'm a backend .NET Developer. If you're looking for a professional .NET web developer to build a website, refactor legacy code, or enhance your app's performance — you’re in the right place!",
+    "location_strong": "Location:",
+    "location_about": "Urgench, Uzbekistan",
+    "experience_strong": "Experience:",
+    "experience_about": "2+ years building .NET backend solutions with production-grade code",
+    "services": "I can help you out with:",
+    "services1": "Web apps and APIs",
+    "services2": "Building backend systems with ASP.NET Core and Entity Framework Core",
+    "services3": "Deploying and managing services in Azure",
+    "services4": "Writing unit, integration, and acceptance tests"
+  },
+
+  "skills": {
+    "title": "My Skills",
+    "story_title": "My Story",
+    "story_text": "As a backend .NET developer, I’ve spent the last few years refining my craft through real-world projects, clean architecture, and scalable systems. My journey began with a passion for solving complex problems and today, I enjoy building resilient APIs, integrating services, and maintaining high-performance solutions that serve users efficiently."
+  },
+
+  "education": {
+    "title": "Education",
+    "degree_label": "Degree",
+    "field_label": "Field",
+    "years_label": "Years",
+    "location_label": "Location",
+    "tuit_title": "TUIT Urganch Branch",
+    "tuit_degree": "Bachelor's Degree",
+    "tuit_field": "Software Engineering",
+    "tuit_years": "2020 - 2024",
+    "tuit_location": "Urganch, Uzbekistan",
+    "mohirdev_title": ".NET Practicum – Mohirdev",
+    "mohirdev_degree": "Certificate",
+    "mohirdev_field": ".NET Development",
+    "mohirdev_years": "Completed",
+    "mohirdev_location": "Online",
+    "quote": "Education gave me precision — development gave me purpose."
+  },
+
+  "experience": {
+    "title": "Experience",
+    "company_amusoft": "Amusoft",
+    "role_amusoft": "Backend Developer | Internship",
+    "duration_amusoft": "April 2022 – September 2022",
+    "location_amusoft": "Urgench, Uzbekistan",
+    "company_a1tech": "A1 Tech Group",
+    "role_a1tech": "Backend Developer | Internship",
+    "duration_a1tech": "March 2023 – July 2023",
+    "location_a1tech": "Urgench, Uzbekistan",
+    "company_self": "Self Employed",
+    "role_self": "Backend Developer (.NET)",
+    "duration_self": "July 2023 – Present",
+    "location_self": "Remote / Freelance"
+  },
+
+  "projects": {
+    "title": "Projects"
+  },
+
+  "blogs": {
+    "title": "My Thoughts"
+  },
+
+  "contact": {
+    "title": "Contact Me",
+    "fullName": "Full Name",
+    "email": "Email",
+    "message": "Message",
+    "send": "Send Message",
+    "success": "Thank you! Your message has been sent.",
+    "error": "Something went wrong. Please try again."
+  }
+}

@@ -1,0 +1,152 @@
+:root {
+    --navbar-bg: transparent;
+    --navbar-text: #e4e4e7;
+    --nav-menu-bg: #1f1f1f;
+    --nav-link-color: #b5b5b5;
+    --nav-link-hover-bg: #334155;
+    --nav-link-hover-text: #93c5fd;
+    --social-icon: #e5e7eb;
+    --social-icon-hover: #60a5fa;
+    --toggler-filter: invert(1);
+    --icon-color: #f5f5f5;
+    --home-bg: #111827;
+    --btn-primary-bg: #3b82f6;
+    --btn-primary-text: #fff;
+}
+
+.snap-container {
+    scroll-snap-type: none;
+    overflow-y: auto;
+    min-height: 100vh;
+    scroll-behavior: smooth;
+}
+
+.snap-section {
+    scroll-snap-align: start;
+    min-height: 100vh;
+    width: 100%;
+}
+
+.main-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: var(--home-bg);
+}
+
+.valid.modified:not([type=checkbox]) {
+    outline: 1px solid #26b050;
+}
+
+.invalid {
+    outline: 1px solid red;
+}
+
+.validation-message {
+    color: red;
+}
+
+#blazor-error-ui {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 0.6rem 1.25rem 0.7rem 3.7rem;
+    background: lightyellow;
+    box-shadow: 0 -1px 2px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    color: white;
+    background: no-repeat 1rem/1.8rem, #b32121;
+}
+
+    #blazor-error-ui .dismiss {
+        position: absolute;
+        top: 0.5rem;
+        right: 0.75rem;
+        cursor: pointer;    
+    }
+
+.blazor-error-boundary::after {
+    content: "An error has occurred.";
+}
+
+.loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #111827;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.spinner {
+    width: 60px;
+    height: 60px;
+    position: relative;
+}
+
+.double-bounce1,
+.double-bounce2 {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-color: orange;
+    opacity: 0.6;
+    position: absolute;
+    top: 0;
+    left: 0;
+    animation: bounce 2s infinite ease-in-out;
+}
+
+.double-bounce2 {
+    animation-delay: -1s;
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: scale(0.0);
+    }
+
+    50% {
+        transform: scale(1.0);
+    }
+}
+
+.dot-navigation {
+    position: fixed;
+    top: 50%;
+    right: 50px;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    z-index: 1000;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: gray;
+    transition: background-color 0.3s ease;
+}
+
+    .dot.active {
+        background-color: orange;
+    }
+
+.fade-in {
+    opacity: 0;
+    transform: translateY(15px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+    .fade-in.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }

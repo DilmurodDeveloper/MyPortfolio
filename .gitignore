@@ -405,3 +405,7 @@ FodyWeavers.xsd
 # JetBrains Rider
 *.sln.iml
 /MyPortfolio.API/appsettings.Development.json
+
+# Allow static-client to be tracked
+!MyPortfolio.Client/static-client/
+!MyPortfolio.Client/static-client/**

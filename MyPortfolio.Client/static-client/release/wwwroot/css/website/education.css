@@ -1,0 +1,152 @@
+﻿html, body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    scroll-behavior: smooth;
+    height: 100%;
+}
+
+/* --- Root --- */
+.education-page {
+    background-color: #0d1117;
+    color: #e6f1ff;
+    font-family: 'Inter', sans-serif;
+    padding-top: 4rem;
+    min-height: 100vh;
+    padding-bottom: 3rem;
+}
+
+/* --- Section title --- */
+.education-section-title h1 {
+    padding-top: 60px;
+    text-transform: uppercase;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #64ffda;
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+/* --- Education card layout --- */
+.edu-card {
+    display: flex;
+    background-color: #1f2530;
+    border-radius: 8px;
+    flex-direction: row;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    gap: 1rem;
+    padding: 1rem;
+}
+
+/* --- Image container --- */
+.edu-img-container {
+    flex-shrink: 0;
+    width: 100px;
+    display: flex;
+    align-items: center;
+}
+
+.edu-img {
+    width: 120px;
+    height: 130px;
+    border-radius: 6px;
+}
+
+/* --- Education content --- */
+.edu-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: #e6f1ff;
+}
+
+.edu-title h5 {
+    text-transform: uppercase;
+    font-size: 1rem;
+    color: orange;
+    margin-bottom: 0.5rem;
+}
+
+.edu-details p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 0.25rem;
+    color: #aab8c2;
+}
+
+.edu-details strong {
+    color: #64ffda;
+}
+
+/* --- Quote section --- */
+.education-quote-wrapper {
+    margin-top: 1rem;
+}
+
+.edu-final-quote p {
+    font-size: 1rem;
+    font-style: italic;
+    color: #8892b0;
+    max-width: 600px;
+}
+
+/* --- DotLottie animation --- */
+dotlottie-player {
+    margin-bottom: 0.1rem;
+    max-width: 100%;
+}
+
+/* --- Responsive --- */
+@media (max-width: 1068px) {
+    .edu-card {
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 1rem;
+        padding-left: 0.9rem;
+        flex-direction: column;
+    }
+
+    .edu-content {
+        align-items: start;
+    }
+
+    .edu-details p {
+        font-size: 0.9rem;
+    }
+
+    .education-section-title h1 {
+        font-size: 1rem;
+    }
+
+    .edu-title h5 {
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .edu-card {
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 1rem;
+        padding-left: 0.9rem;
+        flex-direction: column;
+    }
+
+    .edu-content {
+        align-items: start;
+    }
+
+    .edu-details p {
+        font-size: 0.9rem;
+    }
+
+    .education-section-title h1 {
+        font-size: 1rem;
+    }
+
+    .edu-title h5 {
+        font-size: 0.8rem;
+    }
+}

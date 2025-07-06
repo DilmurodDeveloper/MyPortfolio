@@ -1,0 +1,217 @@
+﻿.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: var(--navbar-bg);
+    color: var(--navbar-text);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: none;
+}
+
+.navbar-brand {
+    color: var(--navbar-text);
+    text-decoration: none;
+}
+
+    .navbar-brand:hover {
+        color: inherit;
+        text-decoration: none;
+    }
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(0,0,0,1)' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 1.5em 1.5em;
+    width: 1.5em;
+    height: 1.5em;
+    filter: var(--toggler-filter);
+}
+
+.navbar-toggler {
+    font-size: 1.5rem;
+    background: transparent;
+    border: none;
+    color: var(--icon-color);
+    cursor: pointer;
+}
+
+.close-btn {
+    font-size: 3rem;
+    background: transparent;
+    border: none;
+    color: var(--navbar-text);
+    cursor: pointer;
+}
+
+.nav-overlay {
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.4);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease;
+    z-index: 1049;
+}
+
+    .nav-overlay.show {
+        opacity: 1;
+        visibility: visible;
+    }
+
+.nav-sidebar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 300px;
+    max-width: 90%;
+    background-color: var(--nav-menu-bg);
+    box-shadow: -2px 0 10px rgba(0,0,0,0.3);
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+    z-index: 1050;
+    display: flex;
+    flex-direction: column;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+    .nav-sidebar.show {
+        transform: translateX(0);
+    }
+
+.nav-scroll-wrapper {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: auto;
+    padding: 1rem;
+}
+
+.nav-center {
+    max-height: 60%;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    scrollbar-width: thin;
+    padding-right: 0.5rem;
+}
+
+    .nav-center::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    .nav-center::-webkit-scrollbar-thumb {
+        background-color: var(--navbar-text);
+        border-radius: 4px;
+    }
+
+    .nav-center::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+.nav-link {
+    font-size: 1.5rem;
+    padding: 0.75rem 1rem;
+    color: var(--nav-link-color);
+    white-space: nowrap;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+    .nav-link:hover {
+        text-decoration: none;
+        background-color: var(--nav-link-hover-bg);
+        color: var(--nav-link-hover-text) !important;
+    }
+
+.nav-footer-divider {
+    border-top: 1px solid var(--navbar-text);
+    opacity: 0.5;
+    margin: 0 1rem;
+}
+
+.nav-footer {
+    margin-top: auto;
+    padding: 1rem;
+    font-size: 0.9rem;
+    text-align: center;
+    color: var(--navbar-text);
+}
+
+.brand-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.2rem;
+    text-decoration: none;
+    color: var(--navbar-text);
+}
+
+.brand-icon {
+    font-size: 1.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.brand-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 2px;
+    line-height: 1.1;
+}
+
+    .brand-text div:first-child {
+        font-weight: bold;
+        font-size: 1rem;
+    }
+
+    .brand-text div:last-child {
+        font-size: 0.85rem;
+        font-weight: normal;
+    }
+
+.navbar-toggler:focus,
+.navbar-toggler:focus-visible {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+.social-icons a {
+    color: var(--social-icon);
+    font-size: 1.5rem;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+    .social-icons a:hover {
+        color: orange !important;
+        transform: scale(1.15);
+    }
+
+.lang-flag {
+    width: 30px;
+    height: 20px;
+    cursor: pointer;
+    border-radius: 3px;
+    transition: transform 0.2s ease;
+}
+
+    .lang-flag:hover {
+        transform: scale(1.1);
+        box-shadow: 0 0 4px rgba(255, 255, 255, 0.5);
+    }
+
+.lang-label {
+    font-size: 0.85rem;
+    color: var(--navbar-text);
+    margin-top: 0.25rem;
+}

@@ -81,7 +81,7 @@ builder.Services.AddCors(options =>
     options.AddPolicy("AllowFrontend", policy =>
     {
         policy.WithOrigins(
-            "https://myportfolio-sfqk.onrender.com",
+            "https://myportfolio-client-ythk.onrender.com",
             "https://localhost:7155"
         )
         .AllowAnyHeader()

@@ -23,7 +23,7 @@ builder.Services.AddBlazoredLocalStorage();
 
 builder.Services.AddHttpClient("AuthorizedClient", client =>
 {
-    client.BaseAddress = new Uri("https://localhost:7051/");
+    client.BaseAddress = new Uri("https://myportfolio-sfqk.onrender.com/");
 }).AddHttpMessageHandler<AuthMessageHandler>();
 
 await builder.Build().RunAsync();

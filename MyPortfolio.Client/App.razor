@@ -1,25 +1,22 @@
 ﻿@using MyPortfolio.Client.Pages
+
 <CascadingAuthenticationState>
     <Router AppAssembly="@typeof(App).Assembly">
         <Found Context="routeData">
             <AuthorizeRouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)">
+                <Authorizing>
+                    <div></div>
+                </Authorizing>
                 <NotAuthorized>
-                    @if (!context.User.Identity?.IsAuthenticated ?? true)
-                    {
-                        <RedirectToLogin />
-                    }
-                    else
-                    {
-                        <p>You are not authorized to access this page.</p>
-                    }
+                    <RedirectToLogin />
                 </NotAuthorized>
             </AuthorizeRouteView>
             <FocusOnNavigate RouteData="@routeData" Selector="h1" />
         </Found>
         <NotFound>
-        <LayoutView Layout="@typeof(MainLayout)">
-            <NotFoundPage />
-        </LayoutView>
+            <LayoutView Layout="@typeof(MainLayout)">
+                <NotFoundPage />
+            </LayoutView>
         </NotFound>
     </Router>
 </CascadingAuthenticationState>

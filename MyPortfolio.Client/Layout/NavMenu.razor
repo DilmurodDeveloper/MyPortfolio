@@ -1,81 +1,82 @@
 ﻿<link href="css/website/site.css" rel="stylesheet" />
 
-<div class="top-row ps-3 navbar d-flex align-items-center">
-    <div class="container-fluid d-flex justify-content-between align-items-center">
-        <a class="navbar-brand brand-logo" href="/">
-            <div class="brand-icon">
-                <i class="fa-brands fa-dochub"></i>
-            </div>
-            <div class="brand-text">
-                <div><span class="visually-hidden">D</span>ilmurod</div>
-                <div><span class="visually-hidden">D</span>eveloper</div>
-            </div>
-        </a>
+@if (_langReady)
+{
+    <div class="top-row ps-3 navbar d-flex align-items-center">
+        <div class="container-fluid d-flex justify-content-between align-items-center">
 
-        <div class="d-none d-md-flex gap-3 mx-auto social-icons">
+            <!-- Brand -->
+            <a class="navbar-brand brand-logo" href="/">
+                <div class="brand-icon">
+                    <i class="fa-brands fa-dochub"></i>
+                </div>
+                <div class="brand-text">
+                    <div><span class="visually-hidden">D</span>ilmurod</div>
+                    <div><span class="visually-hidden">D</span>eveloper</div>
+                </div>
+            </a>
+
+            <!-- Nav links -->
+            <div class="d-none d-md-flex main-nav-links">
+                <NavLink class="nav-link-main" href="#home" Match="NavLinkMatch.All">@Lang.T("nav", "home")</NavLink>
+                <NavLink class="nav-link-main" href="#about">@Lang.T("nav", "about")</NavLink>
+                <NavLink class="nav-link-main" href="#skills">@Lang.T("nav", "skills")</NavLink>
+                <NavLink class="nav-link-main" href="#education">@Lang.T("nav", "education")</NavLink>
+                <NavLink class="nav-link-main" href="#experience">@Lang.T("nav", "experience")</NavLink>
+                <NavLink class="nav-link-main" href="#projects">@Lang.T("nav", "projects")</NavLink>
+                <NavLink class="nav-link-main" href="#contact">@Lang.T("nav", "contact")</NavLink>
+                <NavLink class="nav-link-main" href="/blogs">@Lang.T("nav", "blog")</NavLink>
+            </div>
+
+            <div class="d-flex align-items-center justify-content-end gap-0">
+                <!-- Language toggle -->
+                <button class="language-toggle" @onclick="CycleLanguage">
+                    <img src=@($"images/flags/{CurrentLanguage}.png") alt="@CurrentLanguage" style="width: 20px; height: 12px" />
+                    @CurrentLanguage.ToUpper()
+                </button>
+
+                <!-- Hamburger toggle -->
+                <button title="Navigation menu" class="navbar-toggler d-md-none" @onclick="ToggleNavMenu" aria-expanded="@(!collapseNavMenu)" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sidebar overlay and menu -->
+    <div class="nav-overlay @(collapseNavMenu ? "" : "show")" @onclick="ToggleNavMenu"></div>
+
+    <div class="nav-sidebar @(collapseNavMenu ? "" : "show")">
+        <div class="d-flex justify-content-end px-3 pt-3">
+            <button class="close-btn" @onclick="ToggleNavMenu" aria-label="Close menu">&times;</button>
+        </div>
+
+        <div class="nav-scroll-wrapper">
+            <nav class="nav-center">
+                <NavLink class="nav-link mb-2" href="#home" Match="NavLinkMatch.All">@Lang.T("nav", "home")</NavLink>
+                <NavLink class="nav-link mb-2" href="#about">@Lang.T("nav", "about")</NavLink>
+                <NavLink class="nav-link mb-2" href="#skills">@Lang.T("nav", "skills")</NavLink>
+                <NavLink class="nav-link mb-2" href="#education">@Lang.T("nav", "education")</NavLink>
+                <NavLink class="nav-link mb-2" href="#experience">@Lang.T("nav", "experience")</NavLink>
+                <NavLink class="nav-link mb-2" href="#projects">@Lang.T("nav", "projects")</NavLink>
+                <NavLink class="nav-link mb-2" href="#contact">@Lang.T("nav", "contact")</NavLink>
+                <NavLink class="nav-link mb-2" href="/blogs">@Lang.T("nav", "blog")</NavLink>
+            </nav>
+        </div>
+
+        <div class="nav-social-icons d-flex justify-content-center gap-3 py-4">
             @foreach (var social in SocialLinks)
             {
-                <a href="@social.Url" target="_blank" title="@social.Title" class="fs-5">
+                <a href="@social.Url" target="_blank" title="@social.Title" class="fs-5" style="color: var(--social-icon);">
                     <i class="@social.Icon"></i>
                 </a>
             }
         </div>
 
-        <div class="d-flex align-items-center gap-2">
-            <button title="Navigation menu" class="navbar-toggler position-relative" @onclick="ToggleNavMenu" aria-expanded="@(!collapseNavMenu)" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-        </div>
+        <hr class="nav-footer-divider" />
+
+        <footer class="nav-footer text-center py-4" style="color: var(--navbar-text); font-size: 1rem;">
+            © Dilmurod Madirimov 2025
+        </footer>
     </div>
-</div>
-
-<div class="nav-overlay @(collapseNavMenu ? "" : "show")" @onclick="ToggleNavMenu"></div>
-
-<div class="nav-sidebar @(collapseNavMenu ? "" : "show")">
-    <div class="d-flex justify-content-end px-3 pt-3">
-        <button class="close-btn" @onclick="ToggleNavMenu" aria-label="Close menu">&times;</button>
-    </div>
-
-    <div class="d-flex justify-content-center gap-3 mt-2 text-center">
-        <div>
-            <img src="images/flags/uz.png" @onclick='() => ChangeLanguage("uz")' class="lang-flag" alt="UZ" title="Uzbek" />
-            <div class="lang-label">Uzbek</div>
-        </div>
-        <div>
-            <img src="images/flags/en.png" @onclick='() => ChangeLanguage("en")' class="lang-flag" alt="EN" title="English" />
-            <div class="lang-label">English</div>
-        </div>
-        <div>
-            <img src="images/flags/ru.png" @onclick='() => ChangeLanguage("ru")' class="lang-flag" alt="RU" title="Russian" />
-            <div class="lang-label">Русский</div>
-        </div>
-    </div>
-
-    <div class="nav-scroll-wrapper">
-        <nav class="nav-center">
-            <NavLink class="nav-link mb-2" href="#home" Match="NavLinkMatch.All">@Lang.T("nav", "home")</NavLink>
-            <NavLink class="nav-link mb-2" href="#about">@Lang.T("nav", "about")</NavLink>
-            <NavLink class="nav-link mb-2" href="#skills">@Lang.T("nav", "skills")</NavLink>
-            <NavLink class="nav-link mb-2" href="#education">@Lang.T("nav", "education")</NavLink>
-            <NavLink class="nav-link mb-2" href="#experience">@Lang.T("nav", "experience")</NavLink>
-            <NavLink class="nav-link mb-2" href="#projects">@Lang.T("nav", "projects")</NavLink>
-            <NavLink class="nav-link mb-2" href="#contact">@Lang.T("nav", "contact")</NavLink>
-            <NavLink class="nav-link mb-2" href="/blogs">@Lang.T("nav", "blog")</NavLink>
-        </nav>
-    </div>
-
-    <div class="nav-social-icons d-flex justify-content-center gap-3 py-3">
-        @foreach (var social in SocialLinks)
-        {
-            <a href="@social.Url" target="_blank" title="@social.Title" class="fs-5" style="color: var(--social-icon);">
-                <i class="@social.Icon"></i>
-            </a>
-        }
-    </div>
-
-    <hr class="nav-footer-divider" />
-
-    <footer class="nav-footer text-center py-3" style="color: var(--navbar-text); font-size: 0.9rem;">
-        © Dilmurod Madirimov 2025
-    </footer>
-</div>
+}

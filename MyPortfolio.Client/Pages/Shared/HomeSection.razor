@@ -15,9 +15,18 @@
                 <h1>@Lang.T("hero", "iam")</h1>
                 <p class="subtitle mt-3">@Lang.T("hero", "role")</p>
 
-                <div class="hero-buttons mt-5 d-flex flex-column flex-sm-row gap-3">
-                    <a href="#projects" class="btn btn-primary btn-lg">@Lang.T("hero", "viewWork")</a>
-                    <a href="#about" class="btn btn-outline-light btn-lg">@Lang.T("hero", "moreAbout")</a>
+                <div class="hero-buttons mt-4 d-flex flex-column flex-sm-row gap-3">
+                    <a href="#about" class="btn btn-primary btn-lg">@Lang.T("hero", "moreAbout")</a>
+                    <a href="/files/Dilmurod_Resume.pdf" class="btn btn-outline-light btn-lg">@Lang.T("hero", "resume")</a>
+                </div>
+
+                <div class="hero-socials mt-4 d-flex flex-wrap gap-1">
+                    @foreach (var social in SocialLinks)
+                    {
+                        <a href="@social.Url" target="_blank" title="@social.Title" class="fs-3">
+                            <i class="@social.Icon"></i>
+                        </a>
+                    }
                 </div>
             </div>
 

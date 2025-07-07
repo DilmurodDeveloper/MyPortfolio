@@ -16,8 +16,8 @@
     "greeting": "MY NAME",
     "iam": "IS DILMUROD",
     "role": "Software Engineer | Junior .NET Developer",
-    "viewWork": "View my work",
-    "moreAbout": "More about me"
+    "resume": "Resume",
+    "moreAbout": "About Me"
   },
 
   "about": {
@@ -57,7 +57,7 @@
     "mohirdev_field": ".NET Development",
     "mohirdev_years": "Completed",
     "mohirdev_location": "Online",
-    "quote": "Education gave me precision — development gave me purpose."
+    "quote": "Learning to write programs stretches your mind, and helps you think better, creates a way of thinking about things that I think is helpful in all domains."
   },
 
   "experience": {

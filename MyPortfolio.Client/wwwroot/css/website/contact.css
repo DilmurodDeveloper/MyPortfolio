@@ -19,7 +19,6 @@
 /* Left: Visual */
 .contact-visual {
     flex: 1;
-    min-width: 300px;
     text-align: center;
 }
 
@@ -95,7 +94,25 @@ textarea.form-control {
     color: white;
 }
 
+.contact-visual dotlottie-player {
+    max-width: 100%;
+    height: auto;
+}
+
 /* Responsive */
+@media (max-width: 768px) {
+    .contact-visual dotlottie-player {
+        width: 250px !important;
+        height: 250px !important;
+        margin-bottom: 1rem;
+        margin-top: 0.5rem;
+    }
+
+    .contact-section {
+        padding: 2rem 1rem !important;
+    }
+}
+
 @media (max-width: 768px) {
     .contact-container {
         flex-direction: column;
@@ -103,12 +120,12 @@ textarea.form-control {
     }
 
     .contact-section-title {
+        padding-top: 50px;
         font-size: 1.2rem;
-        margin-bottom: 1.5rem;
     }
 
     .contact-visual {
-        display: none;
+        width: 300px;
     }
 
     .contact-form {

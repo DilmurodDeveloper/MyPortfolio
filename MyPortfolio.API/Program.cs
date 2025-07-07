@@ -81,6 +81,7 @@ builder.Services.AddCors(options =>
     options.AddPolicy("AllowFrontend", policy =>
     {
         policy.WithOrigins(
+            "https://dilmuroddev.uz",
             "https://myportfolio-client-ythk.onrender.com",
             "https://localhost:7155"
         )
@@ -106,8 +107,14 @@ using (var scope = app.Services.CreateScope())
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
+
+app.UseRouting();
+
 app.UseCors("AllowFrontend");
+
 app.UseAuthentication();
 app.UseAuthorization();
+
 app.MapControllers();
+
 app.Run();

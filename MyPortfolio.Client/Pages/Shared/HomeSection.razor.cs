@@ -34,5 +34,15 @@ namespace MyPortfolio.Client.Pages.Shared
         {
             Lang.OnLanguageChanged -= HandleLanguageChanged;
         }
+
+        protected List<(string Title, string Url, string Icon)> SocialLinks = new()
+        {
+            ("GitHub", "https://github.com/DilmurodDeveloper", "bi bi-github"),
+            ("LinkedIn", "https://linkedin.com/in/dilmurodmadirimov", "bi bi-linkedin"),
+            ("Facebook", "https://facebook.com/dilmurod.dev", "bi bi-facebook"),
+            ("Instagram", "https://instagram.com/dilmurod_developer", "bi bi-instagram"),
+            ("Telegram", "https://t.me/DilmurodDeveloper", "bi bi-telegram"),
+            ("WhatsApp", "https://wa.me/+998991437101", "bi bi-whatsapp"),
+        };
     }
 }

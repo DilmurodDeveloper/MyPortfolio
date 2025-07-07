@@ -112,9 +112,9 @@ window.setupSectionAnimations = () => {
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.classList.remove('visible'); // Klassni olib tashlaymiz
-                void entry.target.offsetWidth; // Reflow tetiklash (trick)
-                entry.target.classList.add('visible'); // Klassni qayta qo‘shamiz
+                entry.target.classList.remove('visible');
+                void entry.target.offsetWidth; 
+                entry.target.classList.add('visible'); 
             }
         });
     }, {

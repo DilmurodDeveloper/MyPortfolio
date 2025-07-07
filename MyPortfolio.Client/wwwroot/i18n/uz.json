@@ -16,8 +16,8 @@
     "greeting": "MENING",
     "iam": "ISMIM DILMUROD",
     "role": "Dasturiy ta'minot muhandisi | Junior .NET dasturchi",
-    "viewWork": "Ishlarimni ko'rish",
-    "moreAbout": "Men haqimda batafsil"
+    "resume": "Rezyume",
+    "moreAbout": "Men haqimda"
   },
 
   "about": {
@@ -57,7 +57,7 @@
     "mohirdev_field": ".NET dasturlash",
     "mohirdev_years": "Tugallangan",
     "mohirdev_location": "Onlayn",
-    "quote": "Ta'lim menga aniqlik berdi - rivojlanish menga maqsad berdi."
+    "quote": "Dastur yozishni o'rganish fikringizni kengaytiradi va yaxshiroq fikrlashga yordam beradi, barcha sohalarda foydali bo'lgan narsalar haqida fikr yuritish usulini yaratadi."
   },
 
   "experience": {

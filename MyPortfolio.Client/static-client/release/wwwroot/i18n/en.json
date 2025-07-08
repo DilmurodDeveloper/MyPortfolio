@@ -92,5 +92,15 @@
     "send": "Send Message",
     "success": "Thank you! Your message has been sent.",
     "error": "Something went wrong. Please try again."
+  },
+
+  "footer": {
+    "box_name1": "Dilmurod's Portfolio",
+    "box_name1_about1": "Thank you for visiting my personal portfolio website. Connect with me over socials.",
+    "box_name1_about2": "Keep Rising 🚀. Connect with me over live chat!",
+    "box_name2": "quick links",
+    "box_name3": "contact info",
+    "credit1": "Designed with",
+    "credit2": "by"
   }
 }

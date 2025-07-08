@@ -1,69 +1,12 @@
-﻿html, body {
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    scroll-behavior: smooth;
-    height: 100%;
-}
-
-/* Base styles (apply for both themes by default) */
-body {
-    transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-    /* Light theme */
-    body.light .home-hero {
-        background-color: #f8f9fa;
-        color: #212529;
-    }
-
-    body.light .welcome-text {
-        color: #00796b;
-    }
-
-    body.light .hero-socials a {
-        background-color: #e9ecef; 
-        color: #212529;
-    }
-
-    body.light .subtitle {
-        color: #495057;
-    }
-
-    body.light .hero-buttons .btn-outline-light {
-        border: 2px solid #212529;
-        color: #212529;
-    }
-
-        body.light .hero-buttons .btn-outline-light:hover {
-            background-color: #212529;
-            color: white;
-        }
-
-    /* Dark theme */
-    body.dark .home-hero {
-        background-color: #0d1117;
-        color: white;
-    }
-
-    body.dark .welcome-text {
-        color: #64ffda;
-    }
-
-    body.dark .subtitle {
-        color: #8892b0;
-    }
-
-/* --- Hero Section --- */
+﻿/* --- Hero Section --- */
 .home-hero {
     position: relative;
-    min-height: 100vh;
-    padding-top: 5rem;
+    padding-top: 8rem;
     padding-bottom: 5rem;
-    overflow: hidden;
     font-family: 'Inter', sans-serif;
     background-color: #0d1117;
     color: white;
+    min-height: 100vh;
 }
 
 #particles-js {
@@ -148,11 +91,11 @@ body {
 .image-section {
     flex: 1;
     z-index: 1;
-    max-width: 300px;
+    max-width: 400px;
 }
 
 .hero-photo {
-    max-width: 100%;
+    max-width: 400px;
     height: auto;
     border-radius: 0;
     box-shadow: none;
@@ -177,8 +120,8 @@ body {
 }
 
     .hero-socials a:hover {
-        background-color: orange;
-        color: white;
+        background-color: white;
+        color: black;
         transform: scale(1.1) rotate(5deg);
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
     }
@@ -202,8 +145,16 @@ body {
     }
 
     .image-section {
-        margin-top: 2rem;
-        max-width: 200px;
+        margin: 2rem auto 0 auto; 
+        max-width: 300px;
+        display: block;
+        text-align: center;
+    }
+
+    .hero-photo {
+        display: block;
+        margin: 0 auto;
+        max-width: 300px;
     }
 
     .hero-buttons {

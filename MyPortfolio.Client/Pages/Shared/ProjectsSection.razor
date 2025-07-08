@@ -3,7 +3,9 @@
 @if (_langReady)
 {
     <div class="projects-section">
-        <h1 class="text-center section-title">@Lang.T("projects", "title")</h1>
+        <h1 class="text-center section-title">
+            <i class="fas fa-folder-open me-2"></i> @Lang.T("projects", "title")
+        </h1>
 
         <div class="carousel-wrapper">
             <button class="scroll-btn left" @onclick="ScrollLeft">&#10094;</button>

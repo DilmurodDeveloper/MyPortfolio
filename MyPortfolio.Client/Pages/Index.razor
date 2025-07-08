@@ -1,27 +1,32 @@
 ﻿@page "/"
 
-<DotNavigation />
-
 <div class="snap-container">
-    <section class="snap-section fade-in" id="home">
+    <section class="snap-section" id="home">
         <HomeSection />
     </section>
-    <section class="snap-section fade-in" id="about">
+    <section class="snap-section" id="about">
         <AboutSection />
     </section>
-    <section class="snap-section fade-in" id="skills">
+    <section class="snap-section" id="skills">
         <SkillsSection />
     </section>
-    <section class="snap-section fade-in" id="education">
+    <section class="snap-section" id="education">
         <EducationSection />
     </section>
-    <section class="snap-section fade-in" id="experience">
+    <section class="snap-section" id="experience">
         <ExperienceSection />
     </section>
-    <section class="snap-section fade-in" id="projects">
+    <section class="snap-section" id="projects">
         <ProjectsSection />
     </section>
     <section class="snap-section" id="contact">
         <ContactSection />
     </section>
+    <section class="snap-section" id="footer">
+        <FooterSection />
+    </section>
 </div>
+
+<button class="scroll-to-top" @onclick="ScrollToTop" hidden id="scrollTopBtn">
+    <i class="fa-solid fa-circle-arrow-up"></i>
+</button>

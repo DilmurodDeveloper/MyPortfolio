@@ -1,18 +1,10 @@
-﻿html, body {
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    scroll-behavior: smooth;
-    height: 100%;
-}
-
-/* --- Root --- */
+﻿/* --- Root --- */
 .education-page {
     background-color: #0d1117;
     color: #e6f1ff;
     font-family: 'Inter', sans-serif;
     padding-top: 4rem;
-    min-height: 100vh;
+/*    min-height: 100vh;*/
     padding-bottom: 3rem;
 }
 

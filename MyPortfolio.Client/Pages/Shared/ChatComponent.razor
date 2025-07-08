@@ -1,0 +1,97 @@
+﻿@using MyPortfolio.Shared.Models
+<link href="css/website/chat.css" rel="stylesheet" />
+
+@if (!isOpen)
+{
+    <button class="chat-toggle" @onclick="() => isOpen = true">
+        <i class="fa-solid fa-comments"></i>
+    </button>
+}
+else
+{
+    <div class="chat-box">
+        <div class="chat-header">
+            @if (activeTab == "form")
+            {
+                <h4>Chat</h4>
+            }
+            else if (activeTab == "recent" && selectedMessage == null)
+            {
+                <button class="chat-back" @onclick='() => activeTab = "form"'>
+                    <i class="fa-solid fa-chevron-left"></i>
+                </button>
+                <h4>Messages</h4>
+            }
+            else if (activeTab == "recent" && selectedMessage != null)
+            {
+                <button class="chat-back" @onclick="() => selectedMessage = null">
+                    <i class="fa-solid fa-chevron-left"></i>
+                </button>
+                <h4>@selectedMessage.Name</h4>
+            }
+
+            <button class="chat-close" @onclick="() => isOpen = false">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+
+        <div class="chat-body">
+            @if (activeTab == "form")
+            {
+                <EditForm Model="messageModel" OnValidSubmit="SubmitMessage">
+                    <p class="text-center" style="font-family: Calibri">Please fill out the form below and we will get back to you as soon as possible.</p>
+                    <InputText @bind-Value="messageModel.Name" class="chat-input" placeholder="* Name" />
+                    <InputText @bind-Value="messageModel.Email" class="chat-input" placeholder="* Email" />
+                    <InputTextArea @bind-Value="messageModel.Message" class="chat-textarea" placeholder="* Message" />
+                    <button type="submit" class="chat-submit">
+                        <i class="fa-regular fa-paper-plane"></i> Submit
+                    </button>
+                </EditForm>
+            }
+            else if (activeTab == "recent")
+            {
+                @if (selectedMessage == null)
+                {
+                    <div>
+                        <h5 class="chat-subheader">Recent</h5>
+                        @if (recentMessages.Count == 0)
+                        {
+                            <p class="chat-placeholder">No recent messages yet.</p>
+                        }
+                        else
+                        {
+                            @foreach (var msg in recentMessages)
+                            {
+                                <div class="chat-message chat-preview" @onclick="() => SelectMessage(msg)">
+                                    <strong>@msg.Name</strong> <span class="chat-time">now</span>
+                                    <p class="chat-message-preview" title="@msg.Message">@Truncate(msg.Message, 1)</p>
+                                </div>
+                            }
+                        }
+                    </div>
+                }
+                else
+                {
+                    <div class="chat-conversation">
+                        <div class="chat-msg-in">
+                            <div class="chat-avatar">@selectedMessage.Name[0]</div> 
+                            <div class="chat-bubble">
+                                <div class="chat-name">@selectedMessage.Name</div>
+                                <div class="chat-text">@selectedMessage.Message</div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+
+        <div class="chat-footer">
+            <button class="chat-tab" @onclick='() => { activeTab = "form"; selectedMessage = null; }'>
+                <i class="fa-solid fa-headset"></i>
+            </button>
+            <button class="chat-tab" @onclick='() => { activeTab = "recent"; selectedMessage = null; }'>
+                <i class="fa-regular fa-message"></i>
+            </button>
+        </div>
+    </div>
+}

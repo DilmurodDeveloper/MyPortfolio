@@ -1,9 +1,7 @@
 ﻿.contact-section {
     background-color: #0d1117;
     color: #e6f1ff;
-    padding: 4rem 2rem;
     font-family: 'Inter', sans-serif;
-    min-height: 100vh;
 }
 
 .contact-container {
@@ -29,11 +27,9 @@
 }
 
 .contact-section-title {
-    padding-top: 20px;
     color: #64ffda;
     font-size: 1.4rem;
     font-weight: 700;
-    margin-bottom:0.5rem;
     text-transform: uppercase;
 }
 
@@ -52,7 +48,6 @@ textarea.form-control {
     min-height: 50px;
     max-height: 100px; 
     resize: vertical; 
-    overflow-y: auto; 
 }
 
 input.form-control,
@@ -96,7 +91,6 @@ textarea.form-control {
 
 .contact-visual dotlottie-player {
     max-width: 100%;
-    height: auto;
 }
 
 /* Responsive */

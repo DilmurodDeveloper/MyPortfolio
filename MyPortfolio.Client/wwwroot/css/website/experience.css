@@ -2,14 +2,6 @@
     box-sizing: border-box;
 }
 
-html, body {
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    scroll-behavior: smooth;
-    height: 100%;
-}
-
 /* --- Root --- */
 .experience-page {
     background-color: #0d1117;
@@ -17,16 +9,15 @@ html, body {
     font-family: 'Inter', sans-serif;
     padding-top: 4rem;
     padding-bottom: 3rem;
-    min-height: 100vh;
 }
 
 /* --- Section title --- */
 .experience-section-title h2 {
-    padding-top: 60px;
+    padding-top: 70px;
     font-size: 1.4rem;
     font-weight: 700;
     color: #64ffda;
-    margin-bottom: 1.5rem;
+    margin-bottom: 2.5rem;
 }
 
 /* --- Timeline container --- */

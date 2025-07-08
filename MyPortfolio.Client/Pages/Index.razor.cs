@@ -11,21 +11,13 @@ namespace MyPortfolio.Client.Pages
         {
             if (firstRender)
             {
-                await JS.InvokeVoidAsync("observeAndStoreSection");
-                await JS.InvokeVoidAsync("setupScrollSnap");
-                await JS.InvokeVoidAsync("setupSectionAnimations");
-
-                var hash = await JS.InvokeAsync<string>("eval", "location.hash.substring(1)");
-                if (!string.IsNullOrEmpty(hash))
-                {
-                    await JS.InvokeVoidAsync("scrollToSectionById", hash);
-                }
+                await JS.InvokeVoidAsync("setupScrollTopButton");
             }
         }
 
-        private async Task ScrollToSection(string id)
+        private async Task ScrollToTop()
         {
-            await JS.InvokeVoidAsync("scrollToSectionById", id);
+            await JS.InvokeVoidAsync("scrollToTop");
         }
     }
 }

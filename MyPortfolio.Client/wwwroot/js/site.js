@@ -40,5 +40,21 @@ window.hideLoader = () => {
     }
 };
 
+window.setupScrollTopButton = () => {
+    const btn = document.getElementById("scrollTopBtn");
 
+    window.addEventListener("scroll", () => {
+        if (window.scrollY > 300) {
+            btn.removeAttribute("hidden");
+        } else {
+            btn.setAttribute("hidden", "true");
+        }
+    });
+};
 
+window.scrollToTop = () => {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+};

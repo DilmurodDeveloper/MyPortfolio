@@ -1,7 +1,7 @@
 ﻿/* --- Hero Section --- */
 .home-hero {
     position: relative;
-    padding-top: 8rem;
+    padding-top: 10rem;
     padding-bottom: 5rem;
     font-family: 'Inter', sans-serif;
     background-color: #0d1117;
@@ -31,6 +31,7 @@
 
 /* --- Text Section --- */
 .text-section {
+    padding-top: 40px;
     flex: 1;
     z-index: 1;
 }
@@ -125,6 +126,7 @@
         transform: scale(1.1) rotate(5deg);
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
     }
+
 
 /* --- Responsive Styles --- */
 @media (max-width: 768px) {

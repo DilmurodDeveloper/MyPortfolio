@@ -79,6 +79,7 @@
     padding: 0.5rem;
     margin: 0 auto;
     max-width: 1000px;
+    min-width: 1000px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.05);
     overflow-x: auto;
@@ -94,6 +95,8 @@
 
     .latest-table table {
         width: 100%;
+        table-layout: fixed;
+        min-width: 980px;
         border-collapse: collapse;
         background-color: #fff;
         border-radius: 8px;

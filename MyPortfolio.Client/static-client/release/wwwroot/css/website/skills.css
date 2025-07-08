@@ -1,14 +1,5 @@
-﻿html, body {
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    scroll-behavior: smooth;
-    height: 100%;
-}
-
-/* --- Root layout --- */
+﻿/* --- Root layout --- */
 .skills-page {
-    min-height: 100vh;
     padding: 5rem;
     padding-right: 6rem;
     background-color: #0d1117;

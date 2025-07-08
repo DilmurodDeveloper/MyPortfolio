@@ -92,5 +92,15 @@
     "send": "Xabar yuborish",
     "success": "Rahmat! Xabaringiz yuborildi.",
     "error": "Xatolik yuz berdi. Iltimos, qayta urinib ko‘ring."
+  },
+
+  "footer": {
+    "box_name1": "Dilmurod portfeli",
+    "box_name1_about1": "Shaxsiy portfel saytimga tashrif buyurganingiz uchun rahmat. Ijtimoiy tarmoqlarda men bilan bog‘laning.",
+    "box_name1_about2": "Doim rivojlanishda bo‘ling 🚀. Jonli chat orqali bog‘laning!",
+    "box_name2": "tez havolalar",
+    "box_name3": "aloqa ma'lumotlari",
+    "credit1": "Yaratilgan",
+    "credit2": "tomonidan"
   }
 }

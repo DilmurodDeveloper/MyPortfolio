@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
+using Microsoft.JSInterop;
 using MyPortfolio.Client;
 using MyPortfolio.Client.Services;
 
@@ -26,4 +27,8 @@ builder.Services.AddHttpClient("AuthorizedClient", client =>
     client.BaseAddress = new Uri("https://myportfolio-sfqk.onrender.com/");
 }).AddHttpMessageHandler<AuthMessageHandler>();
 
-await builder.Build().RunAsync();
+var host = builder.Build();
+await host.RunAsync();
+
+var js = host.Services.GetRequiredService<IJSRuntime>();
+await js.InvokeVoidAsync("hideLoader");

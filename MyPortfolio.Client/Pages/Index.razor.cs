@@ -12,6 +12,9 @@ namespace MyPortfolio.Client.Pages
             if (firstRender)
             {
                 await JS.InvokeVoidAsync("setupScrollTopButton");
+                await JS.InvokeVoidAsync("setupSectionAnimations");
+                await JS.InvokeVoidAsync("scrollToHash");
+                await JS.InvokeVoidAsync("enableScrollHashUpdate");
             }
         }
 

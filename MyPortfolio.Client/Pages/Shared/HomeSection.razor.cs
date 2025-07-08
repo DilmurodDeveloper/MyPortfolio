@@ -12,6 +12,14 @@ namespace MyPortfolio.Client.Pages.Shared
 
         private bool _langReady = false;
 
+        protected override async Task OnAfterRenderAsync(bool firstRender)
+        {
+            if (firstRender)
+            {
+                await JS.InvokeVoidAsync("initParticles");
+            }
+        }
+
         protected override async Task OnInitializedAsync()
         {
             var culture = await JS.InvokeAsync<string>("localStorage.getItem", "lang") ?? "en-US";

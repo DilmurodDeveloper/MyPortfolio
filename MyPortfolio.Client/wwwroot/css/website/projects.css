@@ -5,12 +5,12 @@
     color: #e6f1ff;
     font-family: 'Inter', sans-serif;
     position: relative;
-    margin-bottom: 5rem;
+    margin-bottom: 0;
 }
 
 /* --- Section Title --- */
 .section-title {
-    padding-top: 30px;
+    padding-top: 80px;
     padding-bottom: 2rem;
     text-transform: uppercase;
     font-size: 1.4rem;

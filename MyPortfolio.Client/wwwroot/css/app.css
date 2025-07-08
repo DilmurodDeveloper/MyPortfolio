@@ -1,20 +1,17 @@
-.snap-container {
-    scroll-snap-type: none;
-    overflow-y: auto;
-    min-height: 100vh;
-    scroll-behavior: smooth;
+html, body {
+    overflow-y: scroll;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
 }
 
-.snap-section {
-    scroll-snap-align: start;
-    min-height: 100vh;
-    width: 100%;
-}
+    body::-webkit-scrollbar {
+        display: none;
+    }
 
 .main-container {
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
+    overflow-x: hidden !important;
     background-color: var(--home-bg);
 }
 
@@ -74,20 +71,28 @@ body.ready #app {
     display: flex;
     align-items: center;
     justify-content: center;
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
 }
 
 .spinner {
     width: 60px;
     height: 60px;
     position: relative;
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
 }
+    .spinner.hidden {
+        opacity: 0;
+        pointer-events: none;
+    }
 
 .double-bounce1,
 .double-bounce2 {
     width: 100%;
     height: 100%;
     border-radius: 50%;
-    background-color: orange;
+    background-color: #00b894;
     opacity: 0.6;
     position: absolute;
     top: 0;
@@ -108,37 +113,3 @@ body.ready #app {
         transform: scale(1.0);
     }
 }
-
-.dot-navigation {
-    position: fixed;
-    top: 50%;
-    right: 50px;
-    transform: translateY(-50%);
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    z-index: 1000;
-}
-
-.dot {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background-color: gray;
-    transition: background-color 0.3s ease;
-}
-
-    .dot.active {
-        background-color: orange;
-    }
-
-.fade-in {
-    opacity: 0;
-    transform: translateY(15px);
-    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-}
-
-    .fade-in.visible {
-        opacity: 1;
-        transform: translateY(0);
-    }

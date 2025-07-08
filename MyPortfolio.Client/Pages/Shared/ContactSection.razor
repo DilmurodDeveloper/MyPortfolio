@@ -3,7 +3,9 @@
 @if(_langReady)
 {
     <div class="contact-section">
-        <h1 class="contact-section-title text-center">@Lang.T("contact", "title")</h1>
+        <h1 class="contact-section-title text-center">
+            <i class="fas fa-phone me-2"></i>@Lang.T("contact", "title")
+        </h1>
         <div class="contact-container">
             <div class="contact-visual">
                 <dotlottie-player 
@@ -49,7 +51,9 @@
                         </div>
                     </div>
 
-                <button type="submit" class="submit-button">@Lang.T("contact", "send")</button>
+                <button type="submit" class="submit-button">
+                    @Lang.T("contact", "send") <i class="fas fa-paper-plane me-2"></i>
+                </button>
                 </EditForm>
             </div>
         </div>

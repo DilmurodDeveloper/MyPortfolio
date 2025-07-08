@@ -1,16 +1,7 @@
-﻿html, body {
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    scroll-behavior: smooth;
-    height: 100%;
-}
-
-/* --- About Page Root --- */
+﻿/* --- About Page Root --- */
 .about-page {
     padding-bottom: 4rem;
     background-color: #0d1117;
-    min-height: 100vh;
     color: #e6f1ff;
     font-family: 'Inter', sans-serif;
 }
@@ -20,7 +11,7 @@
     padding-top: 20px;
     display: flex;
     justify-content: center;
-    padding-bottom: 2rem;
+    padding-bottom: 1.5rem;
 }
     
 .about-section-title h1 {
@@ -134,6 +125,14 @@
 @media (max-width: 576px) {
     .dot-navigation {
         display: none; 
+    }
+
+    .about-photo {
+        display: none;
+    }
+
+    .about-section-title {
+        padding-bottom: 0;
     }
 
     .about-section-title h1 {

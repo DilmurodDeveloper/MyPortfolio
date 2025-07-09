@@ -13,10 +13,32 @@ namespace MyPortfolio.Client.Pages.Shared
         [Inject] public IHttpClientFactory HttpFactory { get; set; } = default!;
 
         private List<ProjectDto> projects = new();
+        private System.Timers.Timer? autoScrollTimer;
+        private bool autoScrollEnabled = true;
         private bool _langReady = false;
         private int currentIndex = 0;
         private int visibleCount = 3;
         private int slideWidth = 300;
+
+        protected override async Task OnAfterRenderAsync(bool firstRender)
+        {
+            if (firstRender)
+            {
+                autoScrollTimer = new System.Timers.Timer(3000);
+                autoScrollTimer.Elapsed += (s, e) =>
+                {
+                    if (autoScrollEnabled)
+                    {
+                        InvokeAsync(() =>
+                        {
+                            ScrollRight();
+                            StateHasChanged();
+                        });
+                    }
+                };
+                autoScrollTimer.Start();
+            }
+        }
 
         protected override async Task OnInitializedAsync()
         {
@@ -42,6 +64,12 @@ namespace MyPortfolio.Client.Pages.Shared
         public void Dispose()
         {
             Lang.OnLanguageChanged -= HandleLanguageChanged;
+
+            if (autoScrollTimer != null)
+            {
+                autoScrollTimer.Stop();
+                autoScrollTimer.Dispose();
+            }
         }
 
         private void ScrollLeft()

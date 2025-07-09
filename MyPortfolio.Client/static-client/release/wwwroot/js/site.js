@@ -51,23 +51,6 @@ window.scrollToTop = () => {
     });
 };
 
-window.initParticles = () => {
-    const tryLoad = () => {
-        const container = document.getElementById('particles-js');
-
-        if (typeof particlesJS !== 'undefined' && container) {
-            particlesJS.load('particles-js', 'js/particles-config.json', function () {
-                console.log('Particles config loaded successfully!');
-            });
-        } else {
-            console.warn("particlesJS or container not ready, retrying...");
-            setTimeout(tryLoad, 200); 
-        }
-    };
-
-    tryLoad();
-};
-
 window.showLoader = () => {
     const loader = document.getElementById('loader');
     const app = document.getElementById('app');

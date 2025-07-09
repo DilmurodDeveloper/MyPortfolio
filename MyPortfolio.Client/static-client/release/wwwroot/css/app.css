@@ -15,6 +15,7 @@ html, body {
     overflow-x: hidden !important;
     overflow-y: hidden !important;
     background-color: var(--home-bg);
+    min-height: 100vh;
 }
 
 .valid.modified:not([type=checkbox]) {
@@ -144,15 +145,13 @@ body.ready #app {
     }
 }
 
-/* Har bir section animatsiya bilan chiqib keladi */
 .snap-section {
     opacity: 0;
     transform: translateY(40px);
     transition: opacity 0.6s ease, transform 0.6s ease;
 }
 
-    /* Sahifaga kirganda qo‘shiladigan klass */
     .snap-section.visible {
         opacity: 1;
-        transform: translateY(0);
+        transform: translateY(0) !important;
     }

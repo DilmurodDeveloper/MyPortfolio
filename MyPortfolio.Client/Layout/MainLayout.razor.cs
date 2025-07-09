@@ -27,7 +27,6 @@ namespace MyPortfolio.Client.Layout
             }
         }
 
-
         protected override void OnInitialized()
         {
             _currentUri = Nav.Uri;

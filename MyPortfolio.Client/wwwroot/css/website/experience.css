@@ -4,8 +4,8 @@
 
 /* --- Root --- */
 .experience-page {
-    background-color: #0d1117;
-    color: #e6f1ff;
+    background: linear-gradient(to bottom, #0a192f, #0f2b46);
+    color: #ffffff;
     font-family: 'Inter', sans-serif;
     padding-bottom: 3rem;
 }

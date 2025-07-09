@@ -1,9 +1,9 @@
 ﻿/* --- Root --- */
 .education-page {
-    background-color: #0d1117;
-    color: #e6f1ff;
+    background: linear-gradient(to bottom, #0a192f, #0f2b46);
+    color: #ffffff;
     font-family: 'Inter', sans-serif;
-    padding-top: 8rem;
+    padding-top: 6rem;
     padding-bottom: 3rem;
 }
 
@@ -21,7 +21,7 @@
 /* --- Education card layout --- */
 .edu-card {
     display: flex;
-    background-color: #1f2530;
+    background: linear-gradient(145deg, #1f2530, #2a3242);
     border-radius: 8px;
     flex-direction: row;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);

@@ -4,7 +4,7 @@
     flex-wrap: wrap;
     justify-content: center;
     gap: 2rem;
-    background-color: #0a0f14;
+    background: linear-gradient(to bottom, #0f0f0f, #1a1d27, #2b2f3a);
     color: #e6f1ff;
     padding: 3rem 2rem;
     font-family: 'Inter', sans-serif;
@@ -78,12 +78,13 @@
 
 /* --- Credit Line --- */
 .credit {
-    background-color: #0a0f14;
+    background: linear-gradient(to bottom, #0f0f0f, #1a1d27, #2b2f3a);
     text-align: center;
     padding: 1.5rem;
-    font-size: 0.95rem;
+    font-size: 1rem;
     color: #8892b0;
     border-top: 1px solid #1f2933;
+    margin-bottom: 0;
 }
 
     .credit a {

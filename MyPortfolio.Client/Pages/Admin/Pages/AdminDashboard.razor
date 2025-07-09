@@ -41,11 +41,11 @@
                 @foreach (var m in LatestMessages.Select((item, index) => new { item, index }))
                 {
                     <tr>
-                        <td style="width: 1px">@(m.index + 1)</td>
-                        <td style="width: 200px">@m.item.FullName</td>
-                        <td style="width: 200px">@m.item.Email</td>
-                        <td style="width: 430px; text-align: justify">@m.item.Message</td>
-                        <td style="width: 169px">@m.item.CreatedAt.ToLocalTime().ToString("dd-MM-yyyy HH:mm:ss")</td>
+                        <td>@(m.index + 1)</td>
+                        <td>@m.item.FullName</td>
+                        <td>@m.item.Email</td>
+                        <td>@m.item.Message</td>
+                        <td>@m.item.CreatedAt.ToLocalTime().ToString("dd-MM-yyyy HH:mm:ss")</td>
                     </tr>
                 }
             </tbody>

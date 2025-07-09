@@ -1,17 +1,18 @@
 ﻿/* --- Root layout --- */
 .projects-section {
-    background-color: #0d1117;
+    background: linear-gradient(to bottom, #0a192f, #0f2b46);
     padding: 4rem 2rem;
     color: #e6f1ff;
+    padding-top: 6rem;
     font-family: 'Inter', sans-serif;
     position: relative;
-    margin-bottom: 0;
+    min-height: 100vh;
 }
 
 /* --- Section Title --- */
 .section-title {
-    padding-top: 80px;
-    padding-bottom: 2rem;
+    padding-top: 20px;
+    padding-bottom: 3rem;
     text-transform: uppercase;
     font-size: 1.4rem;
     font-weight: 700;
@@ -39,7 +40,7 @@
 /* --- Carousel Track --- */
 .carousel-track {
     display: flex;
-    transition: transform 0.5s ease;
+    transition: transform 0.5s ease-in-out;
     width: max-content;
     gap: 1.5rem;
 }
@@ -204,6 +205,7 @@
 
     .projects-section {
         padding: 2rem 1rem;
+        min-height: 50vh;
     }
 
     .section-title {
